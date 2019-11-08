@@ -11,12 +11,17 @@ import lombok.extern.log4j.Log4j;
 public class Controller {
     
     public static void executeWorkflow(){
-        //Harvest Resources
-        //Canonicalize/Clean Resources
-        //Transform Resources
-        //Normalize Resources
-        //Ingest Resources
-        //Test Resources
+        /* Harvest Resources */
+        
+        /* Normalize/Clean Input Resources */
+        
+        /* Transform Resources */
+        
+        /* Homogenize Output Resources */ 
+        
+        /* Ingest Resources */
+        
+        /* Test Resources */
     }
     
     public static void main(String[] args){
