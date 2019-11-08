@@ -3,6 +3,7 @@ package com.smartupds.etlcontroller.etl.controller;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
 import lombok.extern.log4j.Log4j;
 
 /** The entry point of the ETL Controller. The class is responsible for 
@@ -19,9 +20,11 @@ public class Controller {
         
         /* Normalize/Clean Input Resources */
 //        HertzianaNormalizer.create().normalizeResources();
+        ZeriNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-        HertzianaTransformer.create().transformResources();
+//        HertzianaTransformer.create().transformResources();
+        
         
         /* Homogenize Output Resources */ 
         
