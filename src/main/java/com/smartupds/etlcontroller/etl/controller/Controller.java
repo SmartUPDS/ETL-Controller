@@ -4,6 +4,7 @@ import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
+import java.io.File;
 import lombok.extern.log4j.Log4j;
 
 /** The entry point of the ETL Controller. The class is responsible for 
@@ -20,7 +21,7 @@ public class Controller {
         
         /* Normalize/Clean Input Resources */
 //        HertzianaNormalizer.create().normalizeResources();
-        ZeriNormalizer.create().normalizeResources();
+//        ZeriNormalizer.create().normalizeResources();
         
         /* Transform Resources */
 //        HertzianaTransformer.create().transformResources();
@@ -33,7 +34,36 @@ public class Controller {
         /* Test Resources */
     }
     
+    private static void createFoldersStructure(){
+        log.info("Creating workspace folders structure");
+        log.debug("Create INPUT folders");
+        new File(Resources.FOLDER_INPUT).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_HERTZIANA).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS).mkdir();
+        
+        log.debug("Create MAPPINGS folders");
+        new File(Resources.FOLDER_MAPPINGS).mkdir();
+        
+        log.debug("Create OUTPUT folders");
+        new File(Resources.FOLDER_OUTPUT).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
+    }
+    
     public static void main(String[] args) throws ETLGenericException{
+        /* INITIALIZATION ONLY */
+        Controller.createFoldersStructure();
+        
         Controller.executeWorkflow();
     }
 }
