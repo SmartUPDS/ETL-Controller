@@ -30,14 +30,14 @@ public class HertzianaNormalizer implements Normalizer{
     @Override
     public void normalizeResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-//        log.info("START: Split large files from Hertziana");
-//        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_HERTZIANA, 
-//                           Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA,
-//                           Resources.HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT,
-//                           Resources.HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT,
-//                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-//        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
+        log.info("START: Split large files from Hertziana");
+        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_HERTZIANA, 
+                           Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA,
+                           Resources.HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT,
+                           Resources.HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT,
+                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
+        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
         
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
         log.info("START: Perform Syntax Normalization for resources from Hertziana");
@@ -98,7 +98,6 @@ public class HertzianaNormalizer implements Normalizer{
                             ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap), 
                     new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
             FileUtils.deleteQuietly(file);
-            break;
         }
     }
     

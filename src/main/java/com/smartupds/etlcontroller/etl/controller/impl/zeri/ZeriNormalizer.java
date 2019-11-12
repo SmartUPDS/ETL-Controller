@@ -30,14 +30,14 @@ public class ZeriNormalizer implements Normalizer{
     public void normalizeResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zerinormalizer.unzip");
         log.info("START: Unzip Artworks from Zeri");
-//        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS).listFiles()){
-//            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
-//                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS);
-//                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS));
-//            }else{
-//                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
-//            }  
-//        }
+        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS).listFiles()){
+            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
+                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS);
+                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS));
+            }else{
+                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
+            }  
+        }
         for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS).listFiles()){
             if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
                 log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS);
