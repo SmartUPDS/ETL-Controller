@@ -3,15 +3,22 @@ package com.smartupds.etlcontroller.etl.controller.impl.hertziana;
 import com.smartupds.etlcontroller.etl.controller.Resources;
 import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.normalizer.exceptions.NormalizerException;
 import com.smartupds.xmlsplit.Splitter;
 import gr.forth.ics.isl.timer.Timer;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.io.FileUtils;
 import org.xml.sax.SAXException;
+import split.ElementsSplit;
 
 /** Normalizer for input sources from Hertziana
  *
@@ -23,18 +30,27 @@ public class HertzianaNormalizer implements Normalizer{
     @Override
     public void normalizeResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-        log.info("START: Split large files from Hertziana");
-        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_HERTZIANA, 
-                           Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA,
-                           Resources.HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT,
-                           Resources.HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT,
-                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
+//        log.info("START: Split large files from Hertziana");
+//        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_HERTZIANA, 
+//                           Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA,
+//                           Resources.HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT,
+//                           Resources.HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT,
+//                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
+//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
+//        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
         
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
         log.info("START: Perform Syntax Normalization for resources from Hertziana");
-        this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA),"a5260","&");
+        List<String> elementsList=Arrays.asList("a30gn",
+                                                "a3105",
+                                                "a5220","a5260","a5300","a5500",
+                                                "a8498");
+        try{
+            this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA),elementsList,"&");
+        }catch(NormalizerException | IOException ex){
+            log.error("An error occured while normalizing input resources",ex);
+            throw new ETLGenericException("An error occured while normalizing input resources",ex);
+        }
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
         log.info("FINISH: Perform Syntax Normalization for resources from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax"));
     }
@@ -69,8 +85,21 @@ public class HertzianaNormalizer implements Normalizer{
      * @param inputFolder the folder containing XML files to be normalized
      * @param elementName the element name to be considered for normalization
      * @param splitCharSequence the charSsequence to define the normalization */
-    private void normalizeSyntax(File inputFolder, String elementName, String splitCharSequence){
-        //TODO (use ElementsSplit (from Normalizer API))
+    private void normalizeSyntax(File inputFolder, List<String> elementsName, String splitCharSequence) throws NormalizerException, IOException{
+        log.info("Normalize files in folder "+inputFolder+". Elements to normalize: "+elementsName+"\t Split String: "+splitCharSequence);
+        Map<String,List<String>> elementsSeparatorsMap=new HashMap<>();
+        elementsName.forEach(elementName -> elementsSeparatorsMap.put(elementName,Arrays.asList(splitCharSequence)));
+        for(File file : FileUtils.listFiles(inputFolder, null, true)){
+            String folderName=file.getParent();
+            String filename=file.getName();
+            log.debug("Normalize file "+file.getAbsolutePath());
+            ElementsSplit.exportXmlDocument(
+                    ElementsSplit.splitElements(
+                            ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap), 
+                    new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
+            FileUtils.deleteQuietly(file);
+            break;
+        }
     }
     
     public static HertzianaNormalizer create(){
