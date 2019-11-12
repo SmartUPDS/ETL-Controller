@@ -3,21 +3,15 @@ package com.smartupds.etlcontroller.etl.controller.impl.zeri;
 import com.smartupds.etlcontroller.etl.controller.Resources;
 import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
-import com.smartupds.xmlsplit.Splitter;
 import gr.forth.ics.isl.timer.Timer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.xpath.XPathExpressionException;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FilenameUtils;
-import org.xml.sax.SAXException;
 
 /** Normalizer for input sources from Zeri
  *

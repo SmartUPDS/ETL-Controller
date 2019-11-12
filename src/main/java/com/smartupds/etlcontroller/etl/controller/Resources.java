@@ -1,7 +1,5 @@
 package com.smartupds.etlcontroller.etl.controller;
 
-import com.hp.hpl.jena.rdf.model.Resource;
-
 /** Various Common resources
  *
  * @author Yannis Marketakis (marketakis 'at' smartupds 'dot' com)
