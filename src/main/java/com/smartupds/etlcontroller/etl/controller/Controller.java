@@ -4,6 +4,7 @@ import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
+import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
 
@@ -20,13 +21,13 @@ public class Controller {
         //none(?)
         
         /* Normalize/Clean Input Resources */
-//        HertzianaNormalizer.create().normalizeResources();
-        ZeriNormalizer.create().normalizeResources();
+        HertzianaNormalizer.create().normalizeResources();
+//        ZeriNormalizer.create().normalizeResources();
         
         /* Transform Resources */
 //        HertzianaTransformer.create().transformResources();
-        
-        
+//        ZeriTransformer.create().transformResources();
+
         /* Homogenize Output Resources */ 
         
         /* Ingest Resources */

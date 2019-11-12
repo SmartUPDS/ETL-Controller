@@ -10,11 +10,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.io.FilenameUtils;
 import org.xml.sax.SAXException;
 
 /** Normalizer for input sources from Zeri
@@ -28,12 +30,22 @@ public class ZeriNormalizer implements Normalizer{
     public void normalizeResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zerinormalizer.unzip");
         log.info("START: Unzip Artworks from Zeri");
-        String artworksFolder=Resources.FOLDER_INPUT_NORMALIZED_ZERI+"/"+Resources.ZERI_ARTWORKS_ZIP_FILENAME.replace(".zip", "");
-        new File(artworksFolder).mkdir();
-        this.unzipFiles(new File(Resources.FOLDER_INPUT_FETCHED_ZERI+"/"+Resources.ZERI_ARTWORKS_ZIP_FILENAME),new File(artworksFolder));
-        String photographsFolder=Resources.FOLDER_INPUT_NORMALIZED_ZERI+"/"+Resources.ZERI_PHOTOGRAPHS_ZIP_FILENAME.replace(".zip", "");
-        new File(artworksFolder).mkdir();
-        this.unzipFiles(new File(Resources.FOLDER_INPUT_FETCHED_ZERI+"/"+Resources.ZERI_PHOTOGRAPHS_ZIP_FILENAME),new File(artworksFolder));
+//        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS).listFiles()){
+//            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
+//                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS);
+//                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS));
+//            }else{
+//                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
+//            }  
+//        }
+        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS).listFiles()){
+            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
+                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS);
+                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS));
+            }else{
+                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
+            }  
+        }
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zerinormalizer.unzip");
         log.info("FINISH: Unzip Artworks from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zerinormalizer.unzip"));
     }
@@ -66,7 +78,9 @@ public class ZeriNormalizer implements Normalizer{
     }
     
     private static File newFile(File destinationDir, ZipEntry zipEntry) throws IOException {
+        destinationDir.mkdirs();
         File destFile = new File(destinationDir, zipEntry.getName());
+        destFile.getParentFile().mkdirs();
         String destDirPath = destinationDir.getCanonicalPath();
         String destFilePath = destFile.getCanonicalPath();
          

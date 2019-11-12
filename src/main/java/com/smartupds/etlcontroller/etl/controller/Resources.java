@@ -44,7 +44,7 @@ public class Resources {
     public static final String MAPPINGS_HERTZIANA_ALL=FOLDER_MAPPINGS+"/"+"mappings-hertziana.x3ml";
     public static final String GENERATOR_POLICY_HERTZIANA=FOLDER_MAPPINGS+"/"+"generator-policy-hertziana.xml";
     public static final String MAPPINGS_ZERI_ARTWORKS=FOLDER_MAPPINGS+"/"+"mappings-zeri-artworks.x3ml";
-    public static final String MAPPINGS_ZERI_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-zeri-photrographs.x3ml";
+    public static final String MAPPINGS_ZERI_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-zeri-photographs.x3ml";
     public static final String GENERATOR_POLICY_ZERI=FOLDER_MAPPINGS+"/"+"generator-policy-zeri.xml";
     
     /* HERTZIANA resources */
@@ -52,5 +52,5 @@ public class Resources {
     public static final String HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT="obj";
     
     /* Misc Resources */
-    public static final int MAX_FILESIZE_INPUT_RESOURCES_IN_MB=10;
+    public static final int MAX_FILESIZE_INPUT_RESOURCES_IN_MB=5;
 }

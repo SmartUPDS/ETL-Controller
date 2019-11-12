@@ -7,6 +7,7 @@ import gr.forth.ics.isl.timer.Timer;
 import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.io.FileUtils;
 
 /** Transformer class for resources from Zeri 
  *
@@ -19,24 +20,24 @@ public class ZeriTransformer implements Transformer {
     public void transformResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks");
         log.info("START: Transform Artworks from Zeri");
-        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS).listFiles()){
+        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS), null, true)){
             this.transformFile(file,
                            new File(Resources.MAPPINGS_ZERI_ARTWORKS),
                            new File(Resources.GENERATOR_POLICY_ZERI),
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS));
         }
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks");
-        log.info("FINISH: Transform data from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks"));
+        log.info("FINISH: Transform artworks from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks"));
         log.info("START: Transform Photographs from Zeri");
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.photographs");
-        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS).listFiles()){
+        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS), null, true)){
             this.transformFile(file,
                            new File(Resources.MAPPINGS_ZERI_PHOTOGRAPHS),
                            new File(Resources.GENERATOR_POLICY_ZERI),
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS));
         }
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.photographs");
-        log.info("FINISH: Transform data from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.photographs"));
+        log.info("FINISH: Transform photographs from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.photographs"));
     }
     
     /** Transforms the given resources using X3ML engine.
@@ -47,6 +48,7 @@ public class ZeriTransformer implements Transformer {
      * @param outputFolder the folder where the transformed contents will be exported. */
     private void transformFile(File inputFile, File mappingsFile, File generatorPolicyFile, File outputFolder){
         File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", ".rdf"));
+        log.debug("Transforming resource "+inputFile.getAbsolutePath());
         X3MLEngineFactory.create()
                          .withInputFiles(inputFile)
                          .withMappings(mappingsFile)
