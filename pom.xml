@@ -17,6 +17,10 @@
             <name>FORTH ISL Nexus repository - Releases</name>
             <url>http://www.ics.forth.gr/isl/maven-releases/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
     
     <dependencies>
@@ -46,14 +50,14 @@
             <version>1.4</version>
         </dependency>
         <dependency>
-            <groupId>com.smartupds</groupId>
+            <groupId>com.github.SmartUPDS</groupId>
             <artifactId>XmlSplit</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>f056c59</version>
         </dependency>
         <dependency>
-            <groupId>com.smartupds</groupId>
+            <groupId>com.github.SmartUPDS</groupId>
             <artifactId>Normalizer</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>7a452bc</version>
         </dependency>
     </dependencies>
         
