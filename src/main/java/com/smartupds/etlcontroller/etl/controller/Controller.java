@@ -17,11 +17,11 @@ public class Controller {
     
     public static void executeWorkflow() throws ETLGenericException{
         /* Harvest Resources */
-        
+        //none(?)
         
         /* Normalize/Clean Input Resources */
 //        HertzianaNormalizer.create().normalizeResources();
-//        ZeriNormalizer.create().normalizeResources();
+        ZeriNormalizer.create().normalizeResources();
         
         /* Transform Resources */
 //        HertzianaTransformer.create().transformResources();
@@ -41,6 +41,8 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI).mkdir();
@@ -62,7 +64,7 @@ public class Controller {
     
     public static void main(String[] args) throws ETLGenericException{
         /* INITIALIZATION ONLY */
-        Controller.createFoldersStructure();
+//        Controller.createFoldersStructure();
         
         Controller.executeWorkflow();
     }
