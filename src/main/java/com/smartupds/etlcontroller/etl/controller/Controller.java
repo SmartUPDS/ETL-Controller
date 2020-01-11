@@ -3,6 +3,8 @@ package com.smartupds.etlcontroller.etl.controller;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
+import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
 import java.io.File;
@@ -21,10 +23,12 @@ public class Controller {
         //none(?)
         
         /* Normalize/Clean Input Resources */
-        HertzianaNormalizer.create().normalizeResources();
+//        ItattiNormalizer.create().normalizeResources();
+//        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
         
         /* Transform Resources */
+        ItattiTransformer.create().transformResources();
 //        HertzianaTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
 
