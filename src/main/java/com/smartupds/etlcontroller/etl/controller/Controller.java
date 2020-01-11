@@ -1,6 +1,7 @@
 package com.smartupds.etlcontroller.etl.controller;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
@@ -24,6 +25,7 @@ public class Controller {
         
         /* Normalize/Clean Input Resources */
 //        ItattiNormalizer.create().normalizeResources();
+        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
         
