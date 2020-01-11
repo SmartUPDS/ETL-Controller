@@ -28,7 +28,7 @@ public class Controller {
 //        ZeriNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-        ItattiTransformer.create().transformResources();
+//        ItattiTransformer.create().transformResources();
 //        HertzianaTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
 
@@ -44,11 +44,15 @@ public class Controller {
         log.debug("Create INPUT folders");
         new File(Resources.FOLDER_INPUT).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
