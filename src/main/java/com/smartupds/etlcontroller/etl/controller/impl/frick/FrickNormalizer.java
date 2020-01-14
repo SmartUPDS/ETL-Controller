@@ -8,8 +8,11 @@ import com.smartupds.normalizer.exceptions.NormalizerException;
 import gr.forth.ics.isl.timer.Timer;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import split.ElementsSplit;
 
@@ -28,6 +31,7 @@ public class FrickNormalizer implements Normalizer{
             for(File file : new File(Resources.FOLDER_INPUT_FETCHED_FRICK).listFiles()){
                 Document doc=ElementsSplit.parseXmlDocument(file);
                 doc=this.removeSuffixPunctuation(doc,"marc:subfield");
+                doc=this.normalizeDimension(doc,Triple.of("marc:datafield","tag", "340"),Triple.of("marc:subfield","code", "b"));
                 ItattiNormalizer.exportXmlDocument(doc, new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK+"/"+file.getName()));
             }
         }catch(NormalizerException ex){
@@ -62,6 +66,27 @@ public class FrickNormalizer implements Normalizer{
             }
         }
         return originalText;
+    }
+    
+    private Document normalizeDimension(Document doc, Triple<String,String,String> parentElement, Triple<String,String,String> subElement){
+        NodeList parentNodes=doc.getElementsByTagName(parentElement.getLeft());
+        for(int i=0;i<parentNodes.getLength();i++){
+            Element parentElem=((Element)parentNodes.item(i));
+            if(parentElem.getAttribute(parentElement.getMiddle()).equals(parentElement.getRight())){
+                NodeList childNodes=parentElem.getChildNodes();
+                for(int j=0;j<childNodes.getLength();j++){
+                    Node child=childNodes.item(j);
+                    if(child.getNodeType()==Node.ELEMENT_NODE && child.getNodeName().equals(subElement.getLeft())){
+                        Element childElement=((Element)child);
+                        if(childElement.getAttribute(subElement.getMiddle()).equals(subElement.getRight())){
+                            System.out.println(childElement.getTextContent());
+                        }
+                    }
+                }
+            }
+        }
+        
+        return doc;
     }
     
     public static FrickNormalizer create(){
