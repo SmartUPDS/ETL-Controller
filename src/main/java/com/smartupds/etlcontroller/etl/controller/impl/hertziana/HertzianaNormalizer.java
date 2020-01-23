@@ -97,7 +97,7 @@ public class HertzianaNormalizer implements Normalizer{
                     ElementsSplit.splitElements(
                             ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap), 
                     new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
-            FileUtils.deleteQuietly(file);
+            FileUtils.deleteQuietly(file);  //Seems that it doesn't work
         }
     }
     
