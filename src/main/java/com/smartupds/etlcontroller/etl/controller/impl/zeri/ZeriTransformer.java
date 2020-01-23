@@ -55,7 +55,7 @@ public class ZeriTransformer implements Transformer {
                          .withGeneratorPolicy(generatorPolicyFile)
                          .withOutput(outputFile, X3MLEngineFactory.OutputFormat.RDF_XML)
                          .execute();
-        inputFile.delete();
+        inputFile.delete(); //TO REMOVE THIS AFTER DEBUGGING
     }
     
     public static ZeriTransformer create(){
