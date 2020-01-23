@@ -97,8 +97,4 @@ public class MarburgTransformer implements Transformer{
     public static MarburgTransformer create(){
         return new MarburgTransformer();
     }
-    
-    public static void main(String[] args) throws ETLGenericException{
-        MarburgTransformer.create().transformResources();
-    }
 }
