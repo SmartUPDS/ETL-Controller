@@ -31,12 +31,14 @@ public class FrickNormalizer implements Normalizer{
         log.info("START: Normalize textual contents from FRICK");
         try{
             for(File file : new File(Resources.FOLDER_INPUT_FETCHED_FRICK).listFiles()){
+                log.info("Normalize file "+file);
                 Document doc=ElementsSplit.parseXmlDocument(file);
                 doc=this.removeSuffixPunctuation(doc,"marc:subfield");
                 doc=this.normalizeDimension(doc,Triple.of("marc:datafield","tag", "340"),Triple.of("marc:subfield","code", "b"));
                 doc=this.normalizeYear(doc,Triple.of("marc:datafield","tag", "260"),Triple.of("marc:subfield","code", "c"));
                 doc=this.normalizePersonAndPlace(doc,Triple.of("marc:datafield","tag", "590"),Triple.of("marc:subfield","code", Arrays.asList("b","k")));
                 doc=this.addCountInfo(doc,"marc:record",Triple.of("marc:datafield","tag", "590"));
+                doc=this.activeRemove(doc,Triple.of("marc:datafield","tag", "100"),Triple.of("marc:subfield","code", "d"));
                 ItattiNormalizer.exportXmlDocument(doc, new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK+"/"+file.getName()));
             }
         }catch(NormalizerException ex){
@@ -50,19 +52,20 @@ public class FrickNormalizer implements Normalizer{
     private Document removeSuffixPunctuation(Document doc,String elementName){
         log.info("START: Remove suffix punctuation");
         NodeList elements=doc.getElementsByTagName(elementName);
-        System.out.println(elements.getLength());
         for(int i=0;i<=elements.getLength();i++){
             Element elem=((Element)elements.item(i));
             if(elem!=null && elem.getTextContent()!=null && !elem.getTextContent().isEmpty()){
-                String normText=this.removeSuffixPunctuation(elem.getTextContent());
-                if(!elem.getTextContent().equals(normText)){
-                    elem.setTextContent(normText);
-                }
+//                String normText=this.removeSuffixPunctuation(elem.getTextContent());
+//                if(!elem.getTextContent().equals(normText)){
+//                    elem.setTextContent(normText);
+//                }
                 if(elem.getTextContent().startsWith("(") && elem.getTextContent().endsWith(")")){
                     elem.setTextContent(elem.getTextContent().substring(1,elem.getTextContent().length()-1));
                 }
             }
-            System.out.println(i+" out of "+elements.getLength());
+            if(i%10000==0){
+                log.info(i+" out of "+elements.getLength()+"\t("+(((float)i/(float)elements.getLength())*100)+" %)");
+            }
         }
         log.info("END: Remove suffix punctuation");
         return doc;
@@ -93,7 +96,7 @@ public class FrickNormalizer implements Normalizer{
                         Element childElement=((Element)child);
                         if(childElement.getAttribute(subElement.getMiddle()).equals(subElement.getRight())){
                             List<String> dims=this.splitDimensionText(childElement.getTextContent());
-                            if(!dims.isEmpty()){
+                            if(dims.size()==3){
                                 childElement.setAttribute("dimension1", dims.get(0));
                                 childElement.setAttribute("dimension2", dims.get(1));
                                 childElement.setAttribute("unit", dims.get(2));
@@ -104,6 +107,33 @@ public class FrickNormalizer implements Normalizer{
             }
         }
         log.info("END: Normalize Dimensions");
+        return doc;
+    }
+    
+    private Document activeRemove(Document doc, Triple<String,String,String> parentElement, Triple<String,String,String> subElement){
+        log.info("START: Active remove");
+        NodeList parentNodes=doc.getElementsByTagName(parentElement.getLeft());
+        for(int i=0;i<parentNodes.getLength();i++){
+            Element parentElem=((Element)parentNodes.item(i));
+            if(parentElem.getAttribute(parentElement.getMiddle()).equals(parentElement.getRight())){
+                NodeList childNodes=parentElem.getChildNodes();
+                for(int j=0;j<childNodes.getLength();j++){
+                    Node child=childNodes.item(j);
+                    if(child.getNodeType()==Node.ELEMENT_NODE && child.getNodeName().equals(subElement.getLeft())){
+                        Element childElement=((Element)child);
+                        if(childElement.getAttribute(subElement.getMiddle()).equals(subElement.getRight())){
+                            if(childElement.getTextContent().startsWith("active")){
+                                childElement.setAttribute("active", "true");
+                                childElement.setTextContent(childElement.getTextContent().replace("active", "").trim());
+                            }else{
+                                childElement.setAttribute("active", "false");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        log.info("END: Active Remove");
         return doc;
     }
     
@@ -186,13 +216,17 @@ public class FrickNormalizer implements Normalizer{
         String[] dimensionTerms=originalDimension.split(" x ");
         if(dimensionTerms.length==2){
             retList.add(dimensionTerms[0]);
-            if(dimensionTerms[1].endsWith(")")){
+            if(dimensionTerms[1].endsWith(")") && dimensionTerms[1].contains("(")){
                 String normalizedValue=dimensionTerms[1].substring(0,dimensionTerms[1].lastIndexOf("(")).trim();
-                retList.add(normalizedValue.substring(0,normalizedValue.lastIndexOf(" ")));
-                retList.add(normalizedValue.substring(normalizedValue.lastIndexOf(" ")+1));
+                if(normalizedValue.contains(" ")){
+                    retList.add(normalizedValue.substring(0,normalizedValue.lastIndexOf(" ")));
+                    retList.add(normalizedValue.substring(normalizedValue.lastIndexOf(" ")+1));
+                }
             }else{
-                retList.add(dimensionTerms[1].trim().substring(0,dimensionTerms[1].trim().lastIndexOf(" ")));
-                retList.add(dimensionTerms[1].trim().substring(dimensionTerms[1].trim().lastIndexOf(" ")+1));
+                if(dimensionTerms[1].contains(" ")){
+                    retList.add(dimensionTerms[1].trim().substring(0,dimensionTerms[1].trim().lastIndexOf(" ")));
+                    retList.add(dimensionTerms[1].trim().substring(dimensionTerms[1].trim().lastIndexOf(" ")+1));
+                }
             }
         }
         return retList;

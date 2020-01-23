@@ -18,16 +18,16 @@ public class ZeriTransformer implements Transformer {
 
     @Override
     public void transformResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks");
-        log.info("START: Transform Artworks from Zeri");
-        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS), null, true)){
-            this.transformFile(file,
-                           new File(Resources.MAPPINGS_ZERI_ARTWORKS),
-                           new File(Resources.GENERATOR_POLICY_ZERI),
-                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS));
-        }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks");
-        log.info("FINISH: Transform artworks from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks"));
+//        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks");
+//        log.info("START: Transform Artworks from Zeri");
+//        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS), null, true)){
+//            this.transformFile(file,
+//                           new File(Resources.MAPPINGS_ZERI_ARTWORKS),
+//                           new File(Resources.GENERATOR_POLICY_ZERI),
+//                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS));
+//        }
+//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks");
+//        log.info("FINISH: Transform artworks from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks"));
         log.info("START: Transform Photographs from Zeri");
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.photographs");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS), null, true)){
@@ -55,10 +55,10 @@ public class ZeriTransformer implements Transformer {
                          .withGeneratorPolicy(generatorPolicyFile)
                          .withOutput(outputFile, X3MLEngineFactory.OutputFormat.RDF_XML)
                          .execute();
+        inputFile.delete();
     }
     
     public static ZeriTransformer create(){
         return new ZeriTransformer();
     }
- 
 }
