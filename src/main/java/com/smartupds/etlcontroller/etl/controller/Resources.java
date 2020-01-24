@@ -1,5 +1,7 @@
 package com.smartupds.etlcontroller.etl.controller;
 
+import com.hp.hpl.jena.rdf.model.Resource;
+
 /** Various Common resources
  *
  * @author Yannis Marketakis (marketakis 'at' smartupds 'dot' com)
@@ -29,6 +31,9 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED=FOLDER_OUTPUT+"/"+"1_Transformed";
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.HERTZIANA;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.ARTWORKS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_PHOTOGRAPHS=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.PHOTOGRAPHS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_LVL2=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.LVL2;
     public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.FRICK;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.ZERI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_ZERI+"/"+Resources.ARTWORKS;
@@ -50,11 +55,15 @@ public class Resources {
     public static final String ARTWORKS="artworks";
     public static final String PHOTOGRAPHS="photographs";
     public static final String L2V="l2v";
+    public static final String LVL2="lvl2";
     
     /* Mapping resources */
     public static final String MAPPINGS_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+"mappings-itatti.x3ml";
     public static final String GENERATOR_POLICY_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+"generator-policy-itatti.xml";
     public static final String MAPPINGS_HERTZIANA_ALL=FOLDER_MAPPINGS+"/"+"mappings-hertziana.x3ml";
+    public static final String MAPPINGS_HERTZIANA_ARTWORKS=FOLDER_MAPPINGS+"/"+"mappings-hertziana-artworks.x3ml";
+    public static final String MAPPINGS_HERTZIANA_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-hertziana-photographs.x3ml";
+    public static final String MAPPINGS_HERTZIANA_LVL2=FOLDER_MAPPINGS+"/"+"mappings-hertziana-lvl2.x3ml";
     public static final String GENERATOR_POLICY_HERTZIANA=FOLDER_MAPPINGS+"/"+"generator-policy-hertziana.xml";
     public static final String MAPPINGS_FRICK_ALL=FOLDER_MAPPINGS+"/"+"mappings-fricks.x3ml";
     public static final String GENERATOR_POLICY_FRICK=FOLDER_MAPPINGS+"/"+"generator-policy-fricks.xml";
