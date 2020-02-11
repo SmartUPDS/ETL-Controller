@@ -90,16 +90,25 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL2).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL3).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL4).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL2).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL3).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL4).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
     }
     
     public static void main(String[] args) throws ETLGenericException{
         /* INITIALIZATION ONLY */
-//        Controller.createFoldersStructure();
+        Controller.createFoldersStructure();
         
-        Controller.executeWorkflow();
+//        Controller.executeWorkflow();
     }
 }
