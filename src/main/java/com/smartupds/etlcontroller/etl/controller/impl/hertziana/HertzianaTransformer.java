@@ -6,7 +6,6 @@ import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import gr.forth.ics.isl.timer.Timer;
 import gr.forth.ics.isl.x3ml.X3MLEngine;
 import static gr.forth.ics.isl.x3ml.X3MLEngine.exception;
-import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
 import gr.forth.ics.isl.x3ml.X3MLGeneratorPolicy;
 import gr.forth.ics.isl.x3ml.engine.Generator;
 import java.io.File;
@@ -37,7 +36,81 @@ public class HertzianaTransformer implements Transformer {
             }
             Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworks");
             log.info("FINISH: Transform artworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworks"));
+            
+            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl2");
+            log.info("START: Transform artworks LVL2 from Hertziana");
+            for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
+                this.transformFile(file,
+                               new File(Resources.MAPPINGS_HERTZIANA_ARTWORKS_LVL2),
+                               new File(Resources.GENERATOR_POLICY_HERTZIANA),
+                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL2));
+            }
+            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl2");
+            log.info("FINISH: Transform artworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl2"));
+            
+            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl3");
+            log.info("START: Transform artworks LVL3 from Hertziana");
+            for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
+                this.transformFile(file,
+                               new File(Resources.MAPPINGS_HERTZIANA_ARTWORKS_LVL3),
+                               new File(Resources.GENERATOR_POLICY_HERTZIANA),
+                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL3));
+            }
+            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl3");
+            log.info("FINISH: Transform artworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl3"));            
+            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl4");
+            log.info("START: Transform artworks LVL4 from Hertziana");
+            for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
+                this.transformFile(file,
+                               new File(Resources.MAPPINGS_HERTZIANA_ARTWORKS_LVL4),
+                               new File(Resources.GENERATOR_POLICY_HERTZIANA),
+                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL4));
+            }
+            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl4");
+            log.info("FINISH: Transform artworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.artworkslvl4"));
+            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworks");
+            log.info("START: Transform Builtworks from Hertziana");
+            for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
+                this.transformFile(file,
+                               new File(Resources.MAPPINGS_HERTZIANA_BUILTWORKS),
+                               new File(Resources.GENERATOR_POLICY_HERTZIANA),
+                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS));
+            }
+            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworks");
+            log.info("FINISH: Transform Builtworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworks"));
 
+            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl2");
+            log.info("START: Transform Builtworks LVL2 from Hertziana");
+            for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
+                this.transformFile(file,
+                               new File(Resources.MAPPINGS_HERTZIANA_BUILTWORKS_LVL2),
+                               new File(Resources.GENERATOR_POLICY_HERTZIANA),
+                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL2));
+            }
+            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl2");
+            log.info("FINISH: Transform Builtworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl2"));
+
+            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl3");
+            log.info("START: Transform Builtworks LVL3 from Hertziana");
+            for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
+                this.transformFile(file,
+                               new File(Resources.MAPPINGS_HERTZIANA_BUILTWORKS_LVL3),
+                               new File(Resources.GENERATOR_POLICY_HERTZIANA),
+                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL3));
+            }
+            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl3");
+            log.info("FINISH: Transform Builtworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl3"));
+            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl4");
+            log.info("START: Transform Builtworks LVL4 from Hertziana");
+            for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
+                this.transformFile(file,
+                               new File(Resources.MAPPINGS_HERTZIANA_BUILTWORKS_LVL4),
+                               new File(Resources.GENERATOR_POLICY_HERTZIANA),
+                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL4));
+            }
+            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl4");
+            log.info("FINISH: Transform Builtworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.builtworkslvl4"));
+            
             Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.photographs");
             log.info("START: Transform photographs from Hertziana");
             for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
@@ -49,16 +122,18 @@ public class HertzianaTransformer implements Transformer {
             Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.photographs");
             log.info("FINISH: Transform photographs from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.photographs"));
 
-            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.lvl2");
-            log.info("START: Transform artworks from Hertziana");
+            
+            Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.actors");
+            log.info("START: Transform Actors from Hertziana");
             for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
                 this.transformFile(file,
-                               new File(Resources.MAPPINGS_HERTZIANA_LVL2),
+                               new File(Resources.MAPPINGS_HERTZIANA_ACTORS),
                                new File(Resources.GENERATOR_POLICY_HERTZIANA),
-                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_LVL2));
+                               new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ACTORS));
             }
-            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.lvl2");
-            log.info("FINISH: Transform artworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.lvl2"));
+            Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.actors");
+            log.info("FINISH: Transform Builtworks from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertzianatransformer.transform.actors"));
+            
         }catch(FileNotFoundException ex){
             log.error("An error occured while transforming resources",ex);
             throw new ETLGenericException("An error occured while transforming resources",ex);
@@ -72,12 +147,12 @@ public class HertzianaTransformer implements Transformer {
      * @param generatorPolicyFile the generator policy file
      * @param outputFolder the folder where the transformed contents will be exported. */
     private void transformFile(File inputFile, File mappingsFile, File generatorPolicyFile, File outputFolder) throws FileNotFoundException{
-        File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", ".rdf"));
+        File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", ".n3"));
         log.debug("Transforming resource "+inputFile.getAbsolutePath());
         X3MLEngine engine=X3MLEngine.load(new FileInputStream(mappingsFile));
         Generator policy=X3MLGeneratorPolicy.load(new FileInputStream(generatorPolicyFile), X3MLGeneratorPolicy.createUUIDSource(-1));
         X3MLEngine.Output output = engine.execute(document(inputFile), policy);
-        output.writeXML(new PrintStream(outputFile));
+        output.write(new PrintStream(outputFile),"application/n-triples");
     }
     
     private static Element document(File file) {
