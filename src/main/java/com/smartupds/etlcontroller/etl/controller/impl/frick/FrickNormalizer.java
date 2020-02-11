@@ -1,12 +1,14 @@
 package com.smartupds.etlcontroller.etl.controller.impl.frick;
 
 import com.smartupds.etlcontroller.etl.controller.Resources;
+import com.smartupds.etlcontroller.etl.controller.Utils;
 import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
 import com.smartupds.normalizer.exceptions.NormalizerException;
 import gr.forth.ics.isl.timer.Timer;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +33,7 @@ public class FrickNormalizer implements Normalizer{
         log.info("START: Normalize textual contents from FRICK");
         try{
             for(File file : new File(Resources.FOLDER_INPUT_FETCHED_FRICK).listFiles()){
+                Utils.lineUpdater(file, new File(file.getAbsolutePath()+"norm.xml"), "<collection>" , "<collection xmlns:marc=\"http://www.loc.gov/MARC21/slim\">");
                 log.info("Normalize file "+file);
                 Document doc=ElementsSplit.parseXmlDocument(file);
                 doc=this.removeSuffixPunctuation(doc,"marc:subfield");
@@ -41,7 +44,7 @@ public class FrickNormalizer implements Normalizer{
                 doc=this.activeRemove(doc,Triple.of("marc:datafield","tag", "100"),Triple.of("marc:subfield","code", "d"));
                 ItattiNormalizer.exportXmlDocument(doc, new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK+"/"+file.getName()));
             }
-        }catch(NormalizerException ex){
+        }catch(NormalizerException | IOException ex){
             log.error("An error occured while normalizing collection",ex);
             throw new ETLGenericException("An error occured while normalizing collection",ex);
         }
