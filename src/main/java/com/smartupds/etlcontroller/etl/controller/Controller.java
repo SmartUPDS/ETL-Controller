@@ -2,6 +2,7 @@ package com.smartupds.etlcontroller.etl.controller;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickNormalizer;
+import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
@@ -32,9 +33,10 @@ public class Controller {
         
         /* Transform Resources */
 //        ItattiTransformer.create().transformResources();
-        HertzianaTransformer.create().transformResources();
+//        HertzianaTransformer.create().transformResources();
+//        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-//        MarburgTransformer.create().transformResources();
+        MarburgTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
         
@@ -49,6 +51,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
@@ -70,17 +73,26 @@ public class Controller {
         log.debug("Create OUTPUT folders");
         new File(Resources.FOLDER_OUTPUT).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL2).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL3).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL4).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_PHOTOGRAPHS).mkdir();
-        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_LVL2).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL2).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL3).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL4).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS).mkdir();
-        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_L2V).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
     }
     
