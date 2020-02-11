@@ -37,6 +37,7 @@ public class FrickTransformer implements Transformer{
      * @param outputFolder the folder where the transformed contents will be exported. */
     private void transformFile(File inputFile, File mappingsFile, File generatorPolicyFile, File outputFolder){
         File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", ".rdf"));
+        log.debug("transforming resource "+inputFile.getName());
         X3MLEngineFactory.create()
                          .withInputFiles(inputFile)
                          .withMappings(mappingsFile)
