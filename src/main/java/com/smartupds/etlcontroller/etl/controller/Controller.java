@@ -108,6 +108,17 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL2).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL3).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL4).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL2).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL3).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL4).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
