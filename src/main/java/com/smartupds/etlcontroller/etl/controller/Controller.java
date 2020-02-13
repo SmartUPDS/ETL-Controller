@@ -7,6 +7,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormal
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
@@ -31,6 +32,7 @@ public class Controller {
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
+        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
 //        ItattiTransformer.create().transformResources();
@@ -40,7 +42,7 @@ public class Controller {
 //        MarburgTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
-        ZeriHomogenizer.create().homogenizeResources();
+//        ZeriHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
         
@@ -60,6 +62,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_MARBURG).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_KHI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).mkdir();
@@ -68,6 +71,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).mkdir();
         
         log.debug("Create MAPPINGS folders");
         new File(Resources.FOLDER_MAPPINGS).mkdir();
