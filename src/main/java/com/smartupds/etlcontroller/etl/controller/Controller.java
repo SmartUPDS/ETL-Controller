@@ -7,6 +7,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormal
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
@@ -41,10 +42,11 @@ public class Controller {
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
 //        MarburgTransformer.create().transformResources();
-        KhiTransformer.create().transformResources();
+//        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
 //        ZeriHomogenizer.create().homogenizeResources();
+        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
         
