@@ -137,6 +137,17 @@ public class Resources {
     public static final String MAPPINGS_MARBURG_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-marburg-photographs.x3ml";
     public static final String MAPPINGS_MARBURG_L2V=FOLDER_MAPPINGS+"/"+"mappings-marburg-l2v.x3ml";
     public static final String GENERATOR_POLICY_MARBURG=FOLDER_MAPPINGS+"/"+"generator-policy-marburg.xml";
+    public static final String MAPPINGS_KHI_ACTORS=FOLDER_MAPPINGS+"/"+"mappings-khi-actors.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS=FOLDER_MAPPINGS+"/"+"mappings-khi-artworks.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS_LVL2=FOLDER_MAPPINGS+"/"+"mappings-khi-artworks-lvl2.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS_LVL3=FOLDER_MAPPINGS+"/"+"mappings-khi-artworks-lvl3.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS_LVL4=FOLDER_MAPPINGS+"/"+"mappings-khi-artworks-lvl4.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS=FOLDER_MAPPINGS+"/"+"mappings-khi-builtworks.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS_LVL2=FOLDER_MAPPINGS+"/"+"mappings-khi-builtworks-lvl2.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS_LVL3=FOLDER_MAPPINGS+"/"+"mappings-khi-builtworks-lvl3.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS_LVL4=FOLDER_MAPPINGS+"/"+"mappings-khi-builtworks-lvl4.x3ml";
+    public static final String MAPPINGS_KHI_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-khi-photographs.x3ml";
+    public static final String GENERATOR_POLICY_KHI=FOLDER_MAPPINGS+"/"+"generator-policy-khi.xml";
     
     /* HERTZIANA resources */
     public static final String HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT="root";
