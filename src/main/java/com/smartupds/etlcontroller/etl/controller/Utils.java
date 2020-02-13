@@ -1,5 +1,6 @@
 package com.smartupds.etlcontroller.etl.controller;
 
+import com.google.common.io.Files;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import java.io.BufferedReader;
@@ -12,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import lombok.extern.log4j.Log4j;
 
 /** Various utility facilities
@@ -69,5 +71,24 @@ public class Utils {
         }
     }
    
-    
+    public static void consolidateN3Resources(File initialFolder, File outputFolder, String outputResourceName, int maxsize) throws IOException{
+        StringBuilder fileBuilder=new StringBuilder();
+        int fileCounter=1;
+        for(File file : initialFolder.listFiles()){
+            for(String line : Files.readLines(file, Charset.forName("UTF8"))){
+                fileBuilder.append(line)
+                           .append("\n");
+            }
+            if(fileBuilder.length()>=Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB*1024*1024){
+                File outputFile=new File(outputFolder.getAbsoluteFile()+"/"+outputResourceName+"-"+fileCounter+".n3");
+                log.info("Export consolidated file "+outputFile.getAbsolutePath());
+                BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile),"UTF8"));
+                writer.append(fileBuilder.toString());
+                writer.flush();
+                writer.close();
+                fileCounter+=1;
+                fileBuilder=new StringBuilder();
+            }
+        }
+    }
 }
