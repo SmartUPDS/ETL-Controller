@@ -60,11 +60,5 @@ public class ZeriTransformer implements Transformer {
     
     public static ZeriTransformer create(){
         return new ZeriTransformer();
-    }
-    
-    //TO REMOVE THIS AFTER DEBUGGING
-    public static void main(String[] args) throws ETLGenericException{
-        ZeriTransformer.create().transformResources();
-    }
-            
+    }       
 }
