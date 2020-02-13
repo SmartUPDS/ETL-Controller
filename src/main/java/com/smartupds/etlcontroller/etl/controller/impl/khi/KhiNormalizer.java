@@ -4,6 +4,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.zeri.*;
 import com.smartupds.etlcontroller.etl.controller.Resources;
 import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.xmlsplit.Splitter;
 import gr.forth.ics.isl.timer.Timer;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,8 +12,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.xpath.XPathExpressionException;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FilenameUtils;
+import org.xml.sax.SAXException;
 
 /** Normalizer for input sources from KHI
  *
@@ -36,6 +41,16 @@ public class KhiNormalizer implements Normalizer{
         }
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip");
         log.info("FINISH: Unzip Resources from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip"));
+        
+        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
+        log.info("START: Split large files from KHI");
+        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_KHI, 
+                           Resources.FOLDER_INPUT_NORMALIZED_KHI,
+                           Resources.KHI_COMBINED_RESOURCES_ROOT_ELEMENT,
+                           Resources.KHI_COMBINED_RESOURCES_OBJ_ELEMENT,
+                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
+        log.info("FINISH: Split large files from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split"));
     }
     
     /** This method unzips the contents of the given file into the given folder
@@ -76,6 +91,30 @@ public class KhiNormalizer implements Normalizer{
             throw new IOException("Entry is outside of the target dir: " + zipEntry.getName());
         }
         return destFile;
+    }
+    
+    /** This methods splits the files found in the input folder, into files with 
+     * of a particular size and outputs the results in the given output folder. 
+     * In addition the root element of the input file is given as well as the 
+     * name of the elements that will be divided among different files. 
+     * The output resources will be named using the name of their corresponding
+     * filename suffixed with the file number. 
+     * 
+     * @param inputFolderPath the path of the folder containing the original input sources
+     * @param outputFolderPath the path of the folder where the split resources will be exported
+     * @param rootElement the name of the root element of the document
+     * @param splitElement the name of the element that will be used for splitting the file 
+     * @param sizeInMb the maximum file of split files */
+    private void splitFiles(String inputFolderPath, String outputFolderPath, String rootElement, String splitElement, int sizeInMb) throws ETLGenericException{
+        for(File file : new File(inputFolderPath).listFiles()){
+            try{
+                log.info("Split resource with filename "+file.getName());
+                new Splitter(file, rootElement, splitElement, sizeInMb).split(new File(outputFolderPath));
+            }catch(IOException | ParserConfigurationException | SAXException | TransformerException | XPathExpressionException ex){
+                log.error("An error occured while splitting large input file",ex);
+                throw new ETLGenericException("An error occured while splitting large input file",ex);
+            }
+        }
     }
     
     public static KhiNormalizer create(){
