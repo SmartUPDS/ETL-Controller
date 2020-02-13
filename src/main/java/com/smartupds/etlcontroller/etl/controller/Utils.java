@@ -68,25 +68,6 @@ public class Utils {
             model.read(new FileReader(file), "N3","N3");
         }
     }
+   
     
-//    public static void main(String[] args) throws Exception{
-//        File folder=new File("C:\\Repositories\\Github\\ETL-Controller\\workspace\\3_Output\\1_Transformed\\Zeri\\artworks");
-//        Model model = ModelFactory.createDefaultModel() ;
-//        for(File file : folder.listFiles()){
-//            log.info("Parsing file "+file.getName());
-//            model.read(new FileReader(file), "N3","N3");
-//        }
-//        folder=new File("C:\\Repositories\\Github\\ETL-Controller\\workspace\\3_Output\\1_Transformed\\Zeri\\photographs");
-//        model = ModelFactory.createDefaultModel() ;
-//        for(File file : folder.listFiles()){
-//            log.info("Parsing file "+file.getName());
-//            model.read(new FileReader(file), "N3","N3");
-//        }
-//    }
-    
-    public static void main(String[] args) throws IOException{
-        for(File file : new File("C:\\Repositories\\Github\\ETL-Controller\\workspace\\3_Output\\1_Transformed\\Zeri\\photographs").listFiles()){
-            textUpdater(file, new File("C:\\Repositories\\Github\\ETL-Controller\\workspace\\3_Output\\1_Transformed\\Zeri\\photographs_clean\\"+file.getName()), "http://zericollection.com/place/../LRCS%5B%40etichetta%3D%22Country%22%5D/text%28%29", "http://zericollection.com/place/LRCS%5B%40etichetta%3D%22Country%22%5D/text%28%29");
-        }
-    }
 }
