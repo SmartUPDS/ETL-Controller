@@ -90,5 +90,11 @@ public class Utils {
                 fileBuilder=new StringBuilder();
             }
         }
+        File outputFile=new File(outputFolder.getAbsoluteFile()+"/"+outputResourceName+"-"+fileCounter+".n3");
+        log.info("Export consolidated file "+outputFile.getAbsolutePath());
+        BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile),"UTF8"));
+        writer.append(fileBuilder.toString());
+        writer.flush();
+        writer.close();
     }
 }
