@@ -36,4 +36,7 @@ public class ZeriHomogenizer implements Homogenizer{
         }
     }
 
+    public static ZeriHomogenizer create(){
+        return new ZeriHomogenizer();
+    }
 }
