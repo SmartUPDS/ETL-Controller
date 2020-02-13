@@ -8,6 +8,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransf
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
 import java.io.File;
@@ -36,9 +37,10 @@ public class Controller {
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-        MarburgTransformer.create().transformResources();
+//        MarburgTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
+        ZeriHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
         
@@ -107,8 +109,8 @@ public class Controller {
     
     public static void main(String[] args) throws ETLGenericException{
         /* INITIALIZATION ONLY */
-        Controller.createFoldersStructure();
+//        Controller.createFoldersStructure();
         
-//        Controller.executeWorkflow();
+        Controller.executeWorkflow();
     }
 }
