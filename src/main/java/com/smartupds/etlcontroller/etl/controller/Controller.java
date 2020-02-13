@@ -105,6 +105,9 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS).mkdir();
     }
     
     public static void main(String[] args) throws ETLGenericException{
