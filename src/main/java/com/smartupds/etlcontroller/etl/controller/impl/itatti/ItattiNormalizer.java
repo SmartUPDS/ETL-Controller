@@ -51,8 +51,10 @@ public class ItattiNormalizer implements Normalizer {
                             Element noteAsElement=((Element)noteElem);
                             List<String> normalizedNoteList=this.normalizeNotes(noteAsElement.getAttribute("term"));
                             if(normalizedNoteList.size()>1){
+                                int index=1;
                                 for(Node newElement : createElements(doc, noteAsElement, normalizedNoteList)){
                                     noteAsElement.getParentNode().appendChild(newElement);
+                                    ((Element)newElement).setAttribute("index", String.valueOf(index++));
                                 }
                                 noteAsElement.getParentNode().removeChild(noteAsElement);
                             }
@@ -61,6 +63,7 @@ public class ItattiNormalizer implements Normalizer {
                 }
                 NodeList rightsElements=doc.getElementsByTagName("Rights");
                 for(int i=0;i<rightsElements.getLength();i++){
+                                    System.out.println("Found at "+file.getName());
                     Node rightsElem=rightsElements.item(i);
                     for(int j=0;j<rightsElem.getChildNodes().getLength();j++){
                         Node rightElem=rightsElem.getChildNodes().item(j);

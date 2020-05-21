@@ -31,11 +31,11 @@ public class Controller {
         //none(?)
         
         /* Normalize/Clean Input Resources */
-//        ItattiNormalizer.create().normalizeResources();
+        ItattiNormalizer.create().normalizeResources();
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
-        MarburgNormalizer.create().normalizeResources();
+//        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
