@@ -157,6 +157,10 @@ public class Resources {
     public static final String KHI_COMBINED_RESOURCES_ROOT_ELEMENT="root";
     public static final String KHI_COMBINED_RESOURCES_OBJ_ELEMENT="obj";
     
+    /* MARBURG resources */
+    public static final String MARBURG_COMBINED_RESOURCES_ROOT_ELEMENT="root";
+    public static final String MARBURG_COMBINED_RESOURCES_OBJ_ELEMENT="obj";
+    
     /* Misc Resources */
     public static final int MAX_FILESIZE_INPUT_RESOURCES_IN_MB=5;
     public static final int MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB=4;
