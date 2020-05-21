@@ -42,6 +42,8 @@ public class FrickNormalizer implements Normalizer{
                 doc=this.normalizePersonAndPlace(doc,Triple.of("marc:datafield","tag", "590"),Triple.of("marc:subfield","code", Arrays.asList("b","k")));
                 doc=this.addCountInfo(doc,"marc:record",Triple.of("marc:datafield","tag", "590"));
                 doc=this.activeRemove(doc,Triple.of("marc:datafield","tag", "100"),Triple.of("marc:subfield","code", "d"));
+                doc=this.concatenateElements(doc,Triple.of("marc:datafield","tag", "655"),Triple.of("marc:subfield","code", "b"), Triple.of("marc:subfield","code", "a"));
+                doc=this.normalizeNarrative(doc,Triple.of("marc:datafield","tag", "561"),Triple.of("marc:subfield","code", "a"));
                 ItattiNormalizer.exportXmlDocument(doc, new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK+"/"+file.getName()));
             }
         }catch(NormalizerException | IOException ex){
@@ -58,10 +60,10 @@ public class FrickNormalizer implements Normalizer{
         for(int i=0;i<=elements.getLength();i++){
             Element elem=((Element)elements.item(i));
             if(elem!=null && elem.getTextContent()!=null && !elem.getTextContent().isEmpty()){
-//                String normText=this.removeSuffixPunctuation(elem.getTextContent());
-//                if(!elem.getTextContent().equals(normText)){
-//                    elem.setTextContent(normText);
-//                }
+                String normText=this.removeSuffixPunctuation(elem.getTextContent());
+                if(!elem.getTextContent().equals(normText)){
+                    elem.setTextContent(normText);
+                }
                 if(elem.getTextContent().startsWith("(") && elem.getTextContent().endsWith(")")){
                     elem.setTextContent(elem.getTextContent().substring(1,elem.getTextContent().length()-1));
                 }
@@ -130,8 +132,72 @@ public class FrickNormalizer implements Normalizer{
                                 childElement.setTextContent(childElement.getTextContent().replace("active", "").trim());
                             }else{
                                 childElement.setAttribute("active", "false");
+                                String[] splitContents=childElement.getTextContent().split("-");
+                                if(splitContents.length==2){
+                                    childElement.setAttribute("birth", splitContents[0]);
+                                    childElement.setAttribute("death", splitContents[1]);
+                                }
                             }
                         }
+                    }
+                }
+            }
+        }
+        log.info("END: Active Remove");
+        return doc;
+    }
+    
+    private Document concatenateElements(Document doc, Triple<String,String,String> parentElement, Triple<String,String,String> existElement, Triple<String,String,String> concatElement){
+        log.info("START: Concatenante Elements");
+        NodeList parentNodes=doc.getElementsByTagName(parentElement.getLeft());
+        for(int i=0;i<parentNodes.getLength();i++){
+            Element parentElem=((Element)parentNodes.item(i));
+            if(parentElem.getAttribute(parentElement.getMiddle()).equals(parentElement.getRight())){
+                NodeList childNodes=parentElem.getChildNodes();
+                Element elementFirst=null;
+                Element elementSecond=null;
+                for(int j=0;j<childNodes.getLength();j++){
+                    Node child=childNodes.item(j);
+                    if(child.getNodeType()==Node.ELEMENT_NODE && child.getNodeName().equals(concatElement.getLeft())){
+                        Element childElement=((Element)child);
+                        if(childElement.getAttribute(concatElement.getMiddle()).equals(concatElement.getRight())){
+                            elementFirst=((Element)child);
+                        }else if(childElement.getAttribute(existElement.getMiddle()).equals(existElement.getRight())){
+                            elementSecond=((Element)child);
+                        }    
+                    }
+                }
+                if(elementFirst!=null && elementSecond!=null){
+                    elementFirst.setTextContent(elementFirst.getTextContent()+" "+elementSecond.getTextContent());
+                }
+            }
+        }
+        log.info("END: Active Remove");
+        return doc;
+    }
+    
+    private Document normalizeNarrative(Document doc, Triple<String,String,String> parentElement, Triple<String,String,String> subElement){
+        log.info("START: Concatenante Elements");
+        NodeList parentNodes=doc.getElementsByTagName(parentElement.getLeft());
+        for(int i=0;i<parentNodes.getLength();i++){
+            Element parentElem=((Element)parentNodes.item(i));
+            if(parentElem.getAttribute(parentElement.getMiddle()).equals(parentElement.getRight())){
+                NodeList childNodes=parentElem.getChildNodes();
+                for(int j=0;j<childNodes.getLength();j++){
+                    Node child=childNodes.item(j);
+                    if(child.getNodeType()==Node.ELEMENT_NODE && child.getNodeName().equals(subElement.getLeft())){
+                        Element childElement=((Element)child);
+                        if(childElement.getAttribute(subElement.getMiddle()).equals(subElement.getRight())){
+                            String text=childElement.getTextContent();
+                            text=(text.endsWith(";")?text.substring(0,text.length()-1):text);
+                            int parethesisOpenIndex=text.indexOf("(");
+                            int parethesisCloseIndex=text.indexOf(")");
+                            if(parethesisOpenIndex>=0 && parethesisCloseIndex>0 && parethesisCloseIndex>parethesisOpenIndex && parethesisCloseIndex-parethesisOpenIndex<10){
+                                text=text.substring(parethesisCloseIndex+1).trim();
+                                childElement.setTextContent(text);
+                            }
+                            
+                        }  
                     }
                 }
             }
