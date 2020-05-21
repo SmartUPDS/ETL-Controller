@@ -138,11 +138,11 @@ public class HertzianaNormalizer implements Normalizer{
             Element parentElem=((Element)parentNodes.item(i));
             String textualIdentifier=parentElem.getTextContent();
             if(textualIdentifier.toLowerCase().startsWith("ulan")){
-                parentElem.setAttribute("source", "ulan");
+                parentElem.setAttribute("type", "ulan");
             }else if(textualIdentifier.toLowerCase().startsWith("gnd")){
-                parentElem.setAttribute("source", "gnd");
+                parentElem.setAttribute("type", "gnd");
             }else if(textualIdentifier.toLowerCase().startsWith("akl")){
-                parentElem.setAttribute("source", "akl");
+                parentElem.setAttribute("type", "akl");
             }else{
                 System.out.println("something else: "+textualIdentifier);
             }
