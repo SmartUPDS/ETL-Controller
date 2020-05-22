@@ -31,7 +31,7 @@ public class Controller {
         //none(?)
         
         /* Normalize/Clean Input Resources */
-        ItattiNormalizer.create().normalizeResources();
+//        ItattiNormalizer.create().normalizeResources();
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
@@ -39,7 +39,7 @@ public class Controller {
 //        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-//        ItattiTransformer.create().transformResources();
+        ItattiTransformer.create().transformResources();
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
@@ -62,6 +62,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
@@ -71,6 +72,8 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_KHI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI).mkdir();
@@ -86,6 +89,7 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS).mkdir();
