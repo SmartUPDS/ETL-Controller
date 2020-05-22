@@ -18,35 +18,35 @@ public class ItattiTransformer implements Transformer {
      @Override
     public void transformResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf");
-        log.info("START: Transform SharedShelf data from Villa I Tatti");
-        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).listFiles()){
-            this.transformFile(file,
-                           new File(Resources.MAPPINGS_VILLA_I_TATTI),
-                           new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI),
-                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI));
-        }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf");
-        log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf"));
+//        log.info("START: Transform SharedShelf data from Villa I Tatti");
+//        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).listFiles()){
+//            this.transformFile(file,
+//                           new File(Resources.MAPPINGS_VILLA_I_TATTI),
+//                           new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI),
+//                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI));
+//        }
+//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf");
+//        log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf"));
                 
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.fotoindex");
         log.info("START: Transform FotoIndex data from Villa I Tatti");
-        this.transformFile(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.ARTIST+".xml"),
+        this.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.ARTIST+".xml"),
                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_ARTIST), 
                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX));
-        this.transformFile(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.COLLECTION+".xml"),
+        this.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.COLLECTION+".xml"),
                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_COLLECTION), 
                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX));
-        this.transformFile(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.INSTITUTION+".xml"),
+        this.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.INSTITUTION+".xml"),
                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_INSTITUTION), 
                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX));
-        this.transformFile(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.PHOTOGRAPH+".xml"),
+        this.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.PHOTOGRAPH+".xml"),
                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_PHOTO), 
                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX));
-        this.transformFile(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.WORK+"3.xml"),
+        this.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.WORK+".xml"),
                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_WORK), 
                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX));
