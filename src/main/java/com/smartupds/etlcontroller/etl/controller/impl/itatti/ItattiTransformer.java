@@ -18,15 +18,15 @@ public class ItattiTransformer implements Transformer {
      @Override
     public void transformResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf");
-//        log.info("START: Transform SharedShelf data from Villa I Tatti");
-//        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).listFiles()){
-//            this.transformFile(file,
-//                           new File(Resources.MAPPINGS_VILLA_I_TATTI),
-//                           new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI),
-//                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI));
-//        }
-//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf");
-//        log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf"));
+        log.info("START: Transform SharedShelf data from Villa I Tatti");
+        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).listFiles()){
+            this.transformFile(file,
+                           new File(Resources.MAPPINGS_VILLA_I_TATTI),
+                           new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI),
+                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI));
+        }
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf");
+        log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf"));
                 
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.fotoindex");
         log.info("START: Transform FotoIndex data from Villa I Tatti");
@@ -46,10 +46,14 @@ public class ItattiTransformer implements Transformer {
                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_PHOTO), 
                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX));
-        this.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.WORK+".xml"),
-                           new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_WORK), 
-                           new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
-                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX));
+        for(File workFile : new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).listFiles()){
+            if(workFile.getName().toLowerCase().contains(Resources.WORK.toLowerCase())){
+                this.transformFile(workFile,
+                                   new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_WORK), 
+                                   new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
+                                   new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX));
+            }
+        }
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.fotoindex");
         log.info("FINISH: Transform FotoIndex data from Villa I Tatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.fotoindex"));
     }
