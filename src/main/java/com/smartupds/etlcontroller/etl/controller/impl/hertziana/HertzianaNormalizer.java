@@ -46,11 +46,11 @@ public class HertzianaNormalizer implements Normalizer{
         
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
         log.info("START: Perform Syntax Normalization for resources from Hertziana");
-//        List<String> elementsList=Arrays.asList("a30gn",
-//                                                "a3105",
-//                                                "a5220","a5260","a5300","a5500",
-//                                                "a8498");
-        List<String> elementsList=Arrays.asList("a30gn");
+        List<String> elementsList=Arrays.asList("a30gn",
+                                                "a3105",
+                                                "a5220","a5260","a5300","a5500",
+                                                "a8498");
+//        List<String> elementsList=Arrays.asList("a30gn");
         try{
             this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA),elementsList,"&");
         }catch(NormalizerException | IOException ex){
