@@ -41,6 +41,8 @@ public class Utils {
         bufferedReader.close();
         bufferedWriter.flush();
         bufferedWriter.close();
+        fromFile.delete();
+        toFile.renameTo(fromFile);
     }
     
     public static void textUpdater(File fromFile, File toFile, String initialText, String finalText) throws IOException{
