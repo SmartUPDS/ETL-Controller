@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -34,12 +35,15 @@ public class FrickNormalizer implements Normalizer{
         try{
             for(File file : new File(Resources.FOLDER_INPUT_FETCHED_FRICK).listFiles()){
                 Utils.lineUpdater(file, new File(file.getAbsolutePath()+"norm.xml"), "<collection>" , "<collection xmlns:marc=\"http://www.loc.gov/MARC21/slim\">");
+            }
+            for(File file : new File(Resources.FOLDER_INPUT_FETCHED_FRICK).listFiles()){
                 log.info("Normalize file "+file);
                 Document doc=ElementsSplit.parseXmlDocument(file);
                 doc=this.removeSuffixPunctuation(doc,"marc:subfield");
                 doc=this.normalizeDimension(doc,Triple.of("marc:datafield","tag", "340"),Triple.of("marc:subfield","code", "b"));
                 doc=this.normalizeYear(doc,Triple.of("marc:datafield","tag", "260"),Triple.of("marc:subfield","code", "c"));
                 doc=this.normalizePersonAndPlace(doc,Triple.of("marc:datafield","tag", "590"),Triple.of("marc:subfield","code", Arrays.asList("b","k")));
+                doc=this.normalizePostfix(doc,Triple.of("marc:datafield","tag", "590"),Pair.of("ind1","9"), Triple.of("marc:subfield","code", "g"),"_POST.tif",Triple.of("marc:subfield","code", "d"));
                 doc=this.addCountInfo(doc,"marc:record",Triple.of("marc:datafield","tag", "590"));
                 doc=this.activeRemove(doc,Triple.of("marc:datafield","tag", "100"),Triple.of("marc:subfield","code", "d"));
                 doc=this.concatenateElements(doc,Triple.of("marc:datafield","tag", "655"),Triple.of("marc:subfield","code", "b"), Triple.of("marc:subfield","code", "a"));
@@ -257,6 +261,33 @@ public class FrickNormalizer implements Normalizer{
             }
         }
         log.info("END: Normalize Persons");
+        return doc;
+    }
+    
+    private Document normalizePostfix(Document doc, Triple<String,String,String> parentElement, Pair<String,String> indexElement, Triple<String,String,String> checkElement, String postfix, Triple<String,String,String> addElement){
+        log.info("START: Normalize Postfix");
+        NodeList parentNodes=doc.getElementsByTagName(parentElement.getLeft());
+        for(int i=0;i<parentNodes.getLength();i++){
+            Element parentElem=((Element)parentNodes.item(i));
+            if(parentElem.getAttribute(parentElement.getMiddle()).equals(parentElement.getRight()) && parentElem.getAttribute((indexElement.getKey())).equals(indexElement.getValue())){
+                NodeList childNodes=parentElem.getChildNodes();
+                for(int j=0;j<childNodes.getLength();j++){
+                    Node child=childNodes.item(j);
+                    if(child.getNodeType()==Node.ELEMENT_NODE && child.getNodeName().equals(checkElement.getLeft())){
+                        Element childElement=((Element)child);
+                        if(childElement.getAttribute(checkElement.getMiddle()).equals(checkElement.getRight())){
+                            if(childElement.getTextContent().endsWith(postfix)){
+                                Element newElement=doc.createElement(addElement.getLeft());
+                                newElement.setAttribute(addElement.getMiddle(), addElement.getRight());
+                                newElement.setTextContent(childElement.getTextContent().replace(postfix, ""));
+                                childElement.getParentNode().appendChild(newElement);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        log.info("END: Normalize Postfix");
         return doc;
     }
     
