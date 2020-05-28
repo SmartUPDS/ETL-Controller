@@ -33,7 +33,7 @@ public class ItattiNormalizer implements Normalizer {
     @Override
     public void normalizeResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattinormalizer.normalize");
-//        this.normalizeSharedShelfNotes(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF));
+        this.normalizeSharedShelfNotes(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF));
         this.normalizeFotoIndex(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX));
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattinormalizer.normalize");
         
@@ -42,7 +42,7 @@ public class ItattiNormalizer implements Normalizer {
     public void normalizeSharedShelfNotes(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
         for(File file : folderWithInputFiles.listFiles()){
             try{
-                System.out.println("analyze file "+file);
+                log.info("analyze file "+file);
                 Document doc=ElementsSplit.parseXmlDocument(file);
                 NodeList notesElements=doc.getElementsByTagName("Notes");
                 for(int i=0;i<notesElements.getLength();i++){
@@ -65,7 +65,6 @@ public class ItattiNormalizer implements Normalizer {
                 }
                 NodeList rightsElements=doc.getElementsByTagName("Rights");
                 for(int i=0;i<rightsElements.getLength();i++){
-                                    System.out.println("Found at "+file.getName());
                     Node rightsElem=rightsElements.item(i);
                     for(int j=0;j<rightsElem.getChildNodes().getLength();j++){
                         Node rightElem=rightsElem.getChildNodes().item(j);
@@ -134,7 +133,6 @@ public class ItattiNormalizer implements Normalizer {
     
     private List<String> normalizeNotes(String originalText){
         String normText=originalText.replaceAll("&quot;", "QUOT_DELIMITER_UNNORMALIZED").replaceAll("\"","QUOT_DELIMITER_UNNORMALIZED");
-        System.out.println(normText);
         if(normText.contains(";")){
             String[] normTokens=normText.split(";");
             List<String> retList=new ArrayList<>();
@@ -205,7 +203,7 @@ public class ItattiNormalizer implements Normalizer {
     public void normalizeFotoIndex(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
         for(File file : folderWithInputFiles.listFiles()){
             try{
-                System.out.println("analyze file "+file);
+                log.info("analyze file "+file);
                 Document doc=ElementsSplit.parseXmlDocument(file);
                 
                 NodeList versoElements=doc.getElementsByTagName("Verso_Image_URI");
