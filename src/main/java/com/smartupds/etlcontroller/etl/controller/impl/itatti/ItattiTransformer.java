@@ -19,11 +19,11 @@ public class ItattiTransformer implements Transformer {
     public void transformResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf");
         log.info("START: Transform SharedShelf data from Villa I Tatti");
-        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).listFiles()){
+        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).listFiles()){
             this.transformFile(file,
                            new File(Resources.MAPPINGS_VILLA_I_TATTI),
                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI),
-                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI));
+                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF));
         }
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf");
         log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattitransformer.transform.sharedshelf"));
