@@ -36,13 +36,13 @@ public class FrickTransformer implements Transformer{
      * @param generatorPolicyFile the generator policy file
      * @param outputFolder the folder where the transformed contents will be exported. */
     private void transformFile(File inputFile, File mappingsFile, File generatorPolicyFile, File outputFolder){
-        File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", ".rdf"));
+        File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", ".n3"));
         log.debug("transforming resource "+inputFile.getName());
         X3MLEngineFactory.create()
                          .withInputFiles(inputFile)
                          .withMappings(mappingsFile)
                          .withGeneratorPolicy(generatorPolicyFile)
-                         .withOutput(outputFile, X3MLEngineFactory.OutputFormat.RDF_XML)
+                         .withOutput(outputFile, X3MLEngineFactory.OutputFormat.NTRIPLES)
                          .execute();
     }
     
