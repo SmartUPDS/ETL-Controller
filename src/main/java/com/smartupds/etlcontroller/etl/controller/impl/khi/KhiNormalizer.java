@@ -40,32 +40,33 @@ public class KhiNormalizer implements Normalizer{
     public void normalizeResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip");
         log.info("START: Unzip resoruces from KHI");
-//        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_KHI).listFiles()){
-//            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
-//                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_FETCHED_KHI);
-//                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_FETCHED_KHI));
-//                zipFile.delete();
-//            }else{
-//                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
-//            }  
-//        }
-//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip");
-//        log.info("FINISH: Unzip Resources from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip"));
-//        
-//        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
-//        log.info("START: Split large files from KHI");
-//        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_KHI, 
-//                           Resources.FOLDER_INPUT_NORMALIZED_KHI,
-//                           Resources.KHI_COMBINED_RESOURCES_ROOT_ELEMENT,
-//                           Resources.KHI_COMBINED_RESOURCES_OBJ_ELEMENT,
-//                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
+        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_KHI).listFiles()){
+            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
+                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_FETCHED_KHI);
+                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_FETCHED_KHI));
+                zipFile.delete();
+            }else{
+                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
+            }  
+        }
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip");
+        log.info("FINISH: Unzip Resources from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip"));
+        
+        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
+        log.info("START: Split large files from KHI");
+        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_KHI, 
+                           Resources.FOLDER_INPUT_NORMALIZED_KHI,
+                           Resources.KHI_COMBINED_RESOURCES_ROOT_ELEMENT,
+                           Resources.KHI_COMBINED_RESOURCES_OBJ_ELEMENT,
+                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
          Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
         log.info("START: Perform Syntax Normalization for resources from Hertziana");
         List<String> elementsList=Arrays.asList("a30gn",
                                                 "a3105",
                                                 "a5220","a5260","a5300","a5500",
-                                                "a8498");
+                                                "a8498",
+                                                "a40gn", "a50gn");  //I've added thos on my own (YM)
 //        List<String> elementsList=Arrays.asList("a30gn");
         try{
             this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_KHI),elementsList,"&");
@@ -94,6 +95,8 @@ public class KhiNormalizer implements Normalizer{
             Document doc=ElementsSplit.splitElements(ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap);
             doc=normalizeYear(doc, "a5064");
             doc=identifySource(doc, "a30gn");
+            doc=identifySource(doc, "a40gn");   //I've added those on my own (YM)
+            doc=identifySource(doc, "a50gn");   //I've added those on my own (YM)
             ElementsSplit.exportXmlDocument(doc, new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
             FileUtils.deleteQuietly(file);  //Seems that it doesn't work
         }
