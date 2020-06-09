@@ -34,15 +34,15 @@ public class HertzianaNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-//        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-//        log.info("START: Split large files from Hertziana");
-//        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_HERTZIANA, 
-//                           Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA,
-//                           Resources.HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT,
-//                           Resources.HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT,
-//                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-//        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
+        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
+        log.info("START: Split large files from Hertziana");
+        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_HERTZIANA, 
+                           Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA,
+                           Resources.HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT,
+                           Resources.HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT,
+                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
+        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
         
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
         log.info("START: Perform Syntax Normalization for resources from Hertziana");
@@ -50,7 +50,6 @@ public class HertzianaNormalizer implements Normalizer{
                                                 "a3105",
                                                 "a5220","a5260","a5300","a5500",
                                                 "a8498");
-//        List<String> elementsList=Arrays.asList("a30gn");
         try{
             this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA),elementsList,"&");
         }catch(NormalizerException | IOException ex){
@@ -143,6 +142,10 @@ public class HertzianaNormalizer implements Normalizer{
                 parentElem.setAttribute("type", "gnd");
             }else if(textualIdentifier.toLowerCase().startsWith("akl")){
                 parentElem.setAttribute("type", "akl");
+            }else if(textualIdentifier.toLowerCase().startsWith("viaf")){
+                parentElem.setAttribute("type", "viaf");
+            }else if(textualIdentifier.toLowerCase().startsWith("zip")){
+                parentElem.setAttribute("type", "zip");
             }else{
                 System.out.println("something else: "+textualIdentifier);
             }

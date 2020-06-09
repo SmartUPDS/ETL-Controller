@@ -34,7 +34,7 @@ public class MarburgNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-//        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
+        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
 //        log.info("START: Split large files from Marburg");
 //        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_MARBURG, 
 //                           Resources.FOLDER_INPUT_NORMALIZED_MARBURG,
@@ -43,12 +43,13 @@ public class MarburgNormalizer implements Normalizer{
 //                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
 //        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
 //        log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
-//        
+        
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.syntax");
         log.info("START: Perform Syntax Normalization for resources from Marburg");
-        
-        List<String> elementsList=Arrays.asList("a30gn",
+
+        List<String> elementsList=Arrays.asList("a30nr",
                                                 "a3105",
+                                                "a3200",
                                                 "a5220","a5260","a5300","a5500",
                                                 "a8498");
         try{
@@ -102,7 +103,7 @@ public class MarburgNormalizer implements Normalizer{
             Document doc=ElementsSplit.splitElements(ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap);
             doc=normalizeYear(doc, "a5064");
             doc=normalizeYear(doc, "a8494");
-            doc=identifySource(doc, "a30gn");
+            doc=identifySource(doc, "a30nr");
             ElementsSplit.exportXmlDocument(doc, new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
             FileUtils.deleteQuietly(file);  //Seems that it doesn't work
         }

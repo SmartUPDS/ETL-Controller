@@ -1,6 +1,7 @@
 package com.smartupds.etlcontroller.etl.controller;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
@@ -39,7 +40,7 @@ public class Controller {
 //        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-        ItattiTransformer.create().transformResources();
+//        ItattiTransformer.create().transformResources();
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
@@ -47,8 +48,9 @@ public class Controller {
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
+//        FrickHomogenizer.create().homogenizeResources();
 //        ZeriHomogenizer.create().homogenizeResources();
-//        KhiHomogenizer.create().homogenizeResources();
+        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
         
