@@ -35,7 +35,7 @@ public class Controller {
 //        ItattiNormalizer.create().normalizeResources();
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
-//        ZeriNormalizer.create().normalizeResources();
+        ZeriNormalizer.create().normalizeResources();
 //        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
         
@@ -50,7 +50,7 @@ public class Controller {
         /* Homogenize Output Resources */ 
 //        FrickHomogenizer.create().homogenizeResources();
 //        ZeriHomogenizer.create().homogenizeResources();
-        KhiHomogenizer.create().homogenizeResources();
+//        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
         
