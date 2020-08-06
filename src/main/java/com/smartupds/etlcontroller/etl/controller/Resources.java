@@ -1,6 +1,6 @@
 package com.smartupds.etlcontroller.etl.controller;
 
-import com.hp.hpl.jena.rdf.model.Resource;
+//import com.hp.hpl.jena.rdf.model.Resource;
 
 /** Various Common resources
  *
@@ -152,7 +152,7 @@ public class Resources {
     /* HERTZIANA resources */
     public static final String HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT="root";
     public static final String HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT="obj";
-    
+     
     /* KHI resources */
     public static final String KHI_COMBINED_RESOURCES_ROOT_ELEMENT="root";
     public static final String KHI_COMBINED_RESOURCES_OBJ_ELEMENT="obj";
