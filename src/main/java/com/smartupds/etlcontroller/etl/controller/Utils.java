@@ -1,8 +1,6 @@
 package com.smartupds.etlcontroller.etl.controller;
 
 import com.google.common.io.Files;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,6 +13,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import lombok.extern.log4j.Log4j;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 
 /** Various utility facilities
  * 
@@ -64,7 +64,7 @@ public class Utils {
     }
     
     public static void N3Validator(File folder) throws FileNotFoundException{
-        Model model = ModelFactory.createDefaultModel() ;
+         Model model = ModelFactory.createDefaultModel() ;
         for(File file : folder.listFiles()){
             log.info("Parsing file "+file.getName());
             model.read(new FileReader(file), "N3","N3");
