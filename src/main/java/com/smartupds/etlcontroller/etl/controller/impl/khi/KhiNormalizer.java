@@ -4,20 +4,30 @@ import com.smartupds.etlcontroller.etl.controller.impl.zeri.*;
 import com.smartupds.etlcontroller.etl.controller.Resources;
 import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.normalizer.exceptions.NormalizerException;
 import com.smartupds.xmlsplit.Splitter;
 import gr.forth.ics.isl.timer.Timer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import split.ElementsSplit;
 
 /** Normalizer for input sources from KHI
  *
@@ -50,7 +60,90 @@ public class KhiNormalizer implements Normalizer{
                            Resources.KHI_COMBINED_RESOURCES_OBJ_ELEMENT,
                            Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
+         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
+        log.info("START: Perform Syntax Normalization for resources from Hertziana");
+        List<String> elementsList=Arrays.asList("a30gn",
+                                                "a3105",
+                                                "a5220","a5260","a5300","a5500",
+                                                "a8498",
+                                                "a40gn", "a50gn");  //I've added thos on my own (YM)
+//        List<String> elementsList=Arrays.asList("a30gn");
+        try{
+            this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_KHI),elementsList,"&");
+        }catch(NormalizerException | IOException ex){
+            log.error("An error occured while normalizing input resources",ex);
+            throw new ETLGenericException("An error occured while normalizing input resources",ex);
+        }
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
         log.info("FINISH: Split large files from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split"));
+    }
+    
+    /** This method carries out syntax normalization. In particular it normalizes (creates two or more) elements with the 
+     * given element name, if they contain one or more occurences of the given splitCharSequence
+     * 
+     * @param inputFolder the folder containing XML files to be normalized
+     * @param elementName the element name to be considered for normalization
+     * @param splitCharSequence the charSsequence to define the normalization */
+    private void normalizeSyntax(File inputFolder, List<String> elementsName, String splitCharSequence) throws NormalizerException, IOException{
+        log.info("Normalize files in folder "+inputFolder+". Elements to normalize: "+elementsName+"\t Split String: "+splitCharSequence);
+        Map<String,List<String>> elementsSeparatorsMap=new HashMap<>();
+        elementsName.forEach(elementName -> elementsSeparatorsMap.put(elementName,Arrays.asList(splitCharSequence)));
+        for(File file : FileUtils.listFiles(inputFolder, null, true)){
+            String folderName=file.getParent();
+            String filename=file.getName();
+            log.debug("Normalize file "+file.getAbsolutePath());
+            Document doc=ElementsSplit.splitElements(ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap);
+            doc=normalizeYear(doc, "a5064");
+            doc=identifySource(doc, "a30gn");
+            doc=identifySource(doc, "a40gn");   //I've added those on my own (YM)
+            doc=identifySource(doc, "a50gn");   //I've added those on my own (YM)
+            ElementsSplit.exportXmlDocument(doc, new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
+            FileUtils.deleteQuietly(file);  //Seems that it doesn't work
+        }
+    }
+    
+    private Document normalizeYear(Document doc, String elementName){
+        log.info("START: Normalize Years");
+        NodeList parentNodes=doc.getElementsByTagName(elementName);
+        for(int i=0;i<parentNodes.getLength();i++){
+            Element parentElem=((Element)parentNodes.item(i));
+            if(!Character.isDigit(parentElem.getTextContent().charAt(0))){
+                continue;
+            }
+            String[] splitYears=parentElem.getTextContent().split("/");
+            if(splitYears.length==2){
+                parentElem.setAttribute("start", splitYears[0]);
+                parentElem.setAttribute("end", splitYears[1]);
+            }else{
+                splitYears=parentElem.getTextContent().split("-");
+                if(splitYears.length==2){
+                    parentElem.setAttribute("start", splitYears[0]);
+                    parentElem.setAttribute("end", splitYears[1]);
+                }
+            }
+        }
+        log.info("END: Normalize Years");
+        return doc;
+    }
+    
+    private Document identifySource(Document doc, String elementName){
+        log.info("START: Identify Source");
+        NodeList parentNodes=doc.getElementsByTagName(elementName);
+        for(int i=0;i<parentNodes.getLength();i++){
+            Element parentElem=((Element)parentNodes.item(i));
+            String textualIdentifier=parentElem.getTextContent();
+            if(textualIdentifier.toLowerCase().startsWith("ulan")){
+                parentElem.setAttribute("type", "ulan");
+            }else if(textualIdentifier.toLowerCase().startsWith("gnd")){
+                parentElem.setAttribute("type", "gnd");
+            }else if(textualIdentifier.toLowerCase().startsWith("akl")){
+                parentElem.setAttribute("type", "akl");
+            }else{
+                System.out.println("something else: "+textualIdentifier);
+            }
+        }
+        log.info("END: Identify Source");
+        return doc;
     }
     
     /** This method unzips the contents of the given file into the given folder

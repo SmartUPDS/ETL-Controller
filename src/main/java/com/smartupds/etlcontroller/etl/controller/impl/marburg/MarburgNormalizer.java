@@ -1,4 +1,4 @@
-package com.smartupds.etlcontroller.etl.controller.impl.hertziana;
+package com.smartupds.etlcontroller.etl.controller.impl.marburg;
 
 import com.smartupds.etlcontroller.etl.controller.Resources;
 import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
@@ -30,34 +30,36 @@ import split.ElementsSplit;
  * @author Yannis Marketakis (marketakis 'at' smartupds 'dot' com)
  */
 @Log4j
-public class HertzianaNormalizer implements Normalizer{
+public class MarburgNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-        log.info("START: Split large files from Hertziana");
-        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_HERTZIANA, 
-                           Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA,
-                           Resources.HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT,
-                           Resources.HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT,
-                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
+        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
+//        log.info("START: Split large files from Marburg");
+//        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_MARBURG, 
+//                           Resources.FOLDER_INPUT_NORMALIZED_MARBURG,
+//                           Resources.MARBURG_COMBINED_RESOURCES_ROOT_ELEMENT,
+//                           Resources.MARBURG_COMBINED_RESOURCES_OBJ_ELEMENT,
+//                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
+//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
+//        log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
-        log.info("START: Perform Syntax Normalization for resources from Hertziana");
-        List<String> elementsList=Arrays.asList("a30gn",
+        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.syntax");
+        log.info("START: Perform Syntax Normalization for resources from Marburg");
+
+        List<String> elementsList=Arrays.asList("a30nr",
                                                 "a3105",
+                                                "a3200",
                                                 "a5220","a5260","a5300","a5500",
                                                 "a8498");
         try{
-            this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA),elementsList,"&");
+            this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG),elementsList,"&");
         }catch(NormalizerException | IOException ex){
             log.error("An error occured while normalizing input resources",ex);
             throw new ETLGenericException("An error occured while normalizing input resources",ex);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
-        log.info("FINISH: Perform Syntax Normalization for resources from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax"));
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.syntax");
+        log.info("FINISH: Perform Syntax Normalization for resources from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.syntax"));
     }
     
     /** This methods splits the files found in the input folder, into files with 
@@ -85,7 +87,7 @@ public class HertzianaNormalizer implements Normalizer{
     }
     
     /** This method carries out syntax normalization. In particular it normalizes (creates two or more) elements with the 
-     * given element name, if they contain one or more occurrences of the given splitCharSequence
+     * given element name, if they contain one or more occurences of the given splitCharSequence
      * 
      * @param inputFolder the folder containing XML files to be normalized
      * @param elementName the element name to be considered for normalization
@@ -100,7 +102,8 @@ public class HertzianaNormalizer implements Normalizer{
             log.debug("Normalize file "+file.getAbsolutePath());
             Document doc=ElementsSplit.splitElements(ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap);
             doc=normalizeYear(doc, "a5064");
-            doc=identifySource(doc, "a30gn");
+            doc=normalizeYear(doc, "a8494");
+            doc=identifySource(doc, "a30nr");
             ElementsSplit.exportXmlDocument(doc, new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
             FileUtils.deleteQuietly(file);  //Seems that it doesn't work
         }
@@ -144,8 +147,6 @@ public class HertzianaNormalizer implements Normalizer{
                 parentElem.setAttribute("type", "akl");
             }else if(textualIdentifier.toLowerCase().startsWith("viaf")){
                 parentElem.setAttribute("type", "viaf");
-            }else if(textualIdentifier.toLowerCase().startsWith("zip")){
-                parentElem.setAttribute("type", "zip");
             }else{
                 System.out.println("something else: "+textualIdentifier);
             }
@@ -154,8 +155,8 @@ public class HertzianaNormalizer implements Normalizer{
         return doc;
     }
     
-    public static HertzianaNormalizer create(){
-        return new HertzianaNormalizer();
+    public static MarburgNormalizer create(){
+        return new MarburgNormalizer();
     }
 
 }

@@ -33,14 +33,16 @@ public class ItattiNormalizer implements Normalizer {
     @Override
     public void normalizeResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattinormalizer.normalize");
-        this.normalizeSharedShelfNotes(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI));
+        this.normalizeSharedShelfNotes(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF));
+        this.normalizeFotoIndex(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX));
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattinormalizer.normalize");
+        
     }
     
     public void normalizeSharedShelfNotes(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
         for(File file : folderWithInputFiles.listFiles()){
             try{
-                System.out.println("analyze file "+file);
+                log.info("analyze file "+file);
                 Document doc=ElementsSplit.parseXmlDocument(file);
                 NodeList notesElements=doc.getElementsByTagName("Notes");
                 for(int i=0;i<notesElements.getLength();i++){
@@ -50,10 +52,12 @@ public class ItattiNormalizer implements Normalizer {
                         if(noteElem.getNodeType()==Node.ELEMENT_NODE && noteElem.getNodeName().equals("Note")){
                             Element noteAsElement=((Element)noteElem);
                             List<String> normalizedNoteList=this.normalizeNotes(noteAsElement.getAttribute("term"));
-                            if(normalizedNoteList.size()>1){
+                            if(normalizedNoteList.size()>=1){
+                                int index=1;
                                 for(Node newElement : createElements(doc, noteAsElement, normalizedNoteList)){
-                                    noteAsElement.getParentNode().appendChild(newElement);
-                                }
+                                        noteAsElement.getParentNode().appendChild(newElement);
+                                    ((Element)newElement).setAttribute("index", String.valueOf(index++));
+                                    }
                                 noteAsElement.getParentNode().removeChild(noteAsElement);
                             }
                         }
@@ -194,6 +198,38 @@ public class ItattiNormalizer implements Normalizer {
             log.error("An error occured while exporting data to XML",ex);
             throw new NormalizerException("An error occured while exporting data to XML",ex);
         }
+    }
+    
+    public void normalizeFotoIndex(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
+        for(File file : folderWithInputFiles.listFiles()){
+            try{
+                log.info("analyze file "+file);
+                Document doc=ElementsSplit.parseXmlDocument(file);
+                
+                NodeList versoElements=doc.getElementsByTagName("Verso_Image_URI");
+                for(int i=0;i<versoElements.getLength();i++){
+                    Node versoElem=versoElements.item(i);
+                    versoElem.setTextContent(this.normalizeVersoImageUrl(versoElem.getTextContent()));
+                }
+                NodeList rectoElements=doc.getElementsByTagName("Recto_Image_URI");
+                for(int i=0;i<rectoElements.getLength();i++){
+                    Node rectoElem=rectoElements.item(i);
+                    rectoElem.setTextContent(this.normalizeRectoImageUrl(rectoElem.getTextContent()));
+                }
+                this.exportXmlDocument(doc, new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
+            }catch(NormalizerException ex){
+                log.error("An error occured while normalizing file",ex);
+                throw new ETLGenericException("An error occured while normalizing file",ex);
+            }   
+        }
+    }
+    
+    private String normalizeVersoImageUrl(String versoImageUri){
+        return versoImageUri.replace("Scaler/IIIF/GRI", "iiif/2/fotoindex")+".jpg/full/!700,700/0/default.jpg";
+    }
+    
+    private String normalizeRectoImageUrl(String versoImageUri){
+        return versoImageUri.replace("Scaler/IIIF/GRI", "iiif/2/fotoindex")+".jpg/info.json";
     }
 
     public static ItattiNormalizer create(){

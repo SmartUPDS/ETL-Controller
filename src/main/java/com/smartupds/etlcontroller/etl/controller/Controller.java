@@ -1,6 +1,7 @@
 package com.smartupds.etlcontroller.etl.controller;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
@@ -10,6 +11,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
@@ -34,6 +36,7 @@ public class Controller {
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
+//        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
@@ -45,6 +48,7 @@ public class Controller {
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
+//        FrickHomogenizer.create().homogenizeResources();
 //        ZeriHomogenizer.create().homogenizeResources();
         KhiHomogenizer.create().homogenizeResources();
         
@@ -60,6 +64,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
@@ -69,6 +74,8 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_KHI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI).mkdir();
@@ -84,6 +91,7 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS).mkdir();
