@@ -80,7 +80,7 @@ public class HertzianaNormalizer implements Normalizer{
     }
     
     /** This method carries out syntax normalization. In particular it normalizes (creates two or more) elements with the 
-     * given element name, if they contain one or more occurences of the given splitCharSequence
+     * given element name, if they contain one or more occurrences of the given splitCharSequence
      * 
      * @param inputFolder the folder containing XML files to be normalized
      * @param elementName the element name to be considered for normalization
