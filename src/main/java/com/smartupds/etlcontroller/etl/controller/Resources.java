@@ -37,9 +37,9 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED=FOLDER_OUTPUT+"/"+"1_Transformed";
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
-    public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX+"_FC_FR";
+    public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
-    public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF+"_FC_FR";
+    public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.HERTZIANA;
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL2=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.ARTWORKS+"_lvl2";
@@ -52,6 +52,8 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.BUILTWORKS+"_lvl4";
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ACTORS=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.ACTORS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.FRICK;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL=FOLDER_OUTPUT_TRANSFORMED_FRICK+"/"+"All";
+    public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR=FOLDER_OUTPUT_TRANSFORMED_FRICK+"/"+Resources.FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.ZERI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_ZERI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS=FOLDER_OUTPUT_TRANSFORMED_ZERI+"/"+Resources.PHOTOGRAPHS;
@@ -62,12 +64,12 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL3=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.ARTWORKS+"_lvl3";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.ARTWORKS+"_lvl4";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.PHOTOGRAPHS;
-    public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.PHOTOGRAPHS+"_fc_fr";
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.PHOTOGRAPHS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.BUILTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL2=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.BUILTWORKS+"_lvl2";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL3=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.BUILTWORKS+"_lvl3";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.BUILTWORKS+"_lvl4";
-    public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_WORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.WORKS+"_fc_fr";
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_WORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.WORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.KHI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL2=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS+"_lvl2";
@@ -108,6 +110,10 @@ public class Resources {
     public static final String WORK="Work";
     public static final String WORKS="works";
     
+    /* Other names */
+    public static final String _FC_FR="_FC_FR";
+    public static final String FC_FR="FC_FR";
+    
     /* Mapping resources */
     public static final String MAPPINGS_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+Resources.VILLA_I_TATTI;
     public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF=MAPPINGS_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
@@ -138,8 +144,9 @@ public class Resources {
     public static final String MAPPINGS_HERTZIANA_LVL2=FOLDER_MAPPINGS+"/"+"mappings-hertziana-lvl2.x3ml";
     public static final String GENERATOR_POLICY_HERTZIANA=FOLDER_MAPPINGS+"/"+"generator-policy-hertziana.xml";
     public static final String MAPPINGS_FRICK=FOLDER_MAPPINGS+"/"+Resources.FRICK;
-    public static final String MAPPINGS_FRICK_ALL=FOLDER_MAPPINGS+"/"+"mappings-fricks.x3ml";
-    public static final String GENERATOR_POLICY_FRICK=FOLDER_MAPPINGS+"/"+"generator-policy-fricks.xml";
+    public static final String MAPPINGS_FRICK_ALL=MAPPINGS_FRICK+"/"+"mappings.x3ml";
+    public static final String MAPPINGS_FRICK_FC_FR=MAPPINGS_FRICK+"/"+"mappings-fc-fr.x3ml";
+    public static final String GENERATOR_POLICY_FRICK=MAPPINGS_FRICK+"/"+"generator-policy.xml";
     public static final String MAPPINGS_ZERI=FOLDER_MAPPINGS+"/"+Resources.ZERI;
     public static final String MAPPINGS_ZERI_ARTWORKS=FOLDER_MAPPINGS+"/"+"mappings-zeri-artworks.x3ml";
     public static final String MAPPINGS_ZERI_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-zeri-photographs.x3ml";

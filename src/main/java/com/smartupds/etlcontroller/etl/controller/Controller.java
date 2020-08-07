@@ -48,7 +48,7 @@ public class Controller {
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-//        MarburgTransformer.create().transformResources();
+        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
@@ -57,9 +57,9 @@ public class Controller {
 //        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
-        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
-        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
-        MarburgIngester.create(triplestoreConnection).ingestResources();
+//        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
+//        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
+//        MarburgIngester.create(triplestoreConnection).ingestResources();
         /* Test Resources */
     }
     
@@ -137,6 +137,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS).mkdir();
