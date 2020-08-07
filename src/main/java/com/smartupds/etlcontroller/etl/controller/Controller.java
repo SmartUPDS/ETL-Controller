@@ -36,7 +36,7 @@ public class Controller {
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
-//        MarburgNormalizer.create().normalizeResources();
+        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
@@ -44,7 +44,7 @@ public class Controller {
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-        MarburgTransformer.create().transformResources();
+//        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
@@ -87,6 +87,8 @@ public class Controller {
         log.debug("Create MAPPINGS folders");
         new File(Resources.FOLDER_MAPPINGS).mkdir();
         new File(Resources.MAPPINGS_VILLA_I_TATTI).mkdir();
+        new File(Resources.MAPPINGS_VILLA_I_TATTI_SHAREDSHELF).mkdir();
+        new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX).mkdir();
         new File(Resources.MAPPINGS_HERTZIANA).mkdir();
         new File(Resources.MAPPINGS_FRICK).mkdir();
         new File(Resources.MAPPINGS_KHI).mkdir();
@@ -98,7 +100,9 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL2).mkdir();

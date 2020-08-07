@@ -37,7 +37,9 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED=FOLDER_OUTPUT+"/"+"1_Transformed";
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX+"_FC_FR";
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF+"_FC_FR";
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.HERTZIANA;
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL2=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.ARTWORKS+"_lvl2";
@@ -108,14 +110,19 @@ public class Resources {
     
     /* Mapping resources */
     public static final String MAPPINGS_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+Resources.VILLA_I_TATTI;
-    public static final String MAPPINGS_VILLA_I_TATTI_ALL=FOLDER_MAPPINGS+"/"+"mappings-itatti.x3ml";
-    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_ARTIST=FOLDER_MAPPINGS+"/"+"mappings-villaitatti-artist.x3ml";
-    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_COLLECTION=FOLDER_MAPPINGS+"/"+"mappings-villaitatti-collection.x3ml";
-    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_INSTITUTION=FOLDER_MAPPINGS+"/"+"mappings-villaitatti-institution.x3ml";
-    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_PHOTO=FOLDER_MAPPINGS+"/"+"mappings-villaitatti-photo.x3ml";
-    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_WORK=FOLDER_MAPPINGS+"/"+"mappings-villaitatti-work.x3ml";
-    public static final String GENERATOR_POLICY_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+"generator-policy-itatti.xml";
-    public static final String GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX=FOLDER_MAPPINGS+"/"+"generator-policy-fotoindex-itatti.xml";
+    public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF=MAPPINGS_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
+    
+    public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_ALL=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"mappings.x3ml";
+    public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_FC_FR=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"mappings-fc-fr.x3ml";
+    public static final String GENERATOR_POLICY_VILLA_I_TATTI_SHAREDSHELF=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"generator-policy.xml";
+    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX=MAPPINGS_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
+    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_ARTIST=MAPPINGS_VILLA_I_TATTI_FOTOINDEX+"/"+"mappings_artist.x3ml";
+    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_COLLECTION=MAPPINGS_VILLA_I_TATTI_FOTOINDEX+"/"+"mappings_collection.x3ml";
+    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_INSTITUTION=MAPPINGS_VILLA_I_TATTI_FOTOINDEX+"/"+"mappings_institution.x3ml";
+    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_PHOTO=MAPPINGS_VILLA_I_TATTI_FOTOINDEX+"/"+"mappings_photo.x3ml";
+    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_WORK=MAPPINGS_VILLA_I_TATTI_FOTOINDEX+"/"+"mappings_work.x3ml";
+    public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX_FC_FR=MAPPINGS_VILLA_I_TATTI_FOTOINDEX+"/"+"mappings-fc-fr.x3ml";
+    public static final String GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX=MAPPINGS_VILLA_I_TATTI_FOTOINDEX+"/"+"generator-policy.xml";
     public static final String MAPPINGS_HERTZIANA=FOLDER_MAPPINGS+"/"+Resources.HERTZIANA;
     public static final String MAPPINGS_HERTZIANA_ALL=FOLDER_MAPPINGS+"/"+"mappings-hertziana.x3ml";
     public static final String MAPPINGS_HERTZIANA_ACTORS=FOLDER_MAPPINGS+"/"+"mappings-hertziana-actors.x3ml";
@@ -177,6 +184,6 @@ public class Resources {
     public static final String MARBURG_COMBINED_RESOURCES_OBJ_ELEMENT="obj";
     
     /* Misc Resources */
-    public static final int MAX_FILESIZE_INPUT_RESOURCES_IN_MB=5;
+    public static final int MAX_FILESIZE_INPUT_RESOURCES_IN_MB=1;
     public static final int MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB=4;
 }
