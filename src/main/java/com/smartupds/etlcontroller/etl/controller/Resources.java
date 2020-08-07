@@ -137,7 +137,7 @@ public class Resources {
     public static final String MAPPINGS_HERTZIANA_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-hertziana-photographs.x3ml";
     public static final String MAPPINGS_HERTZIANA_LVL2=FOLDER_MAPPINGS+"/"+"mappings-hertziana-lvl2.x3ml";
     public static final String GENERATOR_POLICY_HERTZIANA=FOLDER_MAPPINGS+"/"+"generator-policy-hertziana.xml";
-    public static final String MAPPINGS_FRICK=FOLDER_MAPPINGS+"/"+Resources.ZERI;
+    public static final String MAPPINGS_FRICK=FOLDER_MAPPINGS+"/"+Resources.FRICK;
     public static final String MAPPINGS_FRICK_ALL=FOLDER_MAPPINGS+"/"+"mappings-fricks.x3ml";
     public static final String GENERATOR_POLICY_FRICK=FOLDER_MAPPINGS+"/"+"generator-policy-fricks.xml";
     public static final String MAPPINGS_ZERI=FOLDER_MAPPINGS+"/"+Resources.ZERI;
