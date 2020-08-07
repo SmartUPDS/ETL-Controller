@@ -13,7 +13,6 @@ public interface Ingester {
      * knowledge base (e.g. a triplestore). The knowledge base-related information (e.g. host, port, graphspace, etc.)
      * will be provided from the classes implementing the interface
      * 
-     * @param the connection details for the triplestore that will be used
      * @throws ETLGenericException for any error that might occur while ingesting RDF resoruces. */
-    public void ingestResources(TripleStoreConnection triplestoreConnection) throws ETLGenericException;
+    public void ingestResources() throws ETLGenericException;
 }

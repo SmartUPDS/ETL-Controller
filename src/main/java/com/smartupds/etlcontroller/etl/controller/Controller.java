@@ -11,6 +11,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
@@ -58,7 +59,7 @@ public class Controller {
         /* Ingest Resources */
         ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
         TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
-        
+        MarburgIngester.create(triplestoreConnection).ingestResources();
         /* Test Resources */
     }
     
