@@ -4,6 +4,7 @@ import com.google.common.io.Files;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import gr.forth.Labels;
 import gr.forth.ics.isl.x3ml.X3MLEngine;
 import static gr.forth.ics.isl.x3ml.X3MLEngine.exception;
 import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
@@ -123,18 +124,24 @@ public class Utils {
         String mimetype="";
         switch(outputFormat){
             case RDF_XML:
-            case RDF_XML_PLAIN: 
                 extension=".rdf";
-                mimetype="application/rdf+xml";
+                mimetype=Labels.OUTPUT_MIME_TYPE_RDF_XML;
+                break;
+            case RDF_XML_PLAIN:
+                extension=".rdf";
+                mimetype=Labels.OUTPUT_MIME_TYPE_RDF_XML_ABBREV;
                 break;
             case NTRIPLES:
                 extension=".nt";
-                mimetype="application/n-triples";
+                mimetype=Labels.OUTPUT_MIME_TYPE_NTRIPLES;
                 break;
             case TURTLE:
+                extension=".ttl";
+                mimetype=Labels.OUTPUT_MIME_TYPE_TURTLE;
+                break;
             case TRIG:
                 extension=".ttl";
-                mimetype="text/turtle";
+                mimetype=Labels.OUTPUT_MIME_TYPE_TRIG;
                 break;
         }
         try{
