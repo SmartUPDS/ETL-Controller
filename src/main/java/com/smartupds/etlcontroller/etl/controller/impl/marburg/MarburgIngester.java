@@ -18,7 +18,7 @@ import org.apache.commons.io.FileUtils;
 public class MarburgIngester implements Ingester{
     private TripleStoreConnection triplestoreConnection;
 
-    public MarburgIngester(TripleStoreConnection tripleStoreConn){
+    private MarburgIngester(TripleStoreConnection tripleStoreConn){
         this.triplestoreConnection=tripleStoreConn;
     }
     
