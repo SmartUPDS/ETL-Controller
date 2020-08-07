@@ -147,8 +147,6 @@ public class MarburgNormalizer implements Normalizer{
                 parentElem.setAttribute("type", "akl");
             }else if(textualIdentifier.toLowerCase().startsWith("viaf")){
                 parentElem.setAttribute("type", "viaf");
-            }else{
-                System.out.println("something else: "+textualIdentifier);
             }
         }
         log.info("END: Identify Source");
