@@ -186,4 +186,9 @@ public class Resources {
     /* Misc Resources */
     public static final int MAX_FILESIZE_INPUT_RESOURCES_IN_MB=1;
     public static final int MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB=4;
+    public static final int TIME_OUT_REQUESTS=30000;
+    
+    /* Spring beans resources */
+    public static final String SPRING_BEANS_FILENAME="beans.xml";
+    public static final String TRIPLESTORE_BEAN_ID="triplestoreConnection";
 }

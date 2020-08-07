@@ -1,6 +1,7 @@
 package com.smartupds.etlcontroller.etl.controller.api;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 
 /** This class is responsible for ingesting RDF resources into a knowledge base (e.g. triplestore)
  *
@@ -12,6 +13,7 @@ public interface Ingester {
      * knowledge base (e.g. a triplestore). The knowledge base-related information (e.g. host, port, graphspace, etc.)
      * will be provided from the classes implementing the interface
      * 
+     * @param the connection details for the triplestore that will be used
      * @throws ETLGenericException for any error that might occur while ingesting RDF resoruces. */
-    public void ingestResources() throws ETLGenericException;
+    public void ingestResources(TripleStoreConnection triplestoreConnection) throws ETLGenericException;
 }

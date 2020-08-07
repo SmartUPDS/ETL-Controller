@@ -16,8 +16,11 @@ import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransforme
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
+import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /** The entry point of the ETL Controller. The class is responsible for 
  * executing the entire ETL workflow.
@@ -53,6 +56,8 @@ public class Controller {
 //        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
+        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
+        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
         
         /* Test Resources */
     }

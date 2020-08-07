@@ -4,6 +4,7 @@ import com.google.common.io.Files;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import gr.forth.Labels;
 import gr.forth.ics.isl.x3ml.X3MLEngine;
 import static gr.forth.ics.isl.x3ml.X3MLEngine.exception;
@@ -22,11 +23,19 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 import javax.xml.parsers.DocumentBuilderFactory;
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
+import org.apache.commons.httpclient.NameValuePair;
 import org.w3c.dom.Element;
-//import org.apache.jena.rdf.model.Model;
-//import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.methods.StringRequestEntity;
+import org.apache.commons.io.FilenameUtils;
 
 /** Various utility facilities
  * 
@@ -124,23 +133,23 @@ public class Utils {
         String mimetype="";
         switch(outputFormat){
             case RDF_XML:
-                extension=".rdf";
+                extension=Labels.OUTPUT_EXTENSION_RDF;
                 mimetype=Labels.OUTPUT_MIME_TYPE_RDF_XML;
                 break;
             case RDF_XML_PLAIN:
-                extension=".rdf";
+                extension=Labels.OUTPUT_EXTENSION_RDF;
                 mimetype=Labels.OUTPUT_MIME_TYPE_RDF_XML_ABBREV;
                 break;
             case NTRIPLES:
-                extension=".nt";
+                extension=Labels.OUTPUT_EXTENSION_NTRIPLES;
                 mimetype=Labels.OUTPUT_MIME_TYPE_NTRIPLES;
                 break;
             case TURTLE:
-                extension=".ttl";
+                extension=Labels.OUTPUT_EXTENSION_TURTLE;
                 mimetype=Labels.OUTPUT_MIME_TYPE_TURTLE;
                 break;
             case TRIG:
-                extension=".ttl";
+                extension=Labels.OUTPUT_EXTENSION_TURTLE;   //on purpose. TTL is the valid one
                 mimetype=Labels.OUTPUT_MIME_TYPE_TRIG;
                 break;
         }
@@ -170,5 +179,68 @@ public class Utils {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         return factory;
+    }
+    
+    public static void uploadFile(TripleStoreConnection triplestore, File fileToUpload, String graphspace, boolean preserveNamedgraphs) throws ETLGenericException{
+        try{
+            MultiThreadedHttpConnectionManager connectionManager=new MultiThreadedHttpConnectionManager();
+            connectionManager.getParams().setSoTimeout(Resources.TIME_OUT_REQUESTS);
+            HttpClient httpClient=new HttpClient(connectionManager);
+            String uploadServiceURL=triplestore.getConnectionURL()+"?graph="+graphspace;
+            if(preserveNamedgraphs){
+                uploadServiceURL+="&keepSourceGraphs=true";
+            }
+            
+            PostMethod postMethod=new PostMethod(uploadServiceURL);
+            String mimeType="";
+            switch(FilenameUtils.getExtension(fileToUpload.getAbsolutePath())){
+                case Labels.OUTPUT_EXTENSION_RDF:
+                    mimeType=Labels.OUTPUT_MIME_TYPE_RDF_XML;
+                    break;
+                case Labels.OUTPUT_EXTENSION_NTRIPLES:
+                    mimeType=Labels.OUTPUT_MIME_TYPE_NTRIPLES;
+                    break;
+                case Labels.OUTPUT_EXTENSION_TURTLE:
+                case Labels.OUTPUT_EXTENSION_TRIG:
+                    mimeType=Labels.OUTPUT_MIME_TYPE_TURTLE;
+                    break;  
+            }
+            postMethod.setRequestHeader("Content-Type", mimeType);
+            NameValuePair[] data = {
+              new NameValuePair("username", triplestore.getUsername()),
+              new NameValuePair("password", triplestore.getPassword())
+            };
+            postMethod.setRequestBody(data);
+            postMethod.setRequestEntity(new StringRequestEntity(file2String(fileToUpload),mimeType,"UTF-8"));
+            log.debug("Upload POST URL: "+uploadServiceURL
+                     +"+tMIME-TYPE: "+mimeType);
+            int statusCode = httpClient.executeMethod(postMethod);
+            if (statusCode != HttpStatus.SC_OK && statusCode != HttpStatus.SC_CREATED) {
+                
+                log.error("Method failed: "+postMethod.getStatusLine()+"; Response body: "+postMethod.getResponseBodyAsString());
+                postMethod.releaseConnection();
+                throw new ETLGenericException("Method failed: "+postMethod.getStatusLine()+"; Response body: "+new String(postMethod.getResponseBody()));
+            }
+            
+            postMethod.releaseConnection();
+            log.info("Resource "+fileToUpload.getAbsolutePath()+" was successfully uploaded");
+            
+        }catch(IllegalArgumentException | IOException ex){
+            log.error("An error occured while uploading data",ex);
+            throw new ETLGenericException("An error occured while uploading data",ex);
+        }
+        
+
+    }
+    
+    private static String file2String(File file) throws ETLGenericException{
+        StringBuilder stringBuilder = new StringBuilder();
+        try(Stream stream = java.nio.file.Files.lines( Paths.get(file.getAbsolutePath()), StandardCharsets.UTF_8)) {     
+            stream.forEach(s -> stringBuilder.append(s).append("\n"));
+        }catch(IOException ex){
+            log.error("An error occured while reading file",ex);
+            throw new ETLGenericException("An error occured while reading file",ex);
+        }
+        return stringBuilder.toString();
     }
 }
