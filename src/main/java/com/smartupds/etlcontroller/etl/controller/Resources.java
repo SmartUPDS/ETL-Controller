@@ -204,6 +204,8 @@ public class Resources {
     /* Default graphspaces */
     public static final String GRAPHSPACE_FRICK="http://frick/";
     public static final String GRAPHSPACE_FRICK_FC_FR="http://frick_fc_fr/";
+    public static final String GRAPHSPACE_HERTZIANA="http://hertziana/";
+    public static final String GRAPHSPACE_HERTZIANA_FC_FR="http://hertziana_fc_fr/";
     public static final String GRAPHSPACE_MARBURG="http://marburg/";
     public static final String GRAPHSPACE_MARBURG_FC_FR="http://marburg_fc_fr/";
     public static final String GRAPHSPACE_VILLA_I_TATTI="http://itatti/";
