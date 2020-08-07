@@ -191,4 +191,8 @@ public class Resources {
     /* Spring beans resources */
     public static final String SPRING_BEANS_FILENAME="beans.xml";
     public static final String TRIPLESTORE_BEAN_ID="triplestoreConnection";
+    
+    /* Default graphspaces */
+    public static final String GRAPHSPACE_MARBURG="http://marburg/";
+    public static final String GRAPHSPACE_MARBURG_FC_FR="http://marburg_fc_fr/";
 }
