@@ -15,18 +15,16 @@ import lombok.extern.log4j.Log4j;
 public class MarburgIngester implements Ingester{
     private TripleStoreConnection triplestoreConnection;
 
-    public MarburgIngester(TripleStoreConnection tripleStoreConnection){
-        this.triplestoreConnection=triplestoreConnection;
+    public MarburgIngester(TripleStoreConnection tripleStoreConn){
+        this.triplestoreConnection=tripleStoreConn;
     }
     
     @Override
     public void ingestResources() throws ETLGenericException {
-        System.out.println(this.triplestoreConnection);
-        
+        Utils.uploadFile(triplestoreConnection, new File("C:/Repositories/Github/X3ML/output.trig"), "http%3A%2F%2Fyannis_smartup", true);
     }
     
     public static MarburgIngester create(TripleStoreConnection tripleStoreConnection){
         return new MarburgIngester(tripleStoreConnection);
     }
-
 }

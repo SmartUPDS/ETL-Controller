@@ -40,7 +40,7 @@ public class Controller {
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
-        MarburgNormalizer.create().normalizeResources();
+//        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */

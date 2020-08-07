@@ -22,20 +22,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.DocumentBuilderFactory;
 import lombok.extern.log4j.Log4j;
-import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
-import org.apache.commons.httpclient.NameValuePair;
 import org.w3c.dom.Element;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 
 /** Various utility facilities
  * 
@@ -183,15 +182,17 @@ public class Utils {
     
     public static void uploadFile(TripleStoreConnection triplestore, File fileToUpload, String graphspace, boolean preserveNamedgraphs) throws ETLGenericException{
         try{
-            MultiThreadedHttpConnectionManager connectionManager=new MultiThreadedHttpConnectionManager();
-            connectionManager.getParams().setSoTimeout(Resources.TIME_OUT_REQUESTS);
-            HttpClient httpClient=new HttpClient(connectionManager);
             String uploadServiceURL=triplestore.getConnectionURL()+"?graph="+graphspace;
             if(preserveNamedgraphs){
                 uploadServiceURL+="&keepSourceGraphs=true";
             }
+            HttpsURLConnection con = (HttpsURLConnection) new URL(uploadServiceURL).openConnection();
+            con.setRequestMethod("POST");
+            String userCredentials = triplestore.getUsername()+":"+triplestore.getPassword();
+            String basicAuth = "Basic " + new String(new Base64().encode(userCredentials.getBytes()));
+            con.setRequestProperty ("Authorization", basicAuth);
+            con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:27.0) Gecko/20100101 Firefox/27.0.2 Waterfox/27.0");
             
-            PostMethod postMethod=new PostMethod(uploadServiceURL);
             String mimeType="";
             switch(FilenameUtils.getExtension(fileToUpload.getAbsolutePath())){
                 case Labels.OUTPUT_EXTENSION_RDF:
@@ -205,32 +206,33 @@ public class Utils {
                     mimeType=Labels.OUTPUT_MIME_TYPE_TURTLE;
                     break;  
             }
-            postMethod.setRequestHeader("Content-Type", mimeType);
-            NameValuePair[] data = {
-              new NameValuePair("username", triplestore.getUsername()),
-              new NameValuePair("password", triplestore.getPassword())
-            };
-            postMethod.setRequestBody(data);
-            postMethod.setRequestEntity(new StringRequestEntity(file2String(fileToUpload),mimeType,"UTF-8"));
-            log.debug("Upload POST URL: "+uploadServiceURL
-                     +"+tMIME-TYPE: "+mimeType);
-            int statusCode = httpClient.executeMethod(postMethod);
-            if (statusCode != HttpStatus.SC_OK && statusCode != HttpStatus.SC_CREATED) {
-                
-                log.error("Method failed: "+postMethod.getStatusLine()+"; Response body: "+postMethod.getResponseBodyAsString());
-                postMethod.releaseConnection();
-                throw new ETLGenericException("Method failed: "+postMethod.getStatusLine()+"; Response body: "+new String(postMethod.getResponseBody()));
+            if(preserveNamedgraphs){
+                mimeType="application/x-trig";
             }
+            con.setRequestProperty("Content-Type", mimeType);
+            con.setDoOutput(true);
+            IOUtils.copy(new FileInputStream(fileToUpload), con.getOutputStream());
+
+            log.debug("Upload POST URL: "+uploadServiceURL+"\tMIME-TYPE: "+mimeType);
             
-            postMethod.releaseConnection();
+            int responseCode = con.getResponseCode();
+            
+            if (responseCode != HttpStatus.SC_OK && responseCode != HttpStatus.SC_CREATED) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                log.error("An error occured while uploading contents. Response Status Code: "+responseCode+"\tRespose Body: "+response.toString());
+                throw new ETLGenericException("An error occured while uploading contents. Response Status Code: "+responseCode+"\tRespose Body: "+response.toString());
+            }
             log.info("Resource "+fileToUpload.getAbsolutePath()+" was successfully uploaded");
-            
         }catch(IllegalArgumentException | IOException ex){
             log.error("An error occured while uploading data",ex);
             throw new ETLGenericException("An error occured while uploading data",ex);
         }
-        
-
     }
     
     private static String file2String(File file) throws ETLGenericException{
