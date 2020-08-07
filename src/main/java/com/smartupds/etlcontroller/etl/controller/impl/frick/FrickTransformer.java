@@ -1,6 +1,7 @@
 package com.smartupds.etlcontroller.etl.controller.impl.frick;
 
 import com.smartupds.etlcontroller.etl.controller.Resources;
+import com.smartupds.etlcontroller.etl.controller.Utils;
 import com.smartupds.etlcontroller.etl.controller.api.Transformer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import gr.forth.ics.isl.timer.Timer;
@@ -20,30 +21,26 @@ public class FrickTransformer implements Transformer{
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform");
         log.info("START: Transform data from FRICK");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).listFiles()){
-            this.transformFile(file,
-                           new File(Resources.MAPPINGS_FRICK_ALL),
-                           new File(Resources.GENERATOR_POLICY_FRICK),
-                           new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK));
+            Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_FRICK_ALL),
+                                new File(Resources.GENERATOR_POLICY_FRICK),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL), 
+                                X3MLEngineFactory.OutputFormat.TRIG);
         }
         Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform");
         log.info("FINISH: Transform data from FRICK in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform"));
-    }
-    
-    /** Transforms the given resources using X3ML engine.
-     * 
-     * @param inputFile the XML input file
-     * @param mappingsFile the X3ML mapping definition file
-     * @param generatorPolicyFile the generator policy file
-     * @param outputFolder the folder where the transformed contents will be exported. */
-    private void transformFile(File inputFile, File mappingsFile, File generatorPolicyFile, File outputFolder){
-        File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", ".n3"));
-        log.debug("transforming resource "+inputFile.getName());
-        X3MLEngineFactory.create()
-                         .withInputFiles(inputFile)
-                         .withMappings(mappingsFile)
-                         .withGeneratorPolicy(generatorPolicyFile)
-                         .withOutput(outputFile, X3MLEngineFactory.OutputFormat.NTRIPLES)
-                         .execute();
+        
+        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform-fc-fr");
+        log.info("START: Transform data using FCs FRs from FRICK");
+        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).listFiles()){
+            Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_FRICK_FC_FR),
+                                new File(Resources.GENERATOR_POLICY_FRICK),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR),
+                                X3MLEngineFactory.OutputFormat.RDF_XML);
+        }
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform-fc-fr");
+        log.info("FINISH: Transform data using FCs FRs from FRICK in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform-fc-fr"));
     }
     
     public static FrickTransformer create(){

@@ -35,14 +35,14 @@ public class MarburgNormalizer implements Normalizer{
     @Override
     public void normalizeResources() throws ETLGenericException {
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
-//        log.info("START: Split large files from Marburg");
-//        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_MARBURG, 
-//                           Resources.FOLDER_INPUT_NORMALIZED_MARBURG,
-//                           Resources.MARBURG_COMBINED_RESOURCES_ROOT_ELEMENT,
-//                           Resources.MARBURG_COMBINED_RESOURCES_OBJ_ELEMENT,
-//                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-//        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
-//        log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
+        log.info("START: Split large files from Marburg");
+        this.splitFiles(Resources.FOLDER_INPUT_FETCHED_MARBURG, 
+                           Resources.FOLDER_INPUT_NORMALIZED_MARBURG,
+                           Resources.MARBURG_COMBINED_RESOURCES_ROOT_ELEMENT,
+                           Resources.MARBURG_COMBINED_RESOURCES_OBJ_ELEMENT,
+                           Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
+        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
+        log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
         
         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.syntax");
         log.info("START: Perform Syntax Normalization for resources from Marburg");
@@ -147,8 +147,6 @@ public class MarburgNormalizer implements Normalizer{
                 parentElem.setAttribute("type", "akl");
             }else if(textualIdentifier.toLowerCase().startsWith("viaf")){
                 parentElem.setAttribute("type", "viaf");
-            }else{
-                System.out.println("something else: "+textualIdentifier);
             }
         }
         log.info("END: Identify Source");

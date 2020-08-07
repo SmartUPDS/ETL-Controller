@@ -1,6 +1,7 @@
 package com.smartupds.etlcontroller.etl.controller.api;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 
 /** This class is responsible for ingesting RDF resources into a knowledge base (e.g. triplestore)
  *

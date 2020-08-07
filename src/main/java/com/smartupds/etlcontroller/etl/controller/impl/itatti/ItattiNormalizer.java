@@ -209,12 +209,20 @@ public class ItattiNormalizer implements Normalizer {
                 NodeList versoElements=doc.getElementsByTagName("Verso_Image_URI");
                 for(int i=0;i<versoElements.getLength();i++){
                     Node versoElem=versoElements.item(i);
-                    versoElem.setTextContent(this.normalizeVersoImageUrl(versoElem.getTextContent()));
+                    String versoUriOriginal=versoElem.getTextContent();
+                    versoElem.setTextContent(this.normalizeImageUrl(versoUriOriginal));
+                    Element jsonElement=doc.createElement("Verso_Image_JSON");
+                    jsonElement.setTextContent(this.normalizeImageJson(versoUriOriginal));
+                    versoElem.getParentNode().appendChild(jsonElement);
                 }
                 NodeList rectoElements=doc.getElementsByTagName("Recto_Image_URI");
                 for(int i=0;i<rectoElements.getLength();i++){
                     Node rectoElem=rectoElements.item(i);
-                    rectoElem.setTextContent(this.normalizeRectoImageUrl(rectoElem.getTextContent()));
+                    String rectoUriOriginal=rectoElem.getTextContent();
+                    rectoElem.setTextContent(this.normalizeImageUrl(rectoUriOriginal));
+                    Element jsonElement=doc.createElement("Recto_Image_JSON");
+                    jsonElement.setTextContent(this.normalizeImageJson(rectoUriOriginal));
+                    rectoElem.getParentNode().appendChild(jsonElement);
                 }
                 this.exportXmlDocument(doc, new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
             }catch(NormalizerException ex){
@@ -224,14 +232,14 @@ public class ItattiNormalizer implements Normalizer {
         }
     }
     
-    private String normalizeVersoImageUrl(String versoImageUri){
+    private String normalizeImageUrl(String versoImageUri){
         return versoImageUri.replace("Scaler/IIIF/GRI", "iiif/2/fotoindex")+".jpg/full/!700,700/0/default.jpg";
     }
     
-    private String normalizeRectoImageUrl(String versoImageUri){
+    private String normalizeImageJson(String versoImageUri){
         return versoImageUri.replace("Scaler/IIIF/GRI", "iiif/2/fotoindex")+".jpg/info.json";
     }
-
+    
     public static ItattiNormalizer create(){
         return new ItattiNormalizer();
     }

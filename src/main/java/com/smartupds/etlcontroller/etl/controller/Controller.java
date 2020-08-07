@@ -11,13 +11,17 @@ import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
+import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /** The entry point of the ETL Controller. The class is responsible for 
  * executing the entire ETL workflow.
@@ -35,7 +39,7 @@ public class Controller {
 //        ItattiNormalizer.create().normalizeResources();
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
-        ZeriNormalizer.create().normalizeResources();
+//        ZeriNormalizer.create().normalizeResources();
 //        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
         
@@ -44,7 +48,7 @@ public class Controller {
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-//        MarburgTransformer.create().transformResources();
+        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
@@ -53,7 +57,9 @@ public class Controller {
 //        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
-        
+//        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
+//        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
+//        MarburgIngester.create(triplestoreConnection).ingestResources();
         /* Test Resources */
     }
     
@@ -86,13 +92,23 @@ public class Controller {
         
         log.debug("Create MAPPINGS folders");
         new File(Resources.FOLDER_MAPPINGS).mkdir();
+        new File(Resources.MAPPINGS_VILLA_I_TATTI).mkdir();
+        new File(Resources.MAPPINGS_VILLA_I_TATTI_SHAREDSHELF).mkdir();
+        new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX).mkdir();
+        new File(Resources.MAPPINGS_HERTZIANA).mkdir();
+        new File(Resources.MAPPINGS_FRICK).mkdir();
+        new File(Resources.MAPPINGS_KHI).mkdir();
+        new File(Resources.MAPPINGS_ZERI).mkdir();
+        new File(Resources.MAPPINGS_MARBURG).mkdir();
         
         log.debug("Create OUTPUT folders");
         new File(Resources.FOLDER_OUTPUT).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_LVL2).mkdir();
@@ -118,8 +134,11 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL3).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL4).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS).mkdir();
-        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS).mkdir();
