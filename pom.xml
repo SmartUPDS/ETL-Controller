@@ -77,28 +77,9 @@
         </dependency>
         <dependency>
             <groupId>org.apache.jena</groupId>
-            <artifactId>jena-shaded-guava</artifactId>
-            <version>3.1.0</version>
-            <type>jar</type>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.jena/jena -->
-        <dependency>
-            <groupId>org.apache.jena</groupId>
-            <artifactId>jena</artifactId>
-            <version>3.1.0</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.jena</groupId>
             <artifactId>jena-core</artifactId>
-            <version>3.1.0</version>
+            <version>2.12.0</version>
             <type>jar</type>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.jena/jena-arq -->
-        <dependency>
-            <groupId>org.apache.jena</groupId>
-            <artifactId>jena-arq</artifactId>
-            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
