@@ -20,8 +20,7 @@ public class ZeriHomogenizer implements Homogenizer{
     @Override
     public void homogenizeResources() throws ETLGenericException {
         try{
-//            this.checkN3Validity();
-            
+            this.checkN3Validity();
             this.consolidateN3Resources();
         }catch(IOException ex){
             log.error("An error occured while validating N3 resources",ex);
