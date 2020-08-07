@@ -60,10 +60,12 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL3=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.ARTWORKS+"_lvl3";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.ARTWORKS+"_lvl4";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.PHOTOGRAPHS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.PHOTOGRAPHS+"_fc_fr";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.BUILTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL2=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.BUILTWORKS+"_lvl2";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL3=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.BUILTWORKS+"_lvl3";
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.BUILTWORKS+"_lvl4";
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_WORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.WORKS+"_fc_fr";
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.KHI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL2=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS+"_lvl2";
@@ -102,6 +104,7 @@ public class Resources {
     public static final String L2V="l2v";
     public static final String LVL2="lvl2";
     public static final String WORK="Work";
+    public static final String WORKS="works";
     
     /* Mapping resources */
     public static final String MAPPINGS_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+Resources.VILLA_I_TATTI;

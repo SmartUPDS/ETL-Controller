@@ -124,6 +124,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL3).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL4).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS).mkdir();
