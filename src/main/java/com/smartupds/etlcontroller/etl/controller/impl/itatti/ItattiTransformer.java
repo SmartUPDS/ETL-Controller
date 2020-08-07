@@ -21,7 +21,7 @@ public class ItattiTransformer implements Transformer {
         log.info("START: Transform SharedShelf data from Villa I Tatti");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).listFiles()){
             this.transformFile(file,
-                           new File(Resources.MAPPINGS_VILLA_I_TATTI),
+                           new File(Resources.MAPPINGS_VILLA_I_TATTI_ALL),
                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI),
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF));
         }

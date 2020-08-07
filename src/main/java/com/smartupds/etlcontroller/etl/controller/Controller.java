@@ -35,7 +35,7 @@ public class Controller {
 //        ItattiNormalizer.create().normalizeResources();
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
-        ZeriNormalizer.create().normalizeResources();
+//        ZeriNormalizer.create().normalizeResources();
 //        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
         
@@ -86,6 +86,12 @@ public class Controller {
         
         log.debug("Create MAPPINGS folders");
         new File(Resources.FOLDER_MAPPINGS).mkdir();
+        new File(Resources.MAPPINGS_VILLA_I_TATTI).mkdir();
+        new File(Resources.MAPPINGS_HERTZIANA).mkdir();
+        new File(Resources.MAPPINGS_FRICK).mkdir();
+        new File(Resources.MAPPINGS_KHI).mkdir();
+        new File(Resources.MAPPINGS_ZERI).mkdir();
+        new File(Resources.MAPPINGS_MARBURG).mkdir();
         
         log.debug("Create OUTPUT folders");
         new File(Resources.FOLDER_OUTPUT).mkdir();
