@@ -200,8 +200,11 @@ public class Resources {
     public static final String TRIPLESTORE_BEAN_ID="triplestoreConnection";
     
     /* Default graphspaces */
-    public static final String GRAPHSPACE_VILLA_I_TATTI="http://itatti/";
-    public static final String GRAPHSPACE_VILLA_I_TATTI_FC_FR="http://itatti_fc_fr/";
+    public static final String GRAPHSPACE_FRICK="http://frick/";
+    public static final String GRAPHSPACE_FRICK_FC_FR="http://frick_fc_fr/";
     public static final String GRAPHSPACE_MARBURG="http://marburg/";
     public static final String GRAPHSPACE_MARBURG_FC_FR="http://marburg_fc_fr/";
+    public static final String GRAPHSPACE_VILLA_I_TATTI="http://itatti/";
+    public static final String GRAPHSPACE_VILLA_I_TATTI_FC_FR="http://itatti_fc_fr/";
+    
 }
