@@ -44,7 +44,7 @@ public class Controller {
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-//        MarburgTransformer.create().transformResources();
+        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
