@@ -16,7 +16,7 @@ import org.apache.commons.io.FileUtils;
  */
 @Log4j
 public class ItattiIngester implements Ingester{
-    private TripleStoreConnection triplestoreConnection;
+    private final TripleStoreConnection triplestoreConnection;
     
     private ItattiIngester(TripleStoreConnection tripleStoreConn){
         this.triplestoreConnection=tripleStoreConn;
@@ -24,37 +24,39 @@ public class ItattiIngester implements Ingester{
     
     @Override
     public void ingestResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.sharedshelf");
         log.info("START: Ingest SharedShelf resources from VillaITatti");
+        Timer.start(ItattiIngester.class+".sharedshelf");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VILLA_I_TATTI, true);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.sharedshelf");
-        log.info("FINISH: Ingest SharedShelf resources from VillaITatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.sharedshelf"));
+        Timer.stop(ItattiIngester.class+".sharedshelf");
+        log.info("FINISH: Ingest SharedShelf resources from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class+".sharedshelf"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.fotoindex");
         log.info("START: Ingest FotoIndex resources from VillaITatti");
+        Timer.start(ItattiIngester.class+".fotoindex");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VILLA_I_TATTI, true);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.fotoindex");
-        log.info("FINISH: Ingest FotoIndex resources from VillaITatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.fotoindex"));
+        Timer.stop(ItattiIngester.class+".fotoindex");
+        log.info("FINISH: Ingest FotoIndex resources from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class+".fotoindex"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.sharedshelf-fc-fr");
         log.info("START: Ingest SharedShelf resources using FCs FRs from VillaITatti");
+        Timer.start(ItattiIngester.class+".sharedshelf-fc-fr");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VILLA_I_TATTI_FC_FR, false);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.sharedshelf-fc-fr");
-        log.info("FINISH: Ingest SharedShelf resources using FCs FRs from VillaITatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.sharedshelf-fc-fr"));
+        Timer.stop(ItattiIngester.class+".sharedshelf-fc-fr");
+        log.info("FINISH: Ingest SharedShelf resources using FCs FRs from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class+".sharedshelf-fc-fr"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.fotoindex-fc-fr");
         log.info("START: Ingest FotoIndex resources using FCs FRs from VillaITatti");
+        Timer.start(ItattiIngester.class+".fotoindex-fc-fr");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VILLA_I_TATTI_FC_FR, false);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.fotoindex-fc-fr");
-        log.info("FINISH: Ingest FotoIndex resources using FCs FRs from VillaITatti in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.itatti.itatttiingester.ingest.fotoindex-fc-fr"));
+        Timer.stop(ItattiIngester.class+".fotoindex-fc-fr");
+        log.info("FINISH: Ingest FotoIndex resources using FCs FRs from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class+".fotoindex-fc-fr"));
+        
+        log.info("Villa I Tatti Ingest Time: "+Timer.reportHumanFriendly(ItattiIngester.class.toString()));
     }
     
     public static ItattiIngester create(TripleStoreConnection triplestoreConnection){
