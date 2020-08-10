@@ -2,13 +2,17 @@ package com.smartupds.etlcontroller.etl.controller;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickHomogenizer;
+import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiHomogenizer;
+import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgIngester;
@@ -59,7 +63,12 @@ public class Controller {
         /* Ingest Resources */
 //        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
 //        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
+//        ItattiIngester.create(triplestoreConnection).ingestResources();
+//        HertzianaIngester.create(triplestoreConnection).ingestResources();
+//        FrickIngester.create(triplestoreConnection).ingestResources();
 //        MarburgIngester.create(triplestoreConnection).ingestResources();
+//        KhiIngester.create(triplestoreConnection).ingestResources();
+        
         /* Test Resources */
     }
     

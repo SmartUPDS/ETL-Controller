@@ -210,6 +210,8 @@ public class Resources {
     public static final String GRAPHSPACE_FRICK_FC_FR="http://frick_fc_fr/";
     public static final String GRAPHSPACE_HERTZIANA="http://hertziana/";
     public static final String GRAPHSPACE_HERTZIANA_FC_FR="http://hertziana_fc_fr/";
+    public static final String GRAPHSPACE_KHI="http://khi/";
+    public static final String GRAPHSPACE_KHI_FC_FR="http://khi_fc_fr/";
     public static final String GRAPHSPACE_MARBURG="http://marburg/";
     public static final String GRAPHSPACE_MARBURG_FC_FR="http://marburg_fc_fr/";
     public static final String GRAPHSPACE_VILLA_I_TATTI="http://itatti/";
