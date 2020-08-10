@@ -38,23 +38,23 @@ public class Controller {
     
     public static void executeWorkflow() throws ETLGenericException{
         /* Harvest Resources */
-        //none(?)
+        //none (?)
         
         /* Normalize/Clean Input Resources */
-//        ItattiNormalizer.create().normalizeResources();
-//        FrickNormalizer.create().normalizeResources();
-//        HertzianaNormalizer.create().normalizeResources();
-//        ZeriNormalizer.create().normalizeResources();
-//        MarburgNormalizer.create().normalizeResources();
-//        KhiNormalizer.create().normalizeResources();
+        ItattiNormalizer.create().normalizeResources();
+        FrickNormalizer.create().normalizeResources();
+        HertzianaNormalizer.create().normalizeResources();
+        ZeriNormalizer.create().normalizeResources();
+        MarburgNormalizer.create().normalizeResources();
+        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-//        ItattiTransformer.create().transformResources();
+        ItattiTransformer.create().transformResources();
         HertzianaTransformer.create().transformResources();
-//        FrickTransformer.create().transformResources();
-//        ZeriTransformer.create().transformResources();
-//        MarburgTransformer.create().transformResources();
-//        KhiTransformer.create().transformResources();
+        FrickTransformer.create().transformResources();
+        ZeriTransformer.create().transformResources();
+        MarburgTransformer.create().transformResources();
+        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
 //        FrickHomogenizer.create().homogenizeResources();
@@ -62,16 +62,19 @@ public class Controller {
 //        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
-//        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
-//        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
-//        ItattiIngester.create(triplestoreConnection).ingestResources();
-//        HertzianaIngester.create(triplestoreConnection).ingestResources();
-//        FrickIngester.create(triplestoreConnection).ingestResources();
-//        ZeriIngester.create(triplestoreConnection).ingestResources();
-//        MarburgIngester.create(triplestoreConnection).ingestResources();
-//        KhiIngester.create(triplestoreConnection).ingestResources();
+        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
+        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
+        ItattiIngester.create(triplestoreConnection).ingestResources();
+        HertzianaIngester.create(triplestoreConnection).ingestResources();
+        FrickIngester.create(triplestoreConnection).ingestResources();
+        ZeriIngester.create(triplestoreConnection).ingestResources();
+        MarburgIngester.create(triplestoreConnection).ingestResources();
+        KhiIngester.create(triplestoreConnection).ingestResources();
         
         /* Test Resources */
+//        none (?)
+
+        Utils.reportTimeStatistics();
     }
     
     private static void createFoldersStructure(){

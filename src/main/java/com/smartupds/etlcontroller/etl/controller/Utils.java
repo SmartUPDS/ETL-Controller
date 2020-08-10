@@ -4,8 +4,15 @@ import com.google.common.io.Files;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
 import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import gr.forth.Labels;
+import gr.forth.ics.isl.timer.Timer;
 import gr.forth.ics.isl.x3ml.X3MLEngine;
 import static gr.forth.ics.isl.x3ml.X3MLEngine.exception;
 import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
@@ -249,5 +256,15 @@ public class Utils {
             throw new ETLGenericException("An error occured while reading file",ex);
         }
         return stringBuilder.toString();
+    }
+    
+    public static void reportTimeStatistics(){
+        log.info("OVERALL TIME STATISTICS (per source): ");
+        log.info("Overal Time for VILLA I TATTI: "+Timer.reportHumanFriendly(ItattiTransformer.class.getPackage().toString()));
+        log.info("Overal Time for HERTZIANA: "+Timer.reportHumanFriendly(HertzianaTransformer.class.getPackage().toString()));
+        log.info("Overal Time for FRICK: "+Timer.reportHumanFriendly(FrickTransformer.class.getPackage().toString()));
+        log.info("Overal Time for MARBURG: "+Timer.reportHumanFriendly(MarburgTransformer.class.getPackage().toString()));
+        log.info("Overal Time for ZERI: "+Timer.reportHumanFriendly(ZeriTransformer.class.getPackage().toString()));
+        log.info("Overal Time for KHI: "+Timer.reportHumanFriendly(KhiTransformer.class.getPackage().toString()));
     }
 }
