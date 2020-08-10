@@ -43,6 +43,7 @@ public class ItattiNormalizer implements Normalizer {
         this.normalizeFotoIndex(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX));
         Timer.stop(ItattiNormalizer.class+".normalize.fotoindex");
         log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class+".normalize.fotoindex"));
+     
         log.info("Villa I Tatti Normalizations Time: "+Timer.reportHumanFriendly(ItattiNormalizer.class.toString()));
     }
     
