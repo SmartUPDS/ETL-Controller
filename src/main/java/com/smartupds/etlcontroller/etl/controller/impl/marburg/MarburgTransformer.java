@@ -18,7 +18,7 @@ import org.apache.commons.io.FileUtils;
 public class MarburgTransformer implements Transformer{
   @Override
     public void transformResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworks");
+        Timer.start(MarburgTransformer.class+".artworks");
         log.info("START: Transform Artworks from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -27,10 +27,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworks");
-        log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworks"));
+        Timer.stop(MarburgTransformer.class+".artworks");
+        log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".artworks"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl2");
+        Timer.start(MarburgTransformer.class+".artworks-lv2");
         log.info("START: Transform Artworks LVL2 from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -39,10 +39,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL2), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl2");
-        log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl2"));
+        Timer.stop(MarburgTransformer.class+".artworks-lv2");
+        log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".artworks-lv2"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl3");
+        Timer.start(MarburgTransformer.class+".artworks-lv3");
         log.info("START: Transform Artworks LVL3 from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -51,10 +51,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL3), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl3");
-        log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl3"));
+        Timer.stop(MarburgTransformer.class+".artworks-lv3");
+        log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".artworks-lv3"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl4");
+        Timer.start(MarburgTransformer.class+".artworks-lv4");
         log.info("START: Transform Artworks LVL4 from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -63,10 +63,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL4), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl4");
-        log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.artworkslvl4"));
+        Timer.stop(MarburgTransformer.class+".artworks-lv4");
+        log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".artworks-lv4"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworks");
+        Timer.start(MarburgTransformer.class+".builtworks");
         log.info("START: Transform Builtworks from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -75,10 +75,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworks");
-        log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworks"));
+        Timer.stop(MarburgTransformer.class+".builtworks");
+        log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".builtworks"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl2");
+        Timer.start(MarburgTransformer.class+".builtworks-lv2");
         log.info("START: Transform Builtworks LVL2 from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -87,10 +87,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL2), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl2");
-        log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl2"));
+        Timer.stop(MarburgTransformer.class+".builtworks-lv2");
+        log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".builtworks-lv2"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl3");
+        Timer.start(MarburgTransformer.class+".builtworks-lv3");
         log.info("START: Transform Builtworks LVL3 from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -99,10 +99,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL3), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl3");
-        log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl3"));
+        Timer.stop(MarburgTransformer.class+".builtworks-lv3");
+        log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".builtworks-lv3"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl4");
+        Timer.start(MarburgTransformer.class+".builtworks-lv4");
         log.info("START: Transform Builtworks LVL4 from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -111,10 +111,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL4), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl4");
-        log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.builtworkslvl4"));
+        Timer.stop(MarburgTransformer.class+".builtworks-lv4");
+        log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".builtworks-lv4"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.photographs");
+        Timer.start(MarburgTransformer.class+".photographs");
         log.info("START: Transform Photographs from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -123,10 +123,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.photographs");
-        log.info("FINISH: Transform Photographs from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.photographs"));
+        Timer.stop(MarburgTransformer.class+".photographs");
+        log.info("FINISH: Transform Photographs from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".photographs"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.actors");
+        Timer.start(MarburgTransformer.class+".actors");
         log.info("START: Transform Actors from Marburg");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -135,10 +135,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.actors");
-        log.info("FINISH: Transform Actors from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.actors"));
+        Timer.stop(MarburgTransformer.class+".actors");
+        log.info("FINISH: Transform Actors from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class+".actors"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.works_fc_fr");
+        Timer.start(MarburgTransformer.class+".works-fc-fr");
         log.info("START: Transform Works from Marburg using FCs FRs");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -147,10 +147,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_WORKS_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.works_fc_fr");
-        log.info("FINISH: Transform Works from Marburg using FCs FRs in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.works_fc_fr"));
+        Timer.stop(MarburgTransformer.class+".works-fc-fr");
+        log.info("FINISH: Transform Works from Marburg using FCs FRs in "+Timer.reportHumanFriendly(MarburgTransformer.class+".works-fc-fr"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.photographs_fc_fr");
+        Timer.start(MarburgTransformer.class+".photographs-fc-fr");
         log.info("START: Transform Photographs from Marburg using FCs FRs");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG), null, true)){
             Utils.transformFile(file,
@@ -159,8 +159,10 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.photographs_fc_fr");
-        log.info("FINISH: Transform Works from Marburg using FCs FRs in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgtransformer.transform.photographs_fc_fr"));
+        Timer.stop(MarburgTransformer.class+".photographs-fc-fr");
+        log.info("FINISH: Transform Works from Marburg using FCs FRs in "+Timer.reportHumanFriendly(MarburgTransformer.class+".photographs-fc-fr"));
+        
+        log.info("Marburg Transformations Time: "+Timer.reportHumanFriendly(MarburgTransformer.class.toString()));
     }
     
     public static MarburgTransformer create(){

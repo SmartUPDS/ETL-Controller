@@ -18,7 +18,7 @@ public class KhiTransformer implements Transformer {
 
     @Override
     public void transformResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworks");
+        Timer.start(KhiTransformer.class+".artworks");
         log.info("START: Transform artworks from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -27,10 +27,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworks");
-        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworks"));
+        Timer.stop(KhiTransformer.class+".artworks");
+        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".artworks"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl2");
+        Timer.start(KhiTransformer.class+".artworks-lv2");
         log.info("START: Transform artworks LVL2 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -39,10 +39,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL2),
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl2");
-        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl2"));
+        Timer.stop(KhiTransformer.class+".artworks-lv2");
+        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".artworks-lv2"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl3");
+        Timer.start(KhiTransformer.class+".artworks-lv3");
         log.info("START: Transform artworks LVL3 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -51,10 +51,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL3),
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl3");
-        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl3"));            
+        Timer.stop(KhiTransformer.class+".artworks-lv3");
+        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".artworks-lv3"));            
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl4");
+        Timer.start(KhiTransformer.class+".artworks-lv4");
         log.info("START: Transform artworks LVL4 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -63,9 +63,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL4), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl4");
-        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.artworkslvl4"));
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworks");
+        Timer.stop(KhiTransformer.class+".artworks-lv4");
+        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".artworks-lv4"));
+        
+        Timer.start(KhiTransformer.class+".builtworks");
         log.info("START: Transform Builtworks from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -74,10 +75,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS),
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworks");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworks"));
+        Timer.stop(KhiTransformer.class+".builtworks");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".builtworks"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl2");
+        Timer.start(KhiTransformer.class+".builtworks-lv2");
         log.info("START: Transform Builtworks LVL2 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -86,10 +87,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL2), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl2");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl2"));
+        Timer.stop(KhiTransformer.class+".builtworks-lv2");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".builtworks-lv2"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl3");
+        Timer.start(KhiTransformer.class+".builtworks-lv3");
         log.info("START: Transform Builtworks LVL3 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -98,9 +99,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL3), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl3");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl3"));
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl4");
+        Timer.stop(KhiTransformer.class+".builtworks-lv3");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".builtworks-lv3"));
+        
+        Timer.start(KhiTransformer.class+".builtworks-lv4");
         log.info("START: Transform Builtworks LVL4 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -109,10 +111,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL4), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl4");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.builtworkslvl4"));
+        Timer.stop(KhiTransformer.class+".builtworks-lv4");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".builtworks-lv4"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.photographs");
+        Timer.start(KhiTransformer.class+".photographs");
         log.info("START: Transform photographs from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -121,10 +123,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.photographs");
-        log.info("FINISH: Transform photographs from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.photographs"));
+        Timer.stop(KhiTransformer.class+".photographs");
+        log.info("FINISH: Transform photographs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".photographs"));
 
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.actors");
+        Timer.start(KhiTransformer.class+".actors");
         log.info("START: Transform Actors from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -133,10 +135,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS),
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.actors");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.actors"));
+        Timer.stop(KhiTransformer.class+".actors");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".actors"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.photographs-fc-fr");
+        Timer.start(KhiTransformer.class+".photographs-fc-fr");
         log.info("START: Transform photographs using FCs FRs from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -145,10 +147,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.photographs-fc-fr");
-        log.info("FINISH: Transform photographs using FCs FRs from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.photographs-fc-fr"));
+        Timer.stop(KhiTransformer.class+".photographs-fc-fr");
+        log.info("FINISH: Transform photographs using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".photographs-fc-fr"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.works-fc-fr");
+        Timer.start(KhiTransformer.class+".works-fc-fr");
         log.info("START: Transform Works using FCs FRs from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -157,12 +159,13 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.works-fc-fr");
-        log.info("FINISH: Transform Works using FCs FRs from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khi.khitransformer.transform.works-fc-fr"));
+        Timer.stop(KhiTransformer.class+".works-fc-fr");
+        log.info("FINISH: Transform Works using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".works-fc-fr"));
+        
+        log.info("KHI Transformations Time: "+Timer.reportHumanFriendly(KhiTransformer.class.toString()));
     }
     
     public static KhiTransformer create(){
         return new KhiTransformer();
     }
- 
 }

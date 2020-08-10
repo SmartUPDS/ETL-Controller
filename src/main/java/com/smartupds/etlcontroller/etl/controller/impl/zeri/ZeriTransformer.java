@@ -19,7 +19,7 @@ public class ZeriTransformer implements Transformer {
 
     @Override
     public void transformResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks");
+        Timer.start(ZeriTransformer.class+".artworks");
         log.info("START: Transform Artworks from Zeri");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS), null, true)){
             Utils.transformFile(file,
@@ -28,11 +28,11 @@ public class ZeriTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks");
-        log.info("FINISH: Transform artworks from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.artworks"));
+        Timer.stop(ZeriTransformer.class+".artworks");
+        log.info("FINISH: Transform artworks from Zeri in "+Timer.reportHumanFriendly(ZeriTransformer.class+".artworks"));
         
         log.info("START: Transform Photographs from Zeri");
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.photographs");
+        Timer.start(ZeriTransformer.class+".photographs");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS), null, true)){
             Utils.transformFile(file,
                                 new File(Resources.MAPPINGS_ZERI_PHOTOGRAPHS),
@@ -40,11 +40,11 @@ public class ZeriTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.photographs");
-        log.info("FINISH: Transform photographs from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.photographs"));
+        Timer.stop(ZeriTransformer.class+".photographs");
+        log.info("FINISH: Transform photographs from Zeri in "+Timer.reportHumanFriendly(ZeriTransformer.class+".photographs"));
         
         log.info("START: Transform Photographs using FCs FRs from Zeri");
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.photographs-fc-fr");
+        Timer.start(ZeriTransformer.class+".photographs-fc-fr");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS), null, true)){
             Utils.transformFile(file,
                            new File(Resources.MAPPINGS_ZERI_PHOTOGRAPHS_FC_FR),
@@ -52,11 +52,11 @@ public class ZeriTransformer implements Transformer {
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS_FC_FR), 
                            X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.photographs-fc-fr");
-        log.info("FINISH: Transform photographs using FCs FRs from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.photographs-fc-fr"));
+        Timer.stop(ZeriTransformer.class+".photographs-fc-fr");
+        log.info("FINISH: Transform photographs using FCs FRs from Zeri in "+Timer.reportHumanFriendly(ZeriTransformer.class+".photographs-fc-fr"));
         
         log.info("START: Transform Works using FCs FRs from Zeri");
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.works-fc-fr");
+        Timer.start(ZeriTransformer.class+".works-fc-fr");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS), null, true)){
             Utils.transformFile(file,
                            new File(Resources.MAPPINGS_ZERI_WORKS_FC_FR),
@@ -64,8 +64,10 @@ public class ZeriTransformer implements Transformer {
                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_WORKS_FC_FR), 
                            X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.transform.works-fc-fr");
-        log.info("FINISH: Transform Works using FCs FRs from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.zeri.zeritransformer.works-fc-fr"));
+        Timer.stop(ZeriTransformer.class+".works-fc-fr");
+        log.info("FINISH: Transform Works using FCs FRs from Zeri in "+Timer.reportHumanFriendly(ZeriTransformer.class+".works-fc-fr"));
+        
+        log.info("Zeri Transformations Time: "+Timer.reportHumanFriendly(ZeriTransformer.class.toString()));
     }
     
     public static ZeriTransformer create(){
