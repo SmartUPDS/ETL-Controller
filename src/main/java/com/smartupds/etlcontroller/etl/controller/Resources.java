@@ -59,6 +59,8 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.ZERI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_ZERI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS=FOLDER_OUTPUT_TRANSFORMED_ZERI+"/"+Resources.PHOTOGRAPHS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_ZERI+"/"+Resources.PHOTOGRAPHS+Resources._FC_FR;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI_WORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_ZERI+"/"+Resources.WORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.MARBURG;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.ACTORS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_MARBURG+"/"+Resources.ARTWORKS;
@@ -152,9 +154,11 @@ public class Resources {
     public static final String MAPPINGS_FRICK_FC_FR=MAPPINGS_FRICK+"/"+"mappings-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_FRICK=MAPPINGS_FRICK+"/"+"generator-policy.xml";
     public static final String MAPPINGS_ZERI=FOLDER_MAPPINGS+"/"+Resources.ZERI;
-    public static final String MAPPINGS_ZERI_ARTWORKS=FOLDER_MAPPINGS+"/"+"mappings-zeri-artworks.x3ml";
-    public static final String MAPPINGS_ZERI_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-zeri-photographs.x3ml";
-    public static final String GENERATOR_POLICY_ZERI=FOLDER_MAPPINGS+"/"+"generator-policy-zeri.xml";
+    public static final String MAPPINGS_ZERI_ARTWORKS=MAPPINGS_ZERI+"/"+"mappings-artworks.x3ml";
+    public static final String MAPPINGS_ZERI_PHOTOGRAPHS=MAPPINGS_ZERI+"/"+"mappings-photographs.x3ml";
+    public static final String MAPPINGS_ZERI_PHOTOGRAPHS_FC_FR=MAPPINGS_ZERI+"/"+"mappings-photographs-fc-fr.x3ml";
+    public static final String MAPPINGS_ZERI_WORKS_FC_FR=MAPPINGS_ZERI+"/"+"mappings-works-fc-fr.x3ml";
+    public static final String GENERATOR_POLICY_ZERI=FOLDER_MAPPINGS+"/"+"generator-policy.xml";
     public static final String MAPPINGS_MARBURG=FOLDER_MAPPINGS+"/"+Resources.MARBURG;
     public static final String MAPPINGS_MARBURG_ACTORS=MAPPINGS_MARBURG+"/"+"mappings-actors.x3ml";
     public static final String MAPPINGS_MARBURG_ARTWORKS=MAPPINGS_MARBURG+"/"+"mappings-artworks.x3ml";

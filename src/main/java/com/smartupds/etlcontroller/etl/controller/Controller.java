@@ -132,6 +132,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS).mkdir();
