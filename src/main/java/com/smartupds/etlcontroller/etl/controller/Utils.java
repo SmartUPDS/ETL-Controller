@@ -32,6 +32,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Element;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -153,7 +154,7 @@ public class Utils {
                 break;
         }
         try{
-            File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", extension));
+            File outputFile=new File(outputFolder.getAbsolutePath()+"/"+inputFile.getName().replace(".xml", "."+extension));
             log.debug("Transforming file "+inputFile.getAbsolutePath()+" to file "+outputFile.getAbsolutePath());
             X3MLEngine engine=X3MLEngine.load(new FileInputStream(mappingsFile));
             Generator policy=X3MLGeneratorPolicy.load(new FileInputStream(generatorPolicyFile), X3MLGeneratorPolicy.createUUIDSource(-1));
@@ -181,6 +182,10 @@ public class Utils {
     }
     
     public static void uploadFile(TripleStoreConnection triplestore, File fileToUpload, String graphspace, boolean preserveNamedgraphs) throws ETLGenericException{
+        if(FileUtils.sizeOf(fileToUpload)<10){
+            log.warn("Skipping upload of file "+fileToUpload.getAbsolutePath()+" (empty?)");
+            return;
+        }
         try{
             String uploadServiceURL=triplestore.getConnectionURL()+"?graph="+graphspace;
             if(preserveNamedgraphs){
