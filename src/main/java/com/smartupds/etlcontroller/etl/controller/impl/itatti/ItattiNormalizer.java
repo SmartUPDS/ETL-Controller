@@ -31,12 +31,18 @@ import split.ElementsSplit;
 public class ItattiNormalizer implements Normalizer {
 
     @Override
-    public void normalizeResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattinormalizer.normalize");
+    public void normalizeResources() throws ETLGenericException {       
+        log.info("START: Normalize contents from Villa I Tatti - SharedShelf");
+        Timer.start(ItattiNormalizer.class+".normalize.sharedshelf");
         this.normalizeSharedShelfNotes(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF));
-        this.normalizeFotoIndex(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX));
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.itatti.itattinormalizer.normalize");
+        Timer.stop(ItattiNormalizer.class+".normalize.sharedshelf");
+        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class+".normalize.sharedshelf"));
         
+        log.info("START: Normalize contents from Villa I Tatti - FotoIndex");
+        Timer.start(ItattiNormalizer.class+".normalize.fotoindex");
+        this.normalizeFotoIndex(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX));
+        Timer.stop(ItattiNormalizer.class+".normalize.fotoindex");
+        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class+".normalize.fotoindex"));
     }
     
     public void normalizeSharedShelfNotes(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{

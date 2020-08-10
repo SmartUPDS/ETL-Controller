@@ -30,7 +30,7 @@ public class FrickNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.frick.fricknanormalizer.normalize");
+        Timer.start(FrickNormalizer.class+".normalize");
         log.info("START: Normalize textual contents from FRICK");
         try{
             for(File file : new File(Resources.FOLDER_INPUT_FETCHED_FRICK).listFiles()){
@@ -54,8 +54,8 @@ public class FrickNormalizer implements Normalizer{
             log.error("An error occured while normalizing collection",ex);
             throw new ETLGenericException("An error occured while normalizing collection",ex);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.frick.fricknanormalizer.normalize");
-        log.info("FINISH: Split large files from FRICK in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.frick.fricknanormalizer.normalize"));
+        Timer.stop(FrickNormalizer.class+".normalize");
+        log.info("FINISH: Split large files from FRICK in "+Timer.reportHumanFriendly(FrickNormalizer.class+".normalize"));
     }
     
     private Document removeSuffixPunctuation(Document doc,String elementName){
