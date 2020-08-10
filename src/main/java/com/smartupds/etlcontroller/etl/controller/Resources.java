@@ -78,11 +78,13 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL3=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS+"_lvl3";
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS+"_lvl4";
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.PHOTOGRAPHS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.PHOTOGRAPHS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL2=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+"_lvl2";
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL3=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+"_lvl3";
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+"_lvl4";
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ACTORS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.WORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_NORMALIZED=FOLDER_OUTPUT+"/"+"2_Normalized";
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.ZERI;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.ARTWORKS;
@@ -168,17 +170,19 @@ public class Resources {
     public static final String MAPPINGS_MARBURG_WORKS_FC_FR=MAPPINGS_MARBURG+"/"+"mappings-works-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_MARBURG=MAPPINGS_MARBURG+"/"+"generator-policy.xml";
     public static final String MAPPINGS_KHI=FOLDER_MAPPINGS+"/"+Resources.KHI;
-    public static final String MAPPINGS_KHI_ACTORS=FOLDER_MAPPINGS+"/"+"mappings-khi-actors.x3ml";
-    public static final String MAPPINGS_KHI_ARTWORKS=FOLDER_MAPPINGS+"/"+"mappings-khi-artworks.x3ml";
-    public static final String MAPPINGS_KHI_ARTWORKS_LVL2=FOLDER_MAPPINGS+"/"+"mappings-khi-artworks-lvl2.x3ml";
-    public static final String MAPPINGS_KHI_ARTWORKS_LVL3=FOLDER_MAPPINGS+"/"+"mappings-khi-artworks-lvl3.x3ml";
-    public static final String MAPPINGS_KHI_ARTWORKS_LVL4=FOLDER_MAPPINGS+"/"+"mappings-khi-artworks-lvl4.x3ml";
-    public static final String MAPPINGS_KHI_BUILTWORKS=FOLDER_MAPPINGS+"/"+"mappings-khi-builtworks.x3ml";
-    public static final String MAPPINGS_KHI_BUILTWORKS_LVL2=FOLDER_MAPPINGS+"/"+"mappings-khi-builtworks-lvl2.x3ml";
-    public static final String MAPPINGS_KHI_BUILTWORKS_LVL3=FOLDER_MAPPINGS+"/"+"mappings-khi-builtworks-lvl3.x3ml";
-    public static final String MAPPINGS_KHI_BUILTWORKS_LVL4=FOLDER_MAPPINGS+"/"+"mappings-khi-builtworks-lvl4.x3ml";
-    public static final String MAPPINGS_KHI_PHOTOGRAPHS=FOLDER_MAPPINGS+"/"+"mappings-khi-photographs.x3ml";
-    public static final String GENERATOR_POLICY_KHI=FOLDER_MAPPINGS+"/"+"generator-policy-khi.xml";
+    public static final String MAPPINGS_KHI_ACTORS=MAPPINGS_KHI+"/"+"mappings-actors.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS=MAPPINGS_KHI+"/"+"mappings-artworks.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS_LVL2=MAPPINGS_KHI+"/"+"mappings-artworks-lvl2.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS_LVL3=MAPPINGS_KHI+"/"+"mappings-artworks-lvl3.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS_LVL4=MAPPINGS_KHI+"/"+"mappings-artworks-lvl4.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS=MAPPINGS_KHI+"/"+"mappings-buildworks.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS_LVL2=MAPPINGS_KHI+"/"+"mappings-buildworks-lvl2.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS_LVL3=MAPPINGS_KHI+"/"+"mappings-buildworks-lvl3.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS_LVL4=MAPPINGS_KHI+"/"+"mappings-buildworks-lvl4.x3ml";
+    public static final String MAPPINGS_KHI_PHOTOGRAPHS=MAPPINGS_KHI+"/"+"mappings-photos.x3ml";
+    public static final String MAPPINGS_KHI_PHOTOGRAPHS_FC_FR=MAPPINGS_KHI+"/"+"mappings-photos-fc-fr.x3ml";
+    public static final String MAPPINGS_KHI_WORKS_FC_FR=MAPPINGS_KHI+"/"+"mappings-works-fc-fr.x3ml";
+    public static final String GENERATOR_POLICY_KHI=MAPPINGS_KHI+"/"+"generator-policy.xml";
     
     /* HERTZIANA resources */
     public static final String HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT="root";
