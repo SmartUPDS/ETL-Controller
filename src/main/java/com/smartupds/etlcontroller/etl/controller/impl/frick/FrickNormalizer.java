@@ -56,6 +56,8 @@ public class FrickNormalizer implements Normalizer{
         }
         Timer.stop(FrickNormalizer.class+".normalize");
         log.info("FINISH: Split large files from FRICK in "+Timer.reportHumanFriendly(FrickNormalizer.class+".normalize"));
+        
+        log.info("FRICK Normalizations Time: "+Timer.reportHumanFriendly(FrickNormalizer.class.toString()));
     }
     
     private Document removeSuffixPunctuation(Document doc,String elementName){

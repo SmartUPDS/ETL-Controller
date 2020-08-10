@@ -17,10 +17,8 @@ import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.tuple.Triple;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import split.ElementsSplit;
@@ -34,17 +32,17 @@ public class HertzianaNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
+        Timer.start(HertzianaNormalizer.class+".split");
         log.info("START: Split large files from Hertziana");
         this.splitFiles(Resources.FOLDER_INPUT_FETCHED_HERTZIANA, 
                            Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA,
                            Resources.HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT,
                            Resources.HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT,
                            Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split");
-        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
+        Timer.stop(HertzianaNormalizer.class+".split");
+        log.info("FINISH: Split large files from Hertziana in "+Timer.reportHumanFriendly(HertzianaNormalizer.class+".split"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
+        Timer.start(HertzianaNormalizer.class+".syntax-norm");
         log.info("START: Perform Syntax Normalization for resources from Hertziana");
         List<String> elementsList=Arrays.asList("a30gn",
                                                 "a3105",
@@ -56,8 +54,10 @@ public class HertzianaNormalizer implements Normalizer{
             log.error("An error occured while normalizing input resources",ex);
             throw new ETLGenericException("An error occured while normalizing input resources",ex);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
-        log.info("FINISH: Perform Syntax Normalization for resources from Hertziana in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax"));
+        Timer.stop(HertzianaNormalizer.class+".syntax-norm");
+        log.info("FINISH: Perform Syntax Normalization for resources from Hertziana in "+Timer.reportHumanFriendly(HertzianaNormalizer.class+".syntax-norm"));
+        
+        log.info("FRICK Normalizations Time: "+Timer.reportHumanFriendly(HertzianaNormalizer.class.toString()));
     }
     
     /** This methods splits the files found in the input folder, into files with 
