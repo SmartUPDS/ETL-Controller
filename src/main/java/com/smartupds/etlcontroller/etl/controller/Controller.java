@@ -2,19 +2,24 @@ package com.smartupds.etlcontroller.etl.controller;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickHomogenizer;
+import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiHomogenizer;
+import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
+import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
 import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
@@ -33,23 +38,23 @@ public class Controller {
     
     public static void executeWorkflow() throws ETLGenericException{
         /* Harvest Resources */
-        //none(?)
+        //none (?)
         
         /* Normalize/Clean Input Resources */
-//        ItattiNormalizer.create().normalizeResources();
-//        FrickNormalizer.create().normalizeResources();
-//        HertzianaNormalizer.create().normalizeResources();
-//        ZeriNormalizer.create().normalizeResources();
-//        MarburgNormalizer.create().normalizeResources();
-//        KhiNormalizer.create().normalizeResources();
+        ItattiNormalizer.create().normalizeResources();
+        FrickNormalizer.create().normalizeResources();
+        HertzianaNormalizer.create().normalizeResources();
+        ZeriNormalizer.create().normalizeResources();
+        MarburgNormalizer.create().normalizeResources();
+        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-//        ItattiTransformer.create().transformResources();
-//        HertzianaTransformer.create().transformResources();
-//        FrickTransformer.create().transformResources();
-//        ZeriTransformer.create().transformResources();
+        ItattiTransformer.create().transformResources();
+        HertzianaTransformer.create().transformResources();
+        FrickTransformer.create().transformResources();
+        ZeriTransformer.create().transformResources();
         MarburgTransformer.create().transformResources();
-//        KhiTransformer.create().transformResources();
+        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
 //        FrickHomogenizer.create().homogenizeResources();
@@ -57,10 +62,19 @@ public class Controller {
 //        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
-//        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
-//        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
-//        MarburgIngester.create(triplestoreConnection).ingestResources();
+        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
+        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
+        ItattiIngester.create(triplestoreConnection).ingestResources();
+        HertzianaIngester.create(triplestoreConnection).ingestResources();
+        FrickIngester.create(triplestoreConnection).ingestResources();
+        ZeriIngester.create(triplestoreConnection).ingestResources();
+        MarburgIngester.create(triplestoreConnection).ingestResources();
+        KhiIngester.create(triplestoreConnection).ingestResources();
+        
         /* Test Resources */
+//        none (?)
+
+        Utils.reportTimeStatistics();
     }
     
     private static void createFoldersStructure(){
@@ -76,6 +90,8 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS_ZIPS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS_ZIPS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_MARBURG).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_KHI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
@@ -123,6 +139,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS).mkdir();
@@ -150,6 +168,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL3).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL4).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();

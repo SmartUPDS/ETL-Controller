@@ -1,6 +1,5 @@
 package com.smartupds.etlcontroller.etl.controller.impl.khi;
 
-import com.smartupds.etlcontroller.etl.controller.impl.zeri.*;
 import com.smartupds.etlcontroller.etl.controller.Resources;
 import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
@@ -38,8 +37,8 @@ public class KhiNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip");
-        log.info("START: Unzip resoruces from KHI");
+        Timer.start(KhiNormalizer.class+".unzip");
+        log.info("START: Unzip resources from KHI");
         for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_KHI).listFiles()){
             if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
                 log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_FETCHED_KHI);
@@ -49,37 +48,40 @@ public class KhiNormalizer implements Normalizer{
                 log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
             }  
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip");
-        log.info("FINISH: Unzip Resources from Zeri in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.unzip"));
+        Timer.stop(KhiNormalizer.class+".unzip");
+        log.info("FINISH: Unzip Resources from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class+".unzip"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
+        Timer.start(KhiNormalizer.class+".split");
         log.info("START: Split large files from KHI");
         this.splitFiles(Resources.FOLDER_INPUT_FETCHED_KHI, 
                            Resources.FOLDER_INPUT_NORMALIZED_KHI,
                            Resources.KHI_COMBINED_RESOURCES_ROOT_ELEMENT,
                            Resources.KHI_COMBINED_RESOURCES_OBJ_ELEMENT,
                            Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split");
-         Timer.start("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
-        log.info("START: Perform Syntax Normalization for resources from Hertziana");
+        Timer.stop(KhiNormalizer.class+".split");
+        log.info("FINISH: Split large files from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class+".split"));
+        
+        Timer.start(KhiNormalizer.class+".syntax-norm");
+        log.info("START: Perform Syntax Normalization for resources from KHI");
         List<String> elementsList=Arrays.asList("a30gn",
                                                 "a3105",
                                                 "a5220","a5260","a5300","a5500",
                                                 "a8498",
-                                                "a40gn", "a50gn");  //I've added thos on my own (YM)
-//        List<String> elementsList=Arrays.asList("a30gn");
+                                                "a40gn", "a50gn");
         try{
             this.normalizeSyntax(new File(Resources.FOLDER_INPUT_NORMALIZED_KHI),elementsList,"&");
         }catch(NormalizerException | IOException ex){
             log.error("An error occured while normalizing input resources",ex);
             throw new ETLGenericException("An error occured while normalizing input resources",ex);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.syntax");
-        log.info("FINISH: Split large files from KHI in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.khinormalizer.split"));
+        Timer.stop(KhiNormalizer.class+".syntax-norm");
+        log.info("FINISH: Perform Syntax Normalization for resources from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class+".syntax-norm"));
+        
+        log.info("KHI Normalizations Time: "+Timer.reportHumanFriendly(KhiNormalizer.class.toString()));
     }
     
     /** This method carries out syntax normalization. In particular it normalizes (creates two or more) elements with the 
-     * given element name, if they contain one or more occurences of the given splitCharSequence
+     * given element name, if they contain one or more occurrences of the given splitCharSequence
      * 
      * @param inputFolder the folder containing XML files to be normalized
      * @param elementName the element name to be considered for normalization
@@ -95,8 +97,8 @@ public class KhiNormalizer implements Normalizer{
             Document doc=ElementsSplit.splitElements(ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap);
             doc=normalizeYear(doc, "a5064");
             doc=identifySource(doc, "a30gn");
-            doc=identifySource(doc, "a40gn");   //I've added those on my own (YM)
-            doc=identifySource(doc, "a50gn");   //I've added those on my own (YM)
+            doc=identifySource(doc, "a40gn");   
+            doc=identifySource(doc, "a50gn");   
             ElementsSplit.exportXmlDocument(doc, new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
             FileUtils.deleteQuietly(file);  //Seems that it doesn't work
         }
