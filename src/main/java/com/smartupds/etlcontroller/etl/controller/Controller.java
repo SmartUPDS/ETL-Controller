@@ -19,6 +19,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
+import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriIngester;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
 import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
@@ -66,6 +67,7 @@ public class Controller {
 //        ItattiIngester.create(triplestoreConnection).ingestResources();
 //        HertzianaIngester.create(triplestoreConnection).ingestResources();
 //        FrickIngester.create(triplestoreConnection).ingestResources();
+//        ZeriIngester.create(triplestoreConnection).ingestResources();
 //        MarburgIngester.create(triplestoreConnection).ingestResources();
 //        KhiIngester.create(triplestoreConnection).ingestResources();
         

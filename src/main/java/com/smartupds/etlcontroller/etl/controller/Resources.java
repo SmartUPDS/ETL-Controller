@@ -220,5 +220,7 @@ public class Resources {
     public static final String GRAPHSPACE_MARBURG_FC_FR="http://marburg_fc_fr/";
     public static final String GRAPHSPACE_VILLA_I_TATTI="http://itatti/";
     public static final String GRAPHSPACE_VILLA_I_TATTI_FC_FR="http://itatti_fc_fr/";
+    public static final String GRAPHSPACE_ZERI="http://zeri/";
+    public static final String GRAPHSPACE_ZERI_FC_FR="http://zeri_fc_fr/";
     
 }
