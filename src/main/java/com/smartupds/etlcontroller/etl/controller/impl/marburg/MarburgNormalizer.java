@@ -17,15 +17,13 @@ import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.tuple.Triple;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import split.ElementsSplit;
 
-/** Normalizer for input sources from Hertziana
+/** Normalizer for input sources from Marburg
  *
  * @author Yannis Marketakis (marketakis 'at' smartupds 'dot' com)
  */
@@ -34,19 +32,18 @@ public class MarburgNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
+        Timer.start(MarburgNormalizer.class+".split");
         log.info("START: Split large files from Marburg");
         this.splitFiles(Resources.FOLDER_INPUT_FETCHED_MARBURG, 
                            Resources.FOLDER_INPUT_NORMALIZED_MARBURG,
                            Resources.MARBURG_COMBINED_RESOURCES_ROOT_ELEMENT,
                            Resources.MARBURG_COMBINED_RESOURCES_OBJ_ELEMENT,
                            Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.split");
-        log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.hertziana.hertziananormalizer.split"));
+        Timer.stop(MarburgNormalizer.class+".split");
+        log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly(MarburgNormalizer.class+".split"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.syntax");
         log.info("START: Perform Syntax Normalization for resources from Marburg");
-
+        Timer.start(MarburgNormalizer.class+".syntax-norm");
         List<String> elementsList=Arrays.asList("a30nr",
                                                 "a3105",
                                                 "a3200",
@@ -58,8 +55,10 @@ public class MarburgNormalizer implements Normalizer{
             log.error("An error occured while normalizing input resources",ex);
             throw new ETLGenericException("An error occured while normalizing input resources",ex);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.syntax");
-        log.info("FINISH: Perform Syntax Normalization for resources from Marburg in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.marburg.marburgnormalizer.syntax"));
+        Timer.stop(MarburgNormalizer.class+".syntax-norm");
+        log.info("FINISH: Perform Syntax Normalization for resources from Marburg in "+Timer.reportHumanFriendly(MarburgNormalizer.class+".syntax-norm"));
+        
+        log.info("KHI Normalizations Time: "+Timer.reportHumanFriendly(MarburgNormalizer.class.toString()));
     }
     
     /** This methods splits the files found in the input folder, into files with 

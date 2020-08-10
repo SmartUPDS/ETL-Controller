@@ -87,6 +87,8 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS_ZIPS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS_ZIPS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_MARBURG).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_KHI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
