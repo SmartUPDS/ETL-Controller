@@ -18,7 +18,7 @@ public class FrickTransformer implements Transformer{
 
     @Override
     public void transformResources() throws ETLGenericException {
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform");
+        Timer.start(FrickTransformer.class+".all");
         log.info("START: Transform data from FRICK");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).listFiles()){
             Utils.transformFile(file,
@@ -27,10 +27,10 @@ public class FrickTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform");
-        log.info("FINISH: Transform data from FRICK in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform"));
+        Timer.stop(FrickTransformer.class+".all");
+        log.info("FINISH: Transform data from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class+".all"));
         
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform-fc-fr");
+        Timer.start(FrickTransformer.class+".all-fc-fr");
         log.info("START: Transform data using FCs FRs from FRICK");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).listFiles()){
             Utils.transformFile(file,
@@ -39,8 +39,10 @@ public class FrickTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR),
                                 X3MLEngineFactory.OutputFormat.RDF_XML);
         }
-        Timer.stop("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform-fc-fr");
-        log.info("FINISH: Transform data using FCs FRs from FRICK in "+Timer.reportHumanFriendly("com.smartupds.etlcontroller.etl.controller.impl.frick.fricktransformer.transform-fc-fr"));
+        Timer.stop(FrickTransformer.class+".all-fc-fr");
+        log.info("FINISH: Transform data using FCs FRs from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class+".all-fc-fr"));
+        
+        log.info("Frick Transformations Time: "+Timer.reportHumanFriendly(FrickTransformer.class.toString()));
     }
     
     public static FrickTransformer create(){
