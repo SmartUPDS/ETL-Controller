@@ -18,7 +18,7 @@ public class KhiTransformer implements Transformer {
 
     @Override
     public void transformResources() throws ETLGenericException {
-        Timer.start(KhiTransformer.class+".artworks");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".artworks");
         log.info("START: Transform artworks from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -27,10 +27,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".artworks");
-        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".artworks"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".artworks");
+        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".artworks"));
 
-        Timer.start(KhiTransformer.class+".artworks-lv2");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".artworks-lv2");
         log.info("START: Transform artworks LVL2 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -39,10 +39,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL2),
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".artworks-lv2");
-        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".artworks-lv2"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".artworks-lv2");
+        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".artworks-lv2"));
 
-        Timer.start(KhiTransformer.class+".artworks-lv3");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".artworks-lv3");
         log.info("START: Transform artworks LVL3 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -51,10 +51,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL3),
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".artworks-lv3");
-        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".artworks-lv3"));            
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".artworks-lv3");
+        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".artworks-lv3"));            
 
-        Timer.start(KhiTransformer.class+".artworks-lv4");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".artworks-lv4");
         log.info("START: Transform artworks LVL4 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -63,10 +63,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL4), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".artworks-lv4");
-        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".artworks-lv4"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".artworks-lv4");
+        log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".artworks-lv4"));
         
-        Timer.start(KhiTransformer.class+".builtworks");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".builtworks");
         log.info("START: Transform Builtworks from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -75,10 +75,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS),
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".builtworks");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".builtworks"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".builtworks");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".builtworks"));
 
-        Timer.start(KhiTransformer.class+".builtworks-lv2");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".builtworks-lv2");
         log.info("START: Transform Builtworks LVL2 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -87,10 +87,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL2), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".builtworks-lv2");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".builtworks-lv2"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".builtworks-lv2");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".builtworks-lv2"));
 
-        Timer.start(KhiTransformer.class+".builtworks-lv3");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".builtworks-lv3");
         log.info("START: Transform Builtworks LVL3 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -99,10 +99,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL3), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".builtworks-lv3");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".builtworks-lv3"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".builtworks-lv3");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".builtworks-lv3"));
         
-        Timer.start(KhiTransformer.class+".builtworks-lv4");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".builtworks-lv4");
         log.info("START: Transform Builtworks LVL4 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -111,10 +111,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL4), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".builtworks-lv4");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".builtworks-lv4"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".builtworks-lv4");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".builtworks-lv4"));
 
-        Timer.start(KhiTransformer.class+".photographs");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".photographs");
         log.info("START: Transform photographs from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -123,10 +123,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".photographs");
-        log.info("FINISH: Transform photographs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".photographs"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".photographs");
+        log.info("FINISH: Transform photographs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".photographs"));
 
-        Timer.start(KhiTransformer.class+".actors");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".actors");
         log.info("START: Transform Actors from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -135,10 +135,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS),
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(KhiTransformer.class+".actors");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".actors"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".actors");
+        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".actors"));
         
-        Timer.start(KhiTransformer.class+".photographs-fc-fr");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".photographs-fc-fr");
         log.info("START: Transform photographs using FCs FRs from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -147,10 +147,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop(KhiTransformer.class+".photographs-fc-fr");
-        log.info("FINISH: Transform photographs using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".photographs-fc-fr"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".photographs-fc-fr");
+        log.info("FINISH: Transform photographs using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".photographs-fc-fr"));
         
-        Timer.start(KhiTransformer.class+".works-fc-fr");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".works-fc-fr");
         log.info("START: Transform Works using FCs FRs from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
@@ -159,10 +159,10 @@ public class KhiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop(KhiTransformer.class+".works-fc-fr");
-        log.info("FINISH: Transform Works using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class+".works-fc-fr"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".works-fc-fr");
+        log.info("FINISH: Transform Works using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".works-fc-fr"));
         
-        log.info("KHI Transformations Time: "+Timer.reportHumanFriendly(KhiTransformer.class.toString()));
+        log.info("KHI Transformations Time: "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()));
     }
     
     public static KhiTransformer create(){

@@ -25,38 +25,38 @@ public class ZeriIngester implements Ingester{
     @Override
     public void ingestResources() throws ETLGenericException {
         log.info("START: Ingest Artworks from Zeri");
-        Timer.start(ZeriIngester.class+".artworks");
+        Timer.start(ZeriIngester.class.getCanonicalName()+".artworks");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_ZERI, true);
         }
-        Timer.stop(ZeriIngester.class+".artworks");
-        log.info("FINISH: Ingest artworks from Zeri in "+Timer.reportHumanFriendly(ZeriIngester.class+".artworks"));
+        Timer.stop(ZeriIngester.class.getCanonicalName()+".artworks");
+        log.info("FINISH: Ingest artworks from Zeri in "+Timer.reportHumanFriendly(ZeriIngester.class.getCanonicalName()+".artworks"));
         
         log.info("START: Ingest Photographs from Zeri");
-        Timer.start(ZeriIngester.class+".photographs");
+        Timer.start(ZeriIngester.class.getCanonicalName()+".photographs");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_ZERI, true);
         }
-        Timer.stop(ZeriIngester.class+".photographs");
-        log.info("FINISH: Ingest photographs from Zeri in "+Timer.reportHumanFriendly(ZeriIngester.class+".photographs"));
+        Timer.stop(ZeriIngester.class.getCanonicalName()+".photographs");
+        log.info("FINISH: Ingest photographs from Zeri in "+Timer.reportHumanFriendly(ZeriIngester.class.getCanonicalName()+".photographs"));
         
         log.info("START: Ingest Photographs using FCs FRs from Zeri");
-        Timer.start(ZeriIngester.class+".photographs-fc-fr");
+        Timer.start(ZeriIngester.class.getCanonicalName()+".photographs-fc-fr");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS_FC_FR), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_ZERI_FC_FR, false);
         }
-        Timer.stop(ZeriIngester.class+".photographs-fc-fr");
-        log.info("FINISH: Ingest photographs using FCs FRs from Zeri in "+Timer.reportHumanFriendly(ZeriIngester.class+".photographs-fc-fr"));
+        Timer.stop(ZeriIngester.class.getCanonicalName()+".photographs-fc-fr");
+        log.info("FINISH: Ingest photographs using FCs FRs from Zeri in "+Timer.reportHumanFriendly(ZeriIngester.class.getCanonicalName()+".photographs-fc-fr"));
         
         log.info("START: Ingest Works using FCs FRs from Zeri");
-        Timer.start(ZeriIngester.class+".works-fc-fr");
+        Timer.start(ZeriIngester.class.getCanonicalName()+".works-fc-fr");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_WORKS_FC_FR), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_ZERI_FC_FR, false);
         }
-        Timer.stop(ZeriIngester.class+".works-fc-fr");
-        log.info("FINISH: Ingest Works using FCs FRs from Zeri in "+Timer.reportHumanFriendly(ZeriIngester.class+".works-fc-fr"));
+        Timer.stop(ZeriIngester.class.getCanonicalName()+".works-fc-fr");
+        log.info("FINISH: Ingest Works using FCs FRs from Zeri in "+Timer.reportHumanFriendly(ZeriIngester.class.getCanonicalName()+".works-fc-fr"));
         
-        log.info("Zeri Ingest Time: "+Timer.reportHumanFriendly(ZeriIngester.class.toString()));
+        log.info("Zeri Ingest Time: "+Timer.reportHumanFriendly(ZeriIngester.class.getCanonicalName()));
     }
     
     public static ZeriIngester create(TripleStoreConnection tripleStoreConnection){

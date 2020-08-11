@@ -30,7 +30,7 @@ public class ZeriNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start(ZeriNormalizer.class+".unzip");
+        Timer.start(ZeriNormalizer.class.getCanonicalName()+".unzip");
         log.info("START: Unzip Resources from Zeri");
         for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS_ZIPS).listFiles()){
             if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
@@ -48,16 +48,16 @@ public class ZeriNormalizer implements Normalizer{
                 log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
             }  
         }
-        Timer.stop(ZeriNormalizer.class+".unzip");
-        log.info("FINISH: Unzip Resources from Zeri in "+Timer.reportHumanFriendly(ZeriNormalizer.class+".unzip"));
+        Timer.stop(ZeriNormalizer.class.getCanonicalName()+".unzip");
+        log.info("FINISH: Unzip Resources from Zeri in "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".unzip"));
         
         log.info("START: Normalize Photograph Resources from Zeri");
-        Timer.start(ZeriNormalizer.class+".normalize");
+        Timer.start(ZeriNormalizer.class.getCanonicalName()+".normalize");
         this.normalizeZeriResources(new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS),new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS));
-        Timer.stop(ZeriNormalizer.class+".normalize");
-        log.info("FINISH: Normalize Photograph Resources from Zeriin "+Timer.reportHumanFriendly(ZeriNormalizer.class+".normalize"));
+        Timer.stop(ZeriNormalizer.class.getCanonicalName()+".normalize");
+        log.info("FINISH: Normalize Photograph Resources from Zeriin "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".normalize"));
         
-        log.info("Zeri Normalizations Time: "+Timer.reportHumanFriendly(ZeriNormalizer.class.toString()));   
+        log.info("Zeri Normalizations Time: "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()));   
     }
     
     /** This method unzips the contents of the given file into the given folder

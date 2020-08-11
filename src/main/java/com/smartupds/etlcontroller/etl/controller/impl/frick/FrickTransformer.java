@@ -18,7 +18,7 @@ public class FrickTransformer implements Transformer{
 
     @Override
     public void transformResources() throws ETLGenericException {
-        Timer.start(FrickTransformer.class+".all");
+        Timer.start(FrickTransformer.class.getCanonicalName()+".all");
         log.info("START: Transform data from FRICK");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).listFiles()){
             Utils.transformFile(file,
@@ -27,10 +27,10 @@ public class FrickTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(FrickTransformer.class+".all");
-        log.info("FINISH: Transform data from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class+".all"));
+        Timer.stop(FrickTransformer.class.getCanonicalName()+".all");
+        log.info("FINISH: Transform data from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class.getCanonicalName()+".all"));
         
-        Timer.start(FrickTransformer.class+".all-fc-fr");
+        Timer.start(FrickTransformer.class.getCanonicalName()+".all-fc-fr");
         log.info("START: Transform data using FCs FRs from FRICK");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).listFiles()){
             Utils.transformFile(file,
@@ -39,10 +39,10 @@ public class FrickTransformer implements Transformer{
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR),
                                 X3MLEngineFactory.OutputFormat.RDF_XML);
         }
-        Timer.stop(FrickTransformer.class+".all-fc-fr");
-        log.info("FINISH: Transform data using FCs FRs from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class+".all-fc-fr"));
+        Timer.stop(FrickTransformer.class.getCanonicalName()+".all-fc-fr");
+        log.info("FINISH: Transform data using FCs FRs from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class.getCanonicalName()+".all-fc-fr"));
         
-        log.info("Frick Transformations Time: "+Timer.reportHumanFriendly(FrickTransformer.class.toString()));
+        log.info("Frick Transformations Time: "+Timer.reportHumanFriendly(FrickTransformer.class.getCanonicalName()));
     }
     
     public static FrickTransformer create(){

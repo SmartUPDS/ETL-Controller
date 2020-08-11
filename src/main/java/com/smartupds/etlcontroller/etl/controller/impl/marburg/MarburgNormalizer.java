@@ -32,18 +32,18 @@ public class MarburgNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start(MarburgNormalizer.class+".split");
+        Timer.start(MarburgNormalizer.class.getCanonicalName()+".split");
         log.info("START: Split large files from Marburg");
         this.splitFiles(Resources.FOLDER_INPUT_FETCHED_MARBURG, 
                            Resources.FOLDER_INPUT_NORMALIZED_MARBURG,
                            Resources.MARBURG_COMBINED_RESOURCES_ROOT_ELEMENT,
                            Resources.MARBURG_COMBINED_RESOURCES_OBJ_ELEMENT,
                            Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-        Timer.stop(MarburgNormalizer.class+".split");
-        log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly(MarburgNormalizer.class+".split"));
+        Timer.stop(MarburgNormalizer.class.getCanonicalName()+".split");
+        log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly(MarburgNormalizer.class.getCanonicalName()+".split"));
         
         log.info("START: Perform Syntax Normalization for resources from Marburg");
-        Timer.start(MarburgNormalizer.class+".syntax-norm");
+        Timer.start(MarburgNormalizer.class.getCanonicalName()+".syntax-norm");
         List<String> elementsList=Arrays.asList("a30nr",
                                                 "a3105",
                                                 "a3200",
@@ -55,10 +55,10 @@ public class MarburgNormalizer implements Normalizer{
             log.error("An error occured while normalizing input resources",ex);
             throw new ETLGenericException("An error occured while normalizing input resources",ex);
         }
-        Timer.stop(MarburgNormalizer.class+".syntax-norm");
-        log.info("FINISH: Perform Syntax Normalization for resources from Marburg in "+Timer.reportHumanFriendly(MarburgNormalizer.class+".syntax-norm"));
+        Timer.stop(MarburgNormalizer.class.getCanonicalName()+".syntax-norm");
+        log.info("FINISH: Perform Syntax Normalization for resources from Marburg in "+Timer.reportHumanFriendly(MarburgNormalizer.class.getCanonicalName()+".syntax-norm"));
         
-        log.info("KHI Normalizations Time: "+Timer.reportHumanFriendly(MarburgNormalizer.class.toString()));
+        log.info("KHI Normalizations Time: "+Timer.reportHumanFriendly(MarburgNormalizer.class.getCanonicalName()));
     }
     
     /** This methods splits the files found in the input folder, into files with 

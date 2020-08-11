@@ -24,102 +24,102 @@ public class KhiIngester implements Ingester{
     @Override
     public void ingestResources() throws ETLGenericException {
         log.info("START: Ingest artworks from KHI");
-        Timer.start(KhiIngester.class+".artworks");
+        Timer.start(KhiIngester.class.getCanonicalName()+".artworks");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".artworks");
-        log.info("FINISH: Ingest artworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".artworks"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".artworks");
+        log.info("FINISH: Ingest artworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".artworks"));
 
         log.info("START: Ingest artworks LVL2 from KHI");
-        Timer.start(KhiIngester.class+".artworks-lv2");
+        Timer.start(KhiIngester.class.getCanonicalName()+".artworks-lv2");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL2).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".artworks-lv2");
-        log.info("FINISH: Ingest artworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".artworks-lv2"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".artworks-lv2");
+        log.info("FINISH: Ingest artworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".artworks-lv2"));
 
         log.info("START: Ingest artworks LVL3 from KHI");
-        Timer.start(KhiIngester.class+".artworks-lv3");
+        Timer.start(KhiIngester.class.getCanonicalName()+".artworks-lv3");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL3).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".artworks-lv3");
-        log.info("FINISH: Ingest artworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".artworks-lv3"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".artworks-lv3");
+        log.info("FINISH: Ingest artworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".artworks-lv3"));
 
         log.info("START: Ingest artworks LVL4 from KHI");
-        Timer.start("com.smartupds.etlcontroller.etl.controller.impl.khi.khiingester.ingest.artworkslvl4");
+        Timer.start(KhiIngester.class.getCanonicalName()+".artworks-lv4");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_LVL4).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".artworks-lv4");
-        log.info("FINISH: Ingest artworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".artworks-lv4"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".artworks-lv4");
+        log.info("FINISH: Ingest artworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".artworks-lv4"));
         
         log.info("START: Ingest Builtworks from KHI");
-        Timer.start(KhiIngester.class+".builtworks");
+        Timer.start(KhiIngester.class.getCanonicalName()+".builtworks");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".builtworks");
-        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".builtworks"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".builtworks");
+        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".builtworks"));
 
         log.info("START: Ingest Builtworks LVL2 from KHI");
-        Timer.start(KhiIngester.class+".builtworks-lv2");
+        Timer.start(KhiIngester.class.getCanonicalName()+".builtworks-lv2");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL2).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".builtworks-lv2");
-        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".builtworks-lv2"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".builtworks-lv2");
+        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".builtworks-lv2"));
 
         log.info("START: Ingest Builtworks LVL3 from KHI");
-        Timer.start(KhiIngester.class+".builtworks-lv3");
+        Timer.start(KhiIngester.class.getCanonicalName()+".builtworks-lv3");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL3).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".builtworks-lv3");
-        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".builtworks-lv3"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".builtworks-lv3");
+        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".builtworks-lv3"));
         
         log.info("START: Ingest Builtworks LVL4 from KHI");
-        Timer.start(KhiIngester.class+".builtworks-lv4");
+        Timer.start(KhiIngester.class.getCanonicalName()+".builtworks-lv4");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL4).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".builtworks-lv4");
-        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".builtworks-lv4"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".builtworks-lv4");
+        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".builtworks-lv4"));
 
         log.info("START: Ingest photographs from KHI");
-        Timer.start(KhiIngester.class+".photographs");
+        Timer.start(KhiIngester.class.getCanonicalName()+".photographs");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".photographs");
-        log.info("FINISH: Ingest photographs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".photographs"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".photographs");
+        log.info("FINISH: Ingest photographs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".photographs"));
 
         log.info("START: Ingest Actors from KHI");
-        Timer.start(KhiIngester.class+".actors");
+        Timer.start(KhiIngester.class.getCanonicalName()+".actors");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI, true);
         }
-        Timer.stop(KhiIngester.class+".actors");
-        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".actors"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".actors");
+        log.info("FINISH: Ingest Builtworks from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".actors"));
         
         log.info("START: Ingest photographs using FCs FRs from KHI");
-        Timer.start(KhiIngester.class+".photographs-fc-fr");        
+        Timer.start(KhiIngester.class.getCanonicalName()+".photographs-fc-fr");        
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS_FC_FR).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI_FC_FR, false);
         }
-        Timer.stop(KhiIngester.class+".photographs-fc-fr");
-        log.info("FINISH: Ingest photographs using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".photographs-fc-fr"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".photographs-fc-fr");
+        log.info("FINISH: Ingest photographs using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".photographs-fc-fr"));
         
         log.info("START: Ingest Works using FCs FRs from KHI");
-        Timer.start(KhiIngester.class+".works-fc-fr");
+        Timer.start(KhiIngester.class.getCanonicalName()+".works-fc-fr");
         for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI_FC_FR, false);
         }
-        Timer.stop(KhiIngester.class+".works-fc-fr");
-        log.info("FINISH: Ingest Works using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class+".works-fc-fr"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".works-fc-fr");
+        log.info("FINISH: Ingest Works using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".works-fc-fr"));
         
-        log.info("KHI Ingest Time: "+Timer.reportHumanFriendly(KhiIngester.class.toString()));
+        log.info("KHI Ingest Time: "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()));
     }
     
     public static KhiIngester create(TripleStoreConnection triplestoreConnection){

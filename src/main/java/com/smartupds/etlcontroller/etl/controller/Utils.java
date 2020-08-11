@@ -260,11 +260,11 @@ public class Utils {
     
     public static void reportTimeStatistics(){
         log.info("OVERALL TIME STATISTICS (per source): ");
-        log.info("Overal Time for VILLA I TATTI: "+Timer.reportHumanFriendly(ItattiTransformer.class.getPackage().toString()));
-        log.info("Overal Time for HERTZIANA: "+Timer.reportHumanFriendly(HertzianaTransformer.class.getPackage().toString()));
-        log.info("Overal Time for FRICK: "+Timer.reportHumanFriendly(FrickTransformer.class.getPackage().toString()));
-        log.info("Overal Time for MARBURG: "+Timer.reportHumanFriendly(MarburgTransformer.class.getPackage().toString()));
-        log.info("Overal Time for ZERI: "+Timer.reportHumanFriendly(ZeriTransformer.class.getPackage().toString()));
-        log.info("Overal Time for KHI: "+Timer.reportHumanFriendly(KhiTransformer.class.getPackage().toString()));
+        log.info("Overal Time for VILLA I TATTI: "+Timer.reportHumanFriendly(ItattiTransformer.class.getPackage().getName()));
+        log.info("Overal Time for HERTZIANA: "+Timer.reportHumanFriendly(HertzianaTransformer.class.getPackage().getName()));
+        log.info("Overal Time for FRICK: "+Timer.reportHumanFriendly(FrickTransformer.class.getPackage().getName()));
+        log.info("Overal Time for MARBURG: "+Timer.reportHumanFriendly(MarburgTransformer.class.getPackage().getName()));
+        log.info("Overal Time for ZERI: "+Timer.reportHumanFriendly(ZeriTransformer.class.getPackage().getName()));
+        log.info("Overal Time for KHI: "+Timer.reportHumanFriendly(KhiTransformer.class.getPackage().getName()));
     }
 }

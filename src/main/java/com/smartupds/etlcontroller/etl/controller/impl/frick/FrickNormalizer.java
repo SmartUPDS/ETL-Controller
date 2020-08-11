@@ -30,7 +30,7 @@ public class FrickNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start(FrickNormalizer.class+".normalize");
+        Timer.start(FrickNormalizer.class.getCanonicalName()+".normalize");
         log.info("START: Normalize textual contents from FRICK");
         try{
             for(File file : new File(Resources.FOLDER_INPUT_FETCHED_FRICK).listFiles()){
@@ -54,10 +54,10 @@ public class FrickNormalizer implements Normalizer{
             log.error("An error occured while normalizing collection",ex);
             throw new ETLGenericException("An error occured while normalizing collection",ex);
         }
-        Timer.stop(FrickNormalizer.class+".normalize");
-        log.info("FINISH: Split large files from FRICK in "+Timer.reportHumanFriendly(FrickNormalizer.class+".normalize"));
+        Timer.stop(FrickNormalizer.class.getCanonicalName()+".normalize");
+        log.info("FINISH: Split large files from FRICK in "+Timer.reportHumanFriendly(FrickNormalizer.class.getCanonicalName()+".normalize"));
         
-        log.info("FRICK Normalizations Time: "+Timer.reportHumanFriendly(FrickNormalizer.class.toString()));
+        log.info("FRICK Normalizations Time: "+Timer.reportHumanFriendly(FrickNormalizer.class.getCanonicalName()));
     }
     
     private Document removeSuffixPunctuation(Document doc,String elementName){

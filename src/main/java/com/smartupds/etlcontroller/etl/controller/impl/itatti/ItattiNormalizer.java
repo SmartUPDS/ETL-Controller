@@ -33,18 +33,18 @@ public class ItattiNormalizer implements Normalizer {
     @Override
     public void normalizeResources() throws ETLGenericException {       
         log.info("START: Normalize contents from Villa I Tatti - SharedShelf");
-        Timer.start(ItattiNormalizer.class+".normalize.sharedshelf");
+        Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf");
         this.normalizeSharedShelfNotes(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF));
-        Timer.stop(ItattiNormalizer.class+".normalize.sharedshelf");
-        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class+".normalize.sharedshelf"));
+        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf");
+        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf"));
         
         log.info("START: Normalize contents from Villa I Tatti - FotoIndex");
-        Timer.start(ItattiNormalizer.class+".normalize.fotoindex");
+        Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex");
         this.normalizeFotoIndex(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX));
-        Timer.stop(ItattiNormalizer.class+".normalize.fotoindex");
-        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class+".normalize.fotoindex"));
+        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex");
+        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex"));
      
-        log.info("Villa I Tatti Normalizations Time: "+Timer.reportHumanFriendly(ItattiNormalizer.class.toString()));
+        log.info("Villa I Tatti Normalizations Time: "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()));
     }
     
     public void normalizeSharedShelfNotes(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{

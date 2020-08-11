@@ -37,7 +37,7 @@ public class KhiNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start(KhiNormalizer.class+".unzip");
+        Timer.start(KhiNormalizer.class.getCanonicalName()+".unzip");
         log.info("START: Unzip resources from KHI");
         for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_KHI).listFiles()){
             if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
@@ -48,20 +48,20 @@ public class KhiNormalizer implements Normalizer{
                 log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
             }  
         }
-        Timer.stop(KhiNormalizer.class+".unzip");
-        log.info("FINISH: Unzip Resources from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class+".unzip"));
+        Timer.stop(KhiNormalizer.class.getCanonicalName()+".unzip");
+        log.info("FINISH: Unzip Resources from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class.getCanonicalName()+".unzip"));
         
-        Timer.start(KhiNormalizer.class+".split");
+        Timer.start(KhiNormalizer.class.getCanonicalName()+".split");
         log.info("START: Split large files from KHI");
         this.splitFiles(Resources.FOLDER_INPUT_FETCHED_KHI, 
                            Resources.FOLDER_INPUT_NORMALIZED_KHI,
                            Resources.KHI_COMBINED_RESOURCES_ROOT_ELEMENT,
                            Resources.KHI_COMBINED_RESOURCES_OBJ_ELEMENT,
                            Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
-        Timer.stop(KhiNormalizer.class+".split");
-        log.info("FINISH: Split large files from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class+".split"));
+        Timer.stop(KhiNormalizer.class.getCanonicalName()+".split");
+        log.info("FINISH: Split large files from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class.getCanonicalName()+".split"));
         
-        Timer.start(KhiNormalizer.class+".syntax-norm");
+        Timer.start(KhiNormalizer.class.getCanonicalName()+".syntax-norm");
         log.info("START: Perform Syntax Normalization for resources from KHI");
         List<String> elementsList=Arrays.asList("a30gn",
                                                 "a3105",
@@ -74,10 +74,10 @@ public class KhiNormalizer implements Normalizer{
             log.error("An error occured while normalizing input resources",ex);
             throw new ETLGenericException("An error occured while normalizing input resources",ex);
         }
-        Timer.stop(KhiNormalizer.class+".syntax-norm");
-        log.info("FINISH: Perform Syntax Normalization for resources from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class+".syntax-norm"));
+        Timer.stop(KhiNormalizer.class.getCanonicalName()+".syntax-norm");
+        log.info("FINISH: Perform Syntax Normalization for resources from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class.getCanonicalName()+".syntax-norm"));
         
-        log.info("KHI Normalizations Time: "+Timer.reportHumanFriendly(KhiNormalizer.class.toString()));
+        log.info("KHI Normalizations Time: "+Timer.reportHumanFriendly(KhiNormalizer.class.getCanonicalName()));
     }
     
     /** This method carries out syntax normalization. In particular it normalizes (creates two or more) elements with the 

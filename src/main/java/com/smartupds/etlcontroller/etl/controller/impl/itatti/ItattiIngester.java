@@ -25,38 +25,38 @@ public class ItattiIngester implements Ingester{
     @Override
     public void ingestResources() throws ETLGenericException {
         log.info("START: Ingest SharedShelf resources from VillaITatti");
-        Timer.start(ItattiIngester.class+".sharedshelf");
+        Timer.start(ItattiIngester.class.getCanonicalName()+".sharedshelf");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VILLA_I_TATTI, true);
         }
-        Timer.stop(ItattiIngester.class+".sharedshelf");
-        log.info("FINISH: Ingest SharedShelf resources from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class+".sharedshelf"));
+        Timer.stop(ItattiIngester.class.getCanonicalName()+".sharedshelf");
+        log.info("FINISH: Ingest SharedShelf resources from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class.getCanonicalName()+".sharedshelf"));
         
         log.info("START: Ingest FotoIndex resources from VillaITatti");
-        Timer.start(ItattiIngester.class+".fotoindex");
+        Timer.start(ItattiIngester.class.getCanonicalName()+".fotoindex");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VILLA_I_TATTI, true);
         }
-        Timer.stop(ItattiIngester.class+".fotoindex");
-        log.info("FINISH: Ingest FotoIndex resources from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class+".fotoindex"));
+        Timer.stop(ItattiIngester.class.getCanonicalName()+".fotoindex");
+        log.info("FINISH: Ingest FotoIndex resources from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class.getCanonicalName()+".fotoindex"));
         
         log.info("START: Ingest SharedShelf resources using FCs FRs from VillaITatti");
-        Timer.start(ItattiIngester.class+".sharedshelf-fc-fr");
+        Timer.start(ItattiIngester.class.getCanonicalName()+".sharedshelf-fc-fr");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VILLA_I_TATTI_FC_FR, false);
         }
-        Timer.stop(ItattiIngester.class+".sharedshelf-fc-fr");
-        log.info("FINISH: Ingest SharedShelf resources using FCs FRs from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class+".sharedshelf-fc-fr"));
+        Timer.stop(ItattiIngester.class.getCanonicalName()+".sharedshelf-fc-fr");
+        log.info("FINISH: Ingest SharedShelf resources using FCs FRs from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class.getCanonicalName()+".sharedshelf-fc-fr"));
         
         log.info("START: Ingest FotoIndex resources using FCs FRs from VillaITatti");
-        Timer.start(ItattiIngester.class+".fotoindex-fc-fr");
+        Timer.start(ItattiIngester.class.getCanonicalName()+".fotoindex-fc-fr");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VILLA_I_TATTI_FC_FR, false);
         }
-        Timer.stop(ItattiIngester.class+".fotoindex-fc-fr");
-        log.info("FINISH: Ingest FotoIndex resources using FCs FRs from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class+".fotoindex-fc-fr"));
+        Timer.stop(ItattiIngester.class.getCanonicalName()+".fotoindex-fc-fr");
+        log.info("FINISH: Ingest FotoIndex resources using FCs FRs from VillaITatti in "+Timer.reportHumanFriendly(ItattiIngester.class.getCanonicalName()+".fotoindex-fc-fr"));
         
-        log.info("Villa I Tatti Ingest Time: "+Timer.reportHumanFriendly(ItattiIngester.class.toString()));
+        log.info("Villa I Tatti Ingest Time: "+Timer.reportHumanFriendly(ItattiIngester.class.getCanonicalName()));
     }
     
     public static ItattiIngester create(TripleStoreConnection triplestoreConnection){

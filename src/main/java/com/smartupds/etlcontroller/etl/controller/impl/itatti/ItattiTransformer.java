@@ -18,7 +18,7 @@ public class ItattiTransformer implements Transformer {
 
      @Override
     public void transformResources() throws ETLGenericException {
-        Timer.start(ItattiTransformer.class+".sharedshelf");
+        Timer.start(ItattiTransformer.class.getCanonicalName()+".sharedshelf");
         log.info("START: Transform SharedShelf data from Villa I Tatti");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).listFiles()){
             Utils.transformFile(file,
@@ -27,10 +27,10 @@ public class ItattiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
         }
-        Timer.stop(ItattiTransformer.class+".sharedshelf");
-        log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class+".sharedshelf"));
+        Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf");
+        log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf"));
         
-        Timer.start(ItattiTransformer.class+".sharedshelf-fc-fr");
+        Timer.start(ItattiTransformer.class.getCanonicalName()+".sharedshelf-fc-fr");
         log.info("START: Transform SharedShelf data using FCs FRs from Villa I Tatti");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).listFiles()){
             Utils.transformFile(file,
@@ -39,10 +39,10 @@ public class ItattiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.RDF_XML);
         }
-        Timer.stop(ItattiTransformer.class+".sharedshelf-fc-fr");
-        log.info("FINISH: Transform SharedShelf data using FCs FRs from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class+".sharedshelf-fc-fr"));
+        Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf-fc-fr");
+        log.info("FINISH: Transform SharedShelf data using FCs FRs from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf-fc-fr"));
                 
-        Timer.start(ItattiTransformer.class+".fotoindex");
+        Timer.start(ItattiTransformer.class.getCanonicalName()+".fotoindex");
         log.info("START: Transform FotoIndex data from Villa I Tatti");
         Utils.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.ARTIST+".xml"),
                             new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_ARTIST), 
@@ -73,10 +73,10 @@ public class ItattiTransformer implements Transformer {
                                     X3MLEngineFactory.OutputFormat.TRIG);
             }
         }
-        Timer.stop(ItattiTransformer.class+".fotoindex");
-        log.info("FINISH: Transform FotoIndex data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class+".fotoindex"));
+        Timer.stop(ItattiTransformer.class.getCanonicalName()+".fotoindex");
+        log.info("FINISH: Transform FotoIndex data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".fotoindex"));
         
-        Timer.start(ItattiTransformer.class+".fotoindex-fc-fr");
+        Timer.start(ItattiTransformer.class.getCanonicalName()+".fotoindex-fc-fr");
         log.info("START: Transform FotoIndex data using FCs FRs from Villa I Tatti");
         for(File inputFile : new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).listFiles()){
             Utils.transformFile(inputFile,
@@ -85,10 +85,10 @@ public class ItattiTransformer implements Transformer {
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.RDF_XML);
         }
-        Timer.stop(ItattiTransformer.class+".fotoindex-fc-fr");
-        log.info("FINISH: Transform FotoIndex using FCs FRs data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class+".fotoindex-fc-fr"));
+        Timer.stop(ItattiTransformer.class.getCanonicalName()+".fotoindex-fc-fr");
+        log.info("FINISH: Transform FotoIndex using FCs FRs data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".fotoindex-fc-fr"));
         
-        log.info("Villa I Tatti Transformations Time: "+Timer.reportHumanFriendly(ItattiTransformer.class.toString()));
+        log.info("Villa I Tatti Transformations Time: "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()));
     }
     
     public static ItattiTransformer create(){
