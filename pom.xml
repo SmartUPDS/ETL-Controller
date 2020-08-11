@@ -13,6 +13,10 @@
     
     <repositories>
         <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
             <id>central</id>
             <name>Central Repository</name>
             <url>https://repo.maven.apache.org/maven2</url>
@@ -66,15 +70,15 @@
             <version>1.4</version>
         </dependency>
         <dependency>
-            <groupId>com.smartupds</groupId>
-            <artifactId>XmlSplit</artifactId>
-            <version>1.1-SNAPSHOT</version>
-        </dependency>
+	    <groupId>com.github.SmartUPDS</groupId>
+	    <artifactId>XmlSplit</artifactId>
+	    <version>379296fb8099e9e47912481d3f48c269ba0ce9b1</version>
+	</dependency>
         <dependency>
-            <groupId>com.smartupds</groupId>
-            <artifactId>Normalizer</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+	    <groupId>com.github.SmartUPDS</groupId>
+	    <artifactId>Normalizer</artifactId>
+	    <version>cf755f6e53417837fc697e200ffa122df1354e81</version>
+	</dependency>
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-core</artifactId>
