@@ -55,7 +55,7 @@ public class ZeriNormalizer implements Normalizer{
         Timer.start(ZeriNormalizer.class.getCanonicalName()+".normalize");
         this.normalizeZeriResources(new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS),new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS));
         Timer.stop(ZeriNormalizer.class.getCanonicalName()+".normalize");
-        log.info("FINISH: Normalize Photograph Resources from Zeriin "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".normalize"));
+        log.info("FINISH: Normalize Photograph Resources from Zeri in "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".normalize"));
         
         log.info("Zeri Normalizations Time: "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()));   
     }
@@ -99,10 +99,6 @@ public class ZeriNormalizer implements Normalizer{
         }
         return destFile;
     }
-    
-    public static ZeriNormalizer create(){
-        return new ZeriNormalizer();
-    }
 
     private void normalizeZeriResources(File folderWithInputFiles, File folderForNormFiles){
         for(File file : folderWithInputFiles.listFiles()){
@@ -130,5 +126,9 @@ public class ZeriNormalizer implements Normalizer{
 
         }
         return doc;    
+    }
+        
+    public static ZeriNormalizer create(){
+        return new ZeriNormalizer();
     }
 }
