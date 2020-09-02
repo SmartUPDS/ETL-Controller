@@ -17,6 +17,7 @@ public class Resources {
     public static final String FOLDER_INPUT_FETCHED_VILLA_I_TATTI=FOLDER_INPUT_FETCHED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_INPUT_FETCHED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
     public static final String FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX=FOLDER_INPUT_FETCHED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
+    public static final String FOLDER_INPUT_FETCHED_VILLA_I_TATTI_BERENSON=FOLDER_INPUT_FETCHED_VILLA_I_TATTI+"/"+Resources.BERENSON;
     public static final String FOLDER_INPUT_FETCHED_FRICK=FOLDER_INPUT_FETCHED+"/"+Resources.FRICK;
     public static final String FOLDER_INPUT_FETCHED_ZERI=FOLDER_INPUT_FETCHED+"/"+Resources.ZERI;
     public static final String FOLDER_INPUT_FETCHED_ZERI_ARTWORKS=FOLDER_INPUT_FETCHED_ZERI+"/"+Resources.ARTWORKS;
@@ -28,6 +29,7 @@ public class Resources {
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI=FOLDER_INPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
+    public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_BERENSON=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.BERENSON;
     public static final String FOLDER_INPUT_NORMALIZED_FRICK=FOLDER_INPUT_NORMALIZED+"/"+Resources.FRICK;
     public static final String FOLDER_INPUT_NORMALIZED_ZERI=FOLDER_INPUT_NORMALIZED+"/"+Resources.ZERI;
     public static final String FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS=FOLDER_INPUT_NORMALIZED_ZERI+"/"+Resources.ARTWORKS;
@@ -103,6 +105,7 @@ public class Resources {
     public static final String VILLA_I_TATTI="VillaITatti";
     public static final String FOTOINDEX="FotoIndex";
     public static final String SHAREDSHELF="SharedShelf";
+    public static final String BERENSON="Berenson";
     
     /* Entities names */
     public static final String ACTORS="actors";
