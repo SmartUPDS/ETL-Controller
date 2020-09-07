@@ -35,39 +35,26 @@ import split.ElementsSplit;
 public class ItattiNormalizer implements Normalizer {
 
     @Override
-    public void normalizeResources() throws ETLGenericException {       
-//        log.info("START: Normalize contents from Villa I Tatti - SharedShelf");
-//        Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf");
-//        this.normalizeSharedShelfNotes(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF));
-//        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf");
-//        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf"));
-//        
-//        log.info("START: Normalize contents from Villa I Tatti - FotoIndex");
-//        Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex");
-//        this.normalizeFotoIndex(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX));
-//        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex");
-//        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex"));
-        
-//        log.info("START: Normalize contents from Villa I Tatti - Berenson");
-//        Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
-//        this.normalizeBerenson(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_BERENSON),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_BERENSON));
-//        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
-//        log.info("FINISH: Normalize contents from Villa I Tatti - Berenson in  "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson"));
-     
+    public void normalizeResources() throws ETLGenericException {   
         try {
-            log.info("START: Normalize contents from Villa I Tatti - Berenson, Harvested");
-            Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
-            this.normalizeAssetsId(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_HARVESTED),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_HARVESTED));
-            Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
-            log.info("FINISH: Normalize contents from Villa I Tatti - Berenson, Harvested in  "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson"));
+            log.info("START: Normalize contents from Villa I Tatti - SharedShelf");
+            Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf");
+            this.normalizeSharedShelfNotes(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF));
+            Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf");
+            log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.sharedshelf"));
         } catch (IOException ex) {
-             log.error(ex + " error at " +ItattiNormalizer.class.getName());
+            log.error(ex + " error at " + ItattiNormalizer.class.getName());
         }
-        
+        log.info("START: Normalize contents from Villa I Tatti - FotoIndex");
+        Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex");
+        this.normalizeFotoIndex(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX));
+        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex");
+        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex"));
+                
         log.info("Villa I Tatti Normalizations Time: "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()));
     }
     
-    public void normalizeSharedShelfNotes(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
+    public void normalizeSharedShelfNotes(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException, IOException{
         for(File file : folderWithInputFiles.listFiles()){
             try{
                 log.info("analyze file "+file);
@@ -150,6 +137,10 @@ public class ItattiNormalizer implements Normalizer {
                         }
                     }
                 }
+                
+                doc = this.shiftElementContent(doc, "Entry", "Language");
+                doc = this.deleteElement(doc,"Language");
+                doc = this.correctElementId(doc,Resources.ASSET);
                 
                 this.exportXmlDocument(doc, new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
             }catch(NormalizerException ex){
@@ -260,21 +251,6 @@ public class ItattiNormalizer implements Normalizer {
         }
     }
     
-    public void normalizeAssetsId(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException, IOException{
-            for(File folder : folderWithInputFiles.listFiles()){
-                for (File file : folder.listFiles()){
-                    try {
-                        Document doc = ElementsSplit.parseXmlDocument(file);
-                        doc = this.correctElementId(doc,Resources.ASSET);
-                        ItattiNormalizer.exportXmlDocument(doc, new File(folderForNormFiles+"/"+file.getParentFile().getName()+"/"+file.getName()));
-                    }catch(NormalizerException ex){
-                        log.error("An error occured while normalizing file",ex);
-                        throw new ETLGenericException("An error occured while normalizing file",ex);
-                    }
-                }
-            }
-    }
-    
     private Document correctElementId(Document doc,String elementName) throws IOException{
         NodeList elements = doc.getElementsByTagName(elementName);
         for(int i=0;i<elements.getLength();i++){
@@ -301,21 +277,6 @@ public class ItattiNormalizer implements Normalizer {
             }
         }
         return doc;    
-    }
-    
-    public void normalizeBerenson(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
-            for(File file : folderWithInputFiles.listFiles()){
-                try {
-                    Document doc = ElementsSplit.parseXmlDocument(file);
-                    doc = this.shiftElementContent(doc, "Entry", "Language");
-                    doc = this.deleteElement(doc,"Language");
-
-                    ItattiNormalizer.exportXmlDocument(doc, new File(folderForNormFiles+"/"+file.getName()));
-                }catch(NormalizerException ex){
-                    log.error("An error occured while normalizing file",ex);
-                    throw new ETLGenericException("An error occured while normalizing file",ex);
-                } 
-            }
     }
     
     private Document deleteElement(Document doc,String elementName){
