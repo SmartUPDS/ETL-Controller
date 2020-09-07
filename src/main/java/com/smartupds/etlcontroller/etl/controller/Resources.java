@@ -18,6 +18,7 @@ public class Resources {
     public static final String FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_INPUT_FETCHED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
     public static final String FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX=FOLDER_INPUT_FETCHED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
     public static final String FOLDER_INPUT_FETCHED_VILLA_I_TATTI_BERENSON=FOLDER_INPUT_FETCHED_VILLA_I_TATTI+"/"+Resources.BERENSON;
+    public static final String FOLDER_INPUT_FETCHED_VILLA_I_TATTI_HARVESTED=FOLDER_INPUT_FETCHED_VILLA_I_TATTI+"/"+Resources.HARVESTED;
     public static final String FOLDER_INPUT_FETCHED_FRICK=FOLDER_INPUT_FETCHED+"/"+Resources.FRICK;
     public static final String FOLDER_INPUT_FETCHED_ZERI=FOLDER_INPUT_FETCHED+"/"+Resources.ZERI;
     public static final String FOLDER_INPUT_FETCHED_ZERI_ARTWORKS=FOLDER_INPUT_FETCHED_ZERI+"/"+Resources.ARTWORKS;
@@ -30,6 +31,7 @@ public class Resources {
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_BERENSON=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.BERENSON;
+    public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_HARVESTED=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.HARVESTED;
     public static final String FOLDER_INPUT_NORMALIZED_FRICK=FOLDER_INPUT_NORMALIZED+"/"+Resources.FRICK;
     public static final String FOLDER_INPUT_NORMALIZED_ZERI=FOLDER_INPUT_NORMALIZED+"/"+Resources.ZERI;
     public static final String FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS=FOLDER_INPUT_NORMALIZED_ZERI+"/"+Resources.ARTWORKS;
@@ -106,6 +108,7 @@ public class Resources {
     public static final String FOTOINDEX="FotoIndex";
     public static final String SHAREDSHELF="SharedShelf";
     public static final String BERENSON="Berenson";
+    public static final String HARVESTED="Harvested";
     
     /* Entities names */
     public static final String ACTORS="actors";
@@ -120,6 +123,12 @@ public class Resources {
     public static final String LVL2="lvl2";
     public static final String WORK="Work";
     public static final String WORKS="works";
+    public static final String ASSET="Asset";
+    
+    /* Attribute names*/
+    public static final String URI="uri";
+    public static final String ID="id";
+    public static final String NONE="None";
     
     /* Other names */
     public static final String _FC_FR="_FC_FR";
