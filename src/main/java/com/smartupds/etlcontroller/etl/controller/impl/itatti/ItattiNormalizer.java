@@ -5,7 +5,10 @@ import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.normalizer.exceptions.NormalizerException;
 import gr.forth.ics.isl.timer.Timer;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +22,7 @@ import javax.xml.transform.stream.StreamResult;
 import lombok.extern.log4j.Log4j;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import split.ElementsSplit;
@@ -44,12 +48,22 @@ public class ItattiNormalizer implements Normalizer {
 //        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex");
 //        log.info("FINISH: Normalize contents from Villa I Tatti - SharedShelf in "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.fotoindex"));
         
-        log.info("START: Normalize contents from Villa I Tatti - Berenson");
-        Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
-        this.normalizeBerenson(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_BERENSON),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_BERENSON));
-        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
-        log.info("FINISH: Normalize contents from Villa I Tatti - Berenson in  "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson"));
+//        log.info("START: Normalize contents from Villa I Tatti - Berenson");
+//        Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
+//        this.normalizeBerenson(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_BERENSON),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_BERENSON));
+//        Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
+//        log.info("FINISH: Normalize contents from Villa I Tatti - Berenson in  "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson"));
      
+        try {
+            log.info("START: Normalize contents from Villa I Tatti - Berenson, Harvested");
+            Timer.start(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
+            this.normalizeAssetsId(new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_HARVESTED),new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_HARVESTED));
+            Timer.stop(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson");
+            log.info("FINISH: Normalize contents from Villa I Tatti - Berenson, Harvested in  "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()+".normalize.berenson"));
+        } catch (IOException ex) {
+             log.error(ex + " error at " +ItattiNormalizer.class.getName());
+        }
+        
         log.info("Villa I Tatti Normalizations Time: "+Timer.reportHumanFriendly(ItattiNormalizer.class.getCanonicalName()));
     }
     
@@ -244,6 +258,49 @@ public class ItattiNormalizer implements Normalizer {
                 throw new ETLGenericException("An error occured while normalizing file",ex);
             }   
         }
+    }
+    
+    public void normalizeAssetsId(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException, IOException{
+            for(File folder : folderWithInputFiles.listFiles()){
+                for (File file : folder.listFiles()){
+                    try {
+                        Document doc = ElementsSplit.parseXmlDocument(file);
+                        doc = this.correctElementId(doc,Resources.ASSET);
+                        ItattiNormalizer.exportXmlDocument(doc, new File(folderForNormFiles+"/"+file.getParentFile().getName()+"/"+file.getName()));
+                    }catch(NormalizerException ex){
+                        log.error("An error occured while normalizing file",ex);
+                        throw new ETLGenericException("An error occured while normalizing file",ex);
+                    }
+                }
+            }
+    }
+    
+    private Document correctElementId(Document doc,String elementName) throws IOException{
+        NodeList elements = doc.getElementsByTagName(elementName);
+        for(int i=0;i<elements.getLength();i++){
+            NamedNodeMap attributes = elements.item(i).getAttributes();
+            Node uriNode = attributes.getNamedItem(Resources.URI);
+            Node idNode = attributes.getNamedItem(Resources.ID);
+            String id = idNode.getNodeValue();
+            String uri = uriNode.getNodeValue();
+            if (id.equals(Resources.NONE)){
+                String command = "curl " + uri;
+                Process p = Runtime.getRuntime().exec(command);
+                try {
+                    final BufferedReader reader = new BufferedReader( new InputStreamReader(p.getInputStream()));
+                    String line = null;
+                    while ((line = reader.readLine()) != null) {
+                        String newUri = line.substring(line.indexOf("http")).trim();
+                        String newId = newUri.substring(newUri.lastIndexOf("/")+1);
+                        idNode.setNodeValue(newId);
+                    }
+                    reader.close();
+                } catch (final Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return doc;    
     }
     
     public void normalizeBerenson(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
