@@ -86,6 +86,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_FOTOINDEX).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_BERENSON).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_VILLA_I_TATTI_HARVESTED).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI).mkdir();
@@ -100,6 +101,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_BERENSON).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_HARVESTED).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI).mkdir();
