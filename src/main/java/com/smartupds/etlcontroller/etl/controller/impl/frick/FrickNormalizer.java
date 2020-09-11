@@ -43,7 +43,7 @@ public class FrickNormalizer implements Normalizer{
                 doc=this.normalizeDimension(doc,Triple.of("marc:datafield","tag", "340"),Triple.of("marc:subfield","code", "b"));
                 doc=this.normalizeYear(doc,Triple.of("marc:datafield","tag", "260"),Triple.of("marc:subfield","code", "c"));
                 doc=this.normalizePersonAndPlace(doc,Triple.of("marc:datafield","tag", "590"),Triple.of("marc:subfield","code", Arrays.asList("b","k")));
-                doc=this.normalizePostfix(doc,Triple.of("marc:datafield","tag", "590"),Pair.of("ind1","9"), Triple.of("marc:subfield","code", "g"),"_POST.tif",Triple.of("marc:subfield","code", "d"));
+                doc=this.normalizePostfix(doc,Triple.of("marc:datafield","tag", "590"),Pair.of("ind1","9"), Triple.of("marc:subfield","code", "g"),Arrays.asList("_POST.tif",".tif"),Triple.of("marc:subfield","code", "d"));
                 doc=this.addCountInfo(doc,"marc:record",Triple.of("marc:datafield","tag", "590"));
                 doc=this.activeRemove(doc,Triple.of("marc:datafield","tag", "100"),Triple.of("marc:subfield","code", "d"));
                 doc=this.concatenateElements(doc,Triple.of("marc:datafield","tag", "655"),Triple.of("marc:subfield","code", "b"), Triple.of("marc:subfield","code", "a"));
@@ -266,7 +266,7 @@ public class FrickNormalizer implements Normalizer{
         return doc;
     }
     
-    private Document normalizePostfix(Document doc, Triple<String,String,String> parentElement, Pair<String,String> indexElement, Triple<String,String,String> checkElement, String postfix, Triple<String,String,String> addElement){
+    private Document normalizePostfix(Document doc, Triple<String,String,String> parentElement, Pair<String,String> indexElement, Triple<String,String,String> checkElement, List<String> postfixOrderedList, Triple<String,String,String> addElement){
         log.info("START: Normalize Postfix");
         NodeList parentNodes=doc.getElementsByTagName(parentElement.getLeft());
         for(int i=0;i<parentNodes.getLength();i++){
@@ -278,11 +278,15 @@ public class FrickNormalizer implements Normalizer{
                     if(child.getNodeType()==Node.ELEMENT_NODE && child.getNodeName().equals(checkElement.getLeft())){
                         Element childElement=((Element)child);
                         if(childElement.getAttribute(checkElement.getMiddle()).equals(checkElement.getRight())){
-                            if(childElement.getTextContent().endsWith(postfix)){
-                                Element newElement=doc.createElement(addElement.getLeft());
-                                newElement.setAttribute(addElement.getMiddle(), addElement.getRight());
-                                newElement.setTextContent(childElement.getTextContent().replace(postfix, ""));
-                                childElement.getParentNode().appendChild(newElement);
+                            boolean alreadyNormalized=false;
+                            for(String postfix : postfixOrderedList){
+                                if(childElement.getTextContent().endsWith(postfix) & !alreadyNormalized){
+                                    Element newElement=doc.createElement(addElement.getLeft());
+                                    newElement.setAttribute(addElement.getMiddle(), addElement.getRight());
+                                    newElement.setTextContent(childElement.getTextContent().replace(postfix, ""));
+                                    childElement.getParentNode().appendChild(newElement);
+                                    alreadyNormalized=true;
+                                }
                             }
                         }
                     }
