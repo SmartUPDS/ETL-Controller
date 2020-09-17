@@ -166,7 +166,7 @@ public class Resources {
     public static final String MAPPINGS_ZERI_PHOTOGRAPHS=MAPPINGS_ZERI+"/"+"mappings-photographs.x3ml";
     public static final String MAPPINGS_ZERI_PHOTOGRAPHS_FC_FR=MAPPINGS_ZERI+"/"+"mappings-photographs-fc-fr.x3ml";
     public static final String MAPPINGS_ZERI_WORKS_FC_FR=MAPPINGS_ZERI+"/"+"mappings-works-fc-fr.x3ml";
-    public static final String GENERATOR_POLICY_ZERI=FOLDER_MAPPINGS+"/"+"generator-policy.xml";
+    public static final String GENERATOR_POLICY_ZERI=MAPPINGS_ZERI+"/"+"generator-policy.xml";
     public static final String MAPPINGS_MARBURG=FOLDER_MAPPINGS+"/"+Resources.MARBURG;
     public static final String MAPPINGS_MARBURG_ACTORS=MAPPINGS_MARBURG+"/"+"mappings-actors.x3ml";
     public static final String MAPPINGS_MARBURG_ARTWORKS=MAPPINGS_MARBURG+"/"+"mappings-artworks.x3ml";
