@@ -1,5 +1,6 @@
 package com.smartupds.etlcontroller.etl.controller.impl.zeri;
 
+import com.google.common.io.Files;
 import com.smartupds.etlcontroller.etl.controller.Resources;
 import com.smartupds.etlcontroller.etl.controller.api.Normalizer;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
@@ -15,7 +16,6 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import lombok.extern.log4j.Log4j;
-import org.apache.commons.io.FilenameUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -30,32 +30,17 @@ public class ZeriNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start(ZeriNormalizer.class.getCanonicalName()+".unzip");
-        log.info("START: Unzip Resources from Zeri");
-        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS_ZIPS).listFiles()){
-            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
-                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS);
-                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS));
-            }else{
-                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
-            }  
-        }
-        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS_ZIPS).listFiles()){
-            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
-                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS);
-                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS));
-            }else{
-                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
-            }  
-        }
-        Timer.stop(ZeriNormalizer.class.getCanonicalName()+".unzip");
-        log.info("FINISH: Unzip Resources from Zeri in "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".unzip"));
+        log.info("START: Normalize Artwork Resources from Zeri");
+        Timer.start(ZeriNormalizer.class.getCanonicalName()+".normalize.art");
+        this.normalizeZeriResources(new File(Resources.FOLDER_INPUT_FETCHED_ZERI_ARTWORKS),new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS));
+        Timer.stop(ZeriNormalizer.class.getCanonicalName()+".normalize.art");
+        log.info("FINISH: Normalize Artwork Resources from Zeri in "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".normalize.art"));
         
         log.info("START: Normalize Photograph Resources from Zeri");
-        Timer.start(ZeriNormalizer.class.getCanonicalName()+".normalize");
-        this.normalizeZeriResources(new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS),new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS));
-        Timer.stop(ZeriNormalizer.class.getCanonicalName()+".normalize");
-        log.info("FINISH: Normalize Photograph Resources from Zeri in "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".normalize"));
+        Timer.start(ZeriNormalizer.class.getCanonicalName()+".normalize.phot");
+        this.replicateZeriResources(new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS),new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS));
+        Timer.stop(ZeriNormalizer.class.getCanonicalName()+".normalize.phot");
+        log.info("FINISH: Normalize Photograph Resources from Zeri in "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".normalize.phot"));
         
         log.info("Zeri Normalizations Time: "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()));   
     }
@@ -102,6 +87,7 @@ public class ZeriNormalizer implements Normalizer{
 
     private void normalizeZeriResources(File folderWithInputFiles, File folderForNormFiles){
         for(File file : folderWithInputFiles.listFiles()){
+            log.debug("Normalize file "+file.getAbsolutePath());
             try {
                 Document doc = ElementsSplit.parseXmlDocument(file);
                 doc = this.normalizeElements(doc,"FOTO","ftan" , "fotoID");
@@ -127,7 +113,19 @@ public class ZeriNormalizer implements Normalizer{
         }
         return doc;    
     }
-        
+    
+    private void replicateZeriResources(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
+        try{
+            for(File file : folderWithInputFiles.listFiles()){
+                log.debug("Copy resource "+file.getAbsolutePath()+" to folder "+folderForNormFiles.getAbsolutePath());
+                Files.copy(file, new File(folderForNormFiles.getAbsoluteFile()+"/"+file.getName()));
+            }
+        }catch(IOException ex){
+            log.error("An error occured while copying file resources",ex);
+            throw new ETLGenericException("An error occured while copying file resources",ex);
+        }
+    }
+
     public static ZeriNormalizer create(){
         return new ZeriNormalizer();
     }
