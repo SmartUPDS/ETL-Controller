@@ -175,7 +175,9 @@ public class MarburgNormalizer implements Normalizer{
                 while (a520nr.find()){
                     a010gn += a520nr.group(1) + " & " ;
                 }
-                a010gn = a010gn.substring(0,a010gn.lastIndexOf("&"));
+                if(a010gn.contains("")){
+                    a010gn = a010gn.substring(0,a010gn.lastIndexOf("&"));
+                }
                 String a520mStr = "";
                 if (a520m.find())
                     a520mStr = a520m.group();
