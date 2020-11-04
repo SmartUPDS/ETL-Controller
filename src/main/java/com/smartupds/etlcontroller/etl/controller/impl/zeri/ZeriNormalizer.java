@@ -13,12 +13,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import lombok.extern.log4j.Log4j;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
 import split.ElementsSplit;
 
 /** Normalizer for input sources from Zeri
@@ -38,7 +41,7 @@ public class ZeriNormalizer implements Normalizer{
         
         log.info("START: Normalize Photograph Resources from Zeri");
         Timer.start(ZeriNormalizer.class.getCanonicalName()+".normalize.phot");
-        this.replicateZeriResources(new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS),new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS));
+        this.normalizeZeriPhotographs(new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS),new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS));
         Timer.stop(ZeriNormalizer.class.getCanonicalName()+".normalize.phot");
         log.info("FINISH: Normalize Photograph Resources from Zeri in "+Timer.reportHumanFriendly(ZeriNormalizer.class.getCanonicalName()+".normalize.phot"));
         
@@ -91,7 +94,6 @@ public class ZeriNormalizer implements Normalizer{
             try {
                 Document doc = ElementsSplit.parseXmlDocument(file);
                 doc = this.normalizeElements(doc,"FOTO","ftan" , "fotoID");
-
                 ItattiNormalizer.exportXmlDocument(doc, new File(folderForNormFiles+"/"+file.getName()));
             } catch (NormalizerException ex) {
                 Logger.getLogger(ZeriNormalizer.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,23 +111,37 @@ public class ZeriNormalizer implements Normalizer{
             newNode.setNodeValue(newTagValue);
             doc.renameNode(newNode, newNode.getNamespaceURI(), newTag);
             element.item(i).getAttributes().setNamedItem(newNode);
-
         }
         return doc;    
     }
     
-    private void replicateZeriResources(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
-        try{
-            for(File file : folderWithInputFiles.listFiles()){
-                log.debug("Copy resource "+file.getAbsolutePath()+" to folder "+folderForNormFiles.getAbsolutePath());
-                Files.copy(file, new File(folderForNormFiles.getAbsoluteFile()+"/"+file.getName()));
+    private void normalizeZeriPhotographs(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
+        for(File file : folderWithInputFiles.listFiles()){
+            log.debug("Normalize file "+file.getAbsolutePath());
+            try {
+                Document doc = ElementsSplit.parseXmlDocument(file);
+                doc = this.normalizeFotoElements(doc,"FOTO", "fotoID");
+                ItattiNormalizer.exportXmlDocument(doc, new File(folderForNormFiles+"/"+file.getName()));
+            } catch (NormalizerException ex) {
+                Logger.getLogger(ZeriNormalizer.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }catch(IOException ex){
-            log.error("An error occured while copying file resources",ex);
-            throw new ETLGenericException("An error occured while copying file resources",ex);
         }
     }
-
+    
+    private Document normalizeFotoElements(Document doc,String elementName, String newTag){
+        NodeList element = doc.getElementsByTagName(elementName);
+        for(int i=0;i<element.getLength();i++){
+            Node node = element.item(i);
+            String nodeTextContent = node.getTextContent();
+            Matcher m = Pattern.compile("([0-9]*)\\/([0-9]*)\\.[a-zA-Z]*$").matcher(nodeTextContent);
+            String newAttributeValue = "";
+            if(m.find())
+                newAttributeValue = m.group(1) +"!"+ m.group(2);
+            ((Element) node).setAttribute(newTag,newAttributeValue);
+        }
+        return doc;    
+    }
+    
     public static ZeriNormalizer create(){
         return new ZeriNormalizer();
     }
