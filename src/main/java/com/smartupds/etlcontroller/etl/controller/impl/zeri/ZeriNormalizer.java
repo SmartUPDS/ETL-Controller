@@ -94,6 +94,7 @@ public class ZeriNormalizer implements Normalizer{
             try {
                 Document doc = ElementsSplit.parseXmlDocument(file);
                 doc = this.normalizeElements(doc,"FOTO","ftan" , "fotoID");
+                doc = this.normalizeLevel(doc);
                 ItattiNormalizer.exportXmlDocument(doc, new File(folderForNormFiles+"/"+file.getName()));
             } catch (NormalizerException ex) {
                 Logger.getLogger(ZeriNormalizer.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,6 +114,20 @@ public class ZeriNormalizer implements Normalizer{
             element.item(i).getAttributes().setNamedItem(newNode);
         }
         return doc;    
+    }
+    
+    public Document normalizeLevel(Document doc){
+        NodeList element = doc.getElementsByTagName("RVEL");
+        for (int i=0; i<element.getLength();i++){
+            if (Integer.parseInt(element.item(i).getTextContent())>0){
+                Node nrschedaNode = doc.getElementsByTagName("NRSCHEDA").item(0);
+                String nrscheda = nrschedaNode.getTextContent();
+                String sercd = doc.getElementsByTagName("SERCD").item(0).getTextContent();
+                String rvel = element.item(i).getTextContent();
+                nrschedaNode.setTextContent(nrscheda+sercd+rvel);
+            }
+        }
+        return doc;
     }
     
     private void normalizeZeriPhotographs(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
