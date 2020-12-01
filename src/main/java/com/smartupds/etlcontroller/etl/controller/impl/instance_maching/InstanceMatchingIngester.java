@@ -33,7 +33,7 @@ public class InstanceMatchingIngester implements Ingester{
         log.info("START: Ingest Instance Matching results for Artists");
         Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".artists");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_ARTISTS), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_ARTISTS, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_ARTISTS, false);
         }
         Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".artists");
         log.info("FINISH: Ingest Instance Matching results for Artists in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".artists"));
@@ -41,7 +41,7 @@ public class InstanceMatchingIngester implements Ingester{
         log.info("START: Ingest Instance Matching results for Institutions");
         Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".institutions");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_INSTITUTIONS), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_INSTITUTIONS, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_INSTITUTIONS, false);
         }
         Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".institutions");
         log.info("FINISH: Ingest Instance Matching results for Institutions in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".institutions"));
@@ -49,7 +49,7 @@ public class InstanceMatchingIngester implements Ingester{
         log.info("START: Ingest Instance Matching results for Places");
         Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".places");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_PLACES), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_PLACES, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_PLACES, false);
         }
         Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".places");
         log.info("FINISH: Ingest Instance Matching results for Places in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".places"));
@@ -57,7 +57,7 @@ public class InstanceMatchingIngester implements Ingester{
         log.info("START: Ingest Instance Matching results for Photographers");
         Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".photographers");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_PHOTOGRAPHERS), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_PHOTOGRAPHERS, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_PHOTOGRAPHERS, false);
         }
         Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".photographers");
         log.info("FINISH: Ingest Instance Matching results for Photographers in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".photographers"));
@@ -65,7 +65,7 @@ public class InstanceMatchingIngester implements Ingester{
         log.info("START: Ingest Instance Matching results for Types");
         Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".types");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_TYPES), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_TYPES, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_TYPES, false);
         }
         Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".types");
         log.info("FINISH: Ingest Instance Matching results for Types in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".types")); 
@@ -73,7 +73,7 @@ public class InstanceMatchingIngester implements Ingester{
         log.info("START: Ingest Instance Matching results for Works");
         Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".works");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_WORKS, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_WORKS, false);
         }
         Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".works");
         log.info("FINISH: Ingest Instance Matching results for Works in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".works"));
