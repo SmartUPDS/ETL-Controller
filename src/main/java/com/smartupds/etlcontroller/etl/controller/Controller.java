@@ -41,20 +41,20 @@ public class Controller {
         //none (?)
         
         /* Normalize/Clean Input Resources */
-        ItattiNormalizer.create().normalizeResources();
-        FrickNormalizer.create().normalizeResources();
-        HertzianaNormalizer.create().normalizeResources();
-        ZeriNormalizer.create().normalizeResources();
-        MarburgNormalizer.create().normalizeResources();
-        KhiNormalizer.create().normalizeResources();
+//        ItattiNormalizer.create().normalizeResources();
+//        FrickNormalizer.create().normalizeResources();
+//        HertzianaNormalizer.create().normalizeResources();
+//        ZeriNormalizer.create().normalizeResources();
+//        MarburgNormalizer.create().normalizeResources();
+//        KhiNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-        ItattiTransformer.create().transformResources();
-        HertzianaTransformer.create().transformResources();
-        FrickTransformer.create().transformResources();
-        ZeriTransformer.create().transformResources();
-        MarburgTransformer.create().transformResources();
-        KhiTransformer.create().transformResources();
+//        ItattiTransformer.create().transformResources();
+//        HertzianaTransformer.create().transformResources();
+//        FrickTransformer.create().transformResources();
+//        ZeriTransformer.create().transformResources();
+//        MarburgTransformer.create().transformResources();
+//        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
 //        FrickHomogenizer.create().homogenizeResources();
@@ -62,14 +62,16 @@ public class Controller {
 //        KhiHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
-        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
-        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
-        ItattiIngester.create(triplestoreConnection).ingestResources();
-        HertzianaIngester.create(triplestoreConnection).ingestResources();
-        FrickIngester.create(triplestoreConnection).ingestResources();
-        ZeriIngester.create(triplestoreConnection).ingestResources();
-        MarburgIngester.create(triplestoreConnection).ingestResources();
-        KhiIngester.create(triplestoreConnection).ingestResources();
+//        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
+//        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
+//        
+//        ItattiIngester.create(triplestoreConnection).ingestResources();
+        
+//        HertzianaIngester.create(triplestoreConnection).ingestResources();
+//        FrickIngester.create(triplestoreConnection).ingestResources();
+//        ZeriIngester.create(triplestoreConnection).ingestResources();
+//        MarburgIngester.create(triplestoreConnection).ingestResources();
+//        KhiIngester.create(triplestoreConnection).ingestResources();
         
         /* Test Resources */
 //        none (?)
@@ -174,12 +176,27 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_ARTISTS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_INSTITUTIONS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_PLACES).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_TYPES).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_PHOTOGRAPHERS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_VOCABULARIES).mkdir();
+        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC).mkdir();
+        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_ULAN).mkdir();
+        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_WIKIDATA).mkdir();
+        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_AAT).mkdir();
+        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_GEONAMES).mkdir();
+        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_MIDAS).mkdir();
+        
     }
     
     public static void main(String[] args) throws ETLGenericException{
         /* INITIALIZATION ONLY */
-//        Controller.createFoldersStructure();
+        Controller.createFoldersStructure();
         
-        Controller.executeWorkflow();
+//        Controller.executeWorkflow();
     }
 }
