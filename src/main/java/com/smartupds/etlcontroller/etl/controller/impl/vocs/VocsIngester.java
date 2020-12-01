@@ -33,7 +33,7 @@ public class VocsIngester implements Ingester {
         log.info("START: Ingest Vocabularies results for NYPL/PIC");
         Timer.start(VocsIngester.class.getCanonicalName()+".nypl-pic");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_NYPL_PIC, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_NYPL_PIC, false);
         }
         Timer.stop(VocsIngester.class.getCanonicalName()+".nypl-pic");
         log.info("FINISH: Ingest Vocabularies results for NYPL/PIC in "+Timer.reportHumanFriendly(VocsIngester.class.getCanonicalName()+".nypl-pic"));
@@ -41,7 +41,7 @@ public class VocsIngester implements Ingester {
         log.info("START: Ingest Vocabularies results for ULAN");
         Timer.start(VocsIngester.class.getCanonicalName()+".ulan");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_VOCABULARIES_ULAN), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_ULAN, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_ULAN, false);
         }
         Timer.stop(VocsIngester.class.getCanonicalName()+".ulan");
         log.info("FINISH: Ingest Vocabularies results for ULAN in "+Timer.reportHumanFriendly(VocsIngester.class.getCanonicalName()+".ulan"));
@@ -49,7 +49,7 @@ public class VocsIngester implements Ingester {
         log.info("START: Ingest Vocabularies results for Wikidata");
         Timer.start(VocsIngester.class.getCanonicalName()+".wikidata");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_VOCABULARIES_WIKIDATA), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_WIKIDATA, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_WIKIDATA, false);
         }
         Timer.stop(VocsIngester.class.getCanonicalName()+".wikidata");
         log.info("FINISH: Ingest Vocabularies results for Wikidata in "+Timer.reportHumanFriendly(VocsIngester.class.getCanonicalName()+".wikidata"));
@@ -57,7 +57,7 @@ public class VocsIngester implements Ingester {
         log.info("START: Ingest Vocabularies results for AAT");
         Timer.start(VocsIngester.class.getCanonicalName()+".aat");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_VOCABULARIES_AAT), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_AAT, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_AAT, false);
         }
         Timer.stop(VocsIngester.class.getCanonicalName()+".aat");
         log.info("FINISH: Ingest Vocabularies results for AAT in "+Timer.reportHumanFriendly(VocsIngester.class.getCanonicalName()+".aat"));
@@ -65,7 +65,7 @@ public class VocsIngester implements Ingester {
         log.info("START: Ingest Vocabularies results for Geonames");
         Timer.start(VocsIngester.class.getCanonicalName()+".geonames");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_VOCABULARIES_GEONAMES), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_GEONAMES, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_GEONAMES, false);
         }
         Timer.stop(VocsIngester.class.getCanonicalName()+".geonames");
         log.info("FINISH: Ingest Vocabularies results for Geonames in "+Timer.reportHumanFriendly(VocsIngester.class.getCanonicalName()+".geonames"));
@@ -73,7 +73,7 @@ public class VocsIngester implements Ingester {
         log.info("START: Ingest Vocabularies results for MIDAS");
         Timer.start(VocsIngester.class.getCanonicalName()+".midas");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_VOCABULARIES_MIDAS), null, true)){
-            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_MIDAS, true);
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_VOCAB_MIDAS, false);
         }
         Timer.stop(VocsIngester.class.getCanonicalName()+".midas");
         log.info("FINISH: Ingest Vocabularies results for MIDAS in "+Timer.reportHumanFriendly(VocsIngester.class.getCanonicalName()+".midas"));
