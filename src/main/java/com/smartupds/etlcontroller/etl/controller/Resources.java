@@ -93,6 +93,20 @@ public class Resources {
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.ZERI;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.PHOTOGRAPHS;
+    public static final String FOLDER_OUTPUT_INSTANCE_MATCHING=FOLDER_OUTPUT+"/"+"3_Instance_Matching";
+    public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_ARTISTS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Artists";
+    public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_INSTITUTIONS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Institutions";
+    public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_PLACES=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Places";
+    public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_PHOTOGRAPHERS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Photographers";
+    public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_TYPES=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Types";
+    public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Works";
+    public static final String FOLDER_OUTPUT_VOCABULARIES=FOLDER_OUTPUT+"/"+"4_Vocabularies";
+    public static final String FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC=FOLDER_OUTPUT_VOCABULARIES+"/"+"NYPL-PIC";
+    public static final String FOLDER_OUTPUT_VOCABULARIES_ULAN=FOLDER_OUTPUT_VOCABULARIES+"/"+"ULAN";
+    public static final String FOLDER_OUTPUT_VOCABULARIES_WIKIDATA=FOLDER_OUTPUT_VOCABULARIES+"/"+"Wikidata";
+    public static final String FOLDER_OUTPUT_VOCABULARIES_AAT=FOLDER_OUTPUT_VOCABULARIES+"/"+"AAT";
+    public static final String FOLDER_OUTPUT_VOCABULARIES_GEONAMES=FOLDER_OUTPUT_VOCABULARIES+"/"+"Geonames";
+    public static final String FOLDER_OUTPUT_VOCABULARIES_MIDAS=FOLDER_OUTPUT_VOCABULARIES+"/"+"MIDAS";
     
     /* Sources names */
     public static final String HERTZIANA="Hertziana";
@@ -219,16 +233,30 @@ public class Resources {
     
     /* Default graphspaces */
     public static final String GRAPHSPACE_FRICK="http://frick/";
-    public static final String GRAPHSPACE_FRICK_FC_FR="http://frick_fc_fr/";
+    public static final String GRAPHSPACE_FRICK_FC_FR="https://pharos.artresearch.net/resource/frick/fcrs";
     public static final String GRAPHSPACE_HERTZIANA="http://hertziana/";
-    public static final String GRAPHSPACE_HERTZIANA_FC_FR="http://hertziana_fc_fr/";
+    public static final String GRAPHSPACE_HERTZIANA_FC_FR="https://pharos.artresearch.net/resource/hertziana/fcrs";
     public static final String GRAPHSPACE_KHI="http://khi/";
-    public static final String GRAPHSPACE_KHI_FC_FR="http://khi_fc_fr/";
+    public static final String GRAPHSPACE_KHI_FC_FR="https://pharos.artresearch.net/resource/khi/fcrs";
     public static final String GRAPHSPACE_MARBURG="http://marburg/";
-    public static final String GRAPHSPACE_MARBURG_FC_FR="http://marburg_fc_fr/";
+    public static final String GRAPHSPACE_MARBURG_FC_FR="https://pharos.artresearch.net/resource/marburg/fcrs";
     public static final String GRAPHSPACE_VILLA_I_TATTI="http://itatti/";
-    public static final String GRAPHSPACE_VILLA_I_TATTI_FC_FR="http://itatti_fc_fr/";
+    public static final String GRAPHSPACE_VILLA_I_TATTI_FC_FR="https://pharos.artresearch.net/resource/itatti/fcrs";
     public static final String GRAPHSPACE_ZERI="http://zeri/";
-    public static final String GRAPHSPACE_ZERI_FC_FR="http://zeri_fc_fr/";
+    public static final String GRAPHSPACE_ZERI_FC_FR="https://pharos.artresearch.net/resource/zeri/fcrs";
+    // Instance Matchings
+    public static final String GRAPHSPACE_MATCHINGS_ARTISTS="https://pharos.artresearch.net/resource/matchings/artists";
+    public static final String GRAPHSPACE_MATCHINGS_INSTITUTIONS="https://pharos.artresearch.net/resource/matchings/institutions";
+    public static final String GRAPHSPACE_MATCHINGS_PLACES="https://pharos.artresearch.net/resource/matchings/places";
+    public static final String GRAPHSPACE_MATCHINGS_PHOTOGRAPHERS="https://pharos.artresearch.net/resource/matchings/photographers";
+    public static final String GRAPHSPACE_MATCHINGS_TYPES="https://pharos.artresearch.net/resource/matchings/types";
+    public static final String GRAPHSPACE_MATCHINGS_WORKS="https://pharos.artresearch.net/resource/matchings/works";
+    // Vocabularies
+    public static final String GRAPHSPACE_VOCAB_NYPL_PIC="https://pharos.artresearch.net/resource/pic";
+    public static final String GRAPHSPACE_VOCAB_ULAN="https://pharos.artresearch.net/resource/ulan";
+    public static final String GRAPHSPACE_VOCAB_WIKIDATA="https://pharos.artresearch.net/resource/wikidata";
+    public static final String GRAPHSPACE_VOCAB_AAT="https://pharos.artresearch.net/resource/aat";
+    public static final String GRAPHSPACE_VOCAB_GEONAMES="https://pharos.artresearch.net/resource/gnames";
+    public static final String GRAPHSPACE_VOCAB_MIDAS="https://pharos.artresearch.net/resource/midasvocs";
     
 }
