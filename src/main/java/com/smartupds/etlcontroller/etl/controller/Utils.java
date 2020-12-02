@@ -101,7 +101,7 @@ public class Utils {
         }
     }
    
-    public static void consolidateN3Resources(File initialFolder, File outputFolder, String outputResourceName, int maxsize) throws IOException{
+    public static void consolidateN3Resources(File initialFolder, File outputFolder, String outputResourceName, int maxsize, String extension) throws IOException{
         StringBuilder fileBuilder=new StringBuilder();
         int fileCounter=1;
         for(File file : initialFolder.listFiles()){
@@ -110,7 +110,7 @@ public class Utils {
                            .append("\n");
             }
             if(fileBuilder.length()>=Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB*1024*1024){
-                File outputFile=new File(outputFolder.getAbsoluteFile()+"/"+outputResourceName+"-"+fileCounter+".n3");
+                File outputFile=new File(outputFolder.getAbsoluteFile()+"/"+outputResourceName+"-"+fileCounter+"."+extension);
                 log.info("Export consolidated file "+outputFile.getAbsolutePath());
                 BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile),"UTF8"));
                 writer.append(fileBuilder.toString());
