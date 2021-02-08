@@ -42,7 +42,7 @@ public class Controller {
         
         /* Normalize/Clean Input Resources */
 //        ItattiNormalizer.create().normalizeResources();
-//        FrickNormalizer.create().normalizeResources();
+        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
 //        MarburgNormalizer.create().normalizeResources();
@@ -51,7 +51,7 @@ public class Controller {
         /* Transform Resources */
 //        ItattiTransformer.create().transformResources();
 //        HertzianaTransformer.create().transformResources();
-//        FrickTransformer.create().transformResources();
+        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
 //        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
@@ -138,6 +138,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL3).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL4).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ACTORS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_PHOTOGRAPHS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS).mkdir();
@@ -195,8 +197,8 @@ public class Controller {
     
     public static void main(String[] args) throws ETLGenericException{
         /* INITIALIZATION ONLY */
-        Controller.createFoldersStructure();
+//        Controller.createFoldersStructure();
         
-//        Controller.executeWorkflow();
+        Controller.executeWorkflow();
     }
 }
