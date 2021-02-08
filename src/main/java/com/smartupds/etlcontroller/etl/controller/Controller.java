@@ -53,7 +53,7 @@ public class Controller {
 //        HertzianaTransformer.create().transformResources();
         FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-//        MarburgTransformer.create().transformResources();
+        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
@@ -175,6 +175,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS).mkdir();

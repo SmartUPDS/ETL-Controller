@@ -20,7 +20,7 @@ public class ZeriHomogenizer implements Homogenizer{
     @Override
     public void homogenizeResources() throws ETLGenericException {
         try{
-            this.checkN3Validity();
+//            this.checkN3Validity();
             this.consolidateN3Resources();
         }catch(IOException ex){
             log.error("An error occured while validating N3 resources",ex);
@@ -47,13 +47,13 @@ public class ZeriHomogenizer implements Homogenizer{
     private void consolidateN3Resources() throws IOException{
         log.info("START: Create consolidated N3 files for Zeri artworks");
         Timer.start(ZeriHomogenizer.class.getCanonicalName()+".n3consolidation.artworks");
-        Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS), new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS), Resources.ARTWORKS, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB);
+        Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS), new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS), Resources.ARTWORKS, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB, Resources.EXTENSION_TRIG);
         Timer.stop(ZeriHomogenizer.class.getCanonicalName()+".n3consolidation.artworks");
         log.info("FINISH: Create consolidated N3 files for Zeri artworks in "+Timer.reportHumanFriendly(ZeriHomogenizer.class.getCanonicalName()+".n3consolidation.artworks"));
         
         log.info("START: Create consolidated N3 files for Zeri photographs");
         Timer.start(ZeriHomogenizer.class.getCanonicalName()+".n3consolidation.photographs");
-        Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS), new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS), Resources.PHOTOGRAPHS, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB);
+        Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS), new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS), Resources.PHOTOGRAPHS, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB, Resources.EXTENSION_TRIG);
         Timer.stop(ZeriHomogenizer.class.getCanonicalName()+".n3consolidation.photographs");
         log.info("FINISH: Create consolidated N3 files for Zeri photographs in "+Timer.reportHumanFriendly(ZeriHomogenizer.class.getCanonicalName()+".n3consolidation.photographs"));
     } 

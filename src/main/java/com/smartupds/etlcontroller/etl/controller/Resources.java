@@ -90,6 +90,8 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ACTORS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.WORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_NORMALIZED=FOLDER_OUTPUT+"/"+"2_Normalized";
+    public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
+    public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI+"/"+Resources.SHAREDSHELF;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.ZERI;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.PHOTOGRAPHS;
@@ -143,6 +145,11 @@ public class Resources {
     /* Other names */
     public static final String _FC_FR="_FC_FR";
     public static final String FC_FR="FC_FR";
+    
+    /* Extensions */
+    public static final String EXTENSION_TRIG="ttl";
+    public static final String EXTENSION_N3="n3";
+    public static final String EXTENSION_RDF="rdf";
     
     /* Mapping resources */
     public static final String MAPPINGS_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+Resources.VILLA_I_TATTI;
