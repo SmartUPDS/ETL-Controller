@@ -69,14 +69,25 @@ public class InstanceMatchingIngester implements Ingester{
         }
         Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".types");
         log.info("FINISH: Ingest Instance Matching results for Types in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".types")); 
-
-        log.info("START: Ingest Instance Matching results for Works");
-        Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".works");
-        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS), null, true)){
+            
+        // Hashed
+        log.info("START: Ingest Hashing results for Works");
+        Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".works-hashed");
+        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS_HASHED), null, true)){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_WORKS, false);
         }
-        Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".works");
-        log.info("FINISH: Ingest Instance Matching results for Works in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".works"));
+        Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".works-hashed");
+        log.info("FINISH: Ingest Hashing results for Works in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".works-hashed"));
+        
+        // Matched
+        log.info("START: Ingest Instance Matching results for Works");
+        Timer.start(InstanceMatchingIngester.class.getCanonicalName()+".works-matched");
+        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS_MATCHED), null, true)){
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_MATCHINGS_WORKS, false);
+        }
+        Timer.stop(InstanceMatchingIngester.class.getCanonicalName()+".works-matched");
+        log.info("FINISH: Ingest Instance Matching results for Works in "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()+".works-matched"));
+        
         
         log.info("Instance Matchings Ingest Time: "+Timer.reportHumanFriendly(InstanceMatchingIngester.class.getCanonicalName()));
     }
