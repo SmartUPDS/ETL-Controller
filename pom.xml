@@ -97,6 +97,12 @@
             <version>2.6</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.1.1</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
         
 </project>
