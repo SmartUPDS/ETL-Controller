@@ -7,11 +7,20 @@ import com.smartupds.normalizer.exceptions.NormalizerException;
 import gr.forth.ics.isl.timer.Timer;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -20,6 +29,10 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import lombok.extern.log4j.Log4j;
+import org.dom4j.*;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -244,10 +257,57 @@ public class ItattiNormalizer implements Normalizer {
                     rectoElem.getParentNode().appendChild(jsonElement);
                 }
                 this.exportXmlDocument(doc, new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
+                
+                // Case of document contains institution
+                mergeInstitutionElements(folderForNormFiles.getAbsolutePath()+"/"+file.getName(),new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
             }catch(NormalizerException ex){
                 log.error("An error occured while normalizing file",ex);
                 throw new ETLGenericException("An error occured while normalizing file",ex);
             }   
+        }
+    }
+    
+    private void mergeInstitutionElements(String filename, File output){
+        try {
+            Map<String,org.dom4j.Element> elementsMap = new TreeMap<>();
+            SAXReader reader = new SAXReader();
+            reader.setEncoding("UTF-8");
+            org.dom4j.Document doc = reader.read(new FileInputStream(filename));
+            org.dom4j.Element rootElement = doc.getRootElement();
+            List<org.dom4j.Element> elements = rootElement.elements();
+            boolean isInstitution = false;
+            for (org.dom4j.Element element :elements){
+                if (element.getName().equals("Institution")){
+                    isInstitution = true;
+                    String id = element.element("Institution_ID").getStringValue();
+                    if (!elementsMap.containsKey(id))
+                        elementsMap.put(id,element);
+                    else{
+                        List<org.dom4j.Element> childElements = element.elements();
+                        for (org.dom4j.Element childElement : childElements){
+                            childElement.detach();
+                            elementsMap.get(id).add(childElement);
+                        }
+                    }
+                }
+            }
+            if (isInstitution){
+                rootElement.clearContent();
+                elementsMap.forEach((k,v) -> {
+                    rootElement.add(v);
+    //                System.out.println("KEY =" + k);
+    //                System.out.println(v.asXML());
+                });
+
+                OutputFormat format = OutputFormat.createPrettyPrint();
+                XMLWriter xmlwriter = new XMLWriter( new OutputStreamWriter(new FileOutputStream(output.getAbsolutePath()), "UTF-8"), format );
+                xmlwriter.write( doc );
+                xmlwriter.close();
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ItattiNormalizer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException | IOException ex) {
+            Logger.getLogger(ItattiNormalizer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
