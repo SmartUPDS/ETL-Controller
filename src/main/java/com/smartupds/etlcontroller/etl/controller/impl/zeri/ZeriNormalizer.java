@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -95,6 +96,10 @@ public class ZeriNormalizer implements Normalizer{
                 Document doc = ElementsSplit.parseXmlDocument(file);
                 doc = this.normalizeElements(doc,"FOTO","ftan" , "fotoID");
                 doc = this.normalizeLevel(doc);
+                // PARAGRAFO[@etichetta="OBJECT"]/MTC[@etichetta="Medium or materials"]
+                doc = this.normalizeVoc(doc,"PARAGRAFO","OBJECT","MTC","Medium or materials",",");
+                // PARAGRAFO[@etichetta="OBJECT"]/OGTT[@etichetta="Object type"]
+                doc = this.normalizeVoc(doc,"PARAGRAFO","OBJECT","OGTT","Object type","/");
                 ItattiNormalizer.exportXmlDocument(doc, new File(folderForNormFiles+"/"+file.getName()));
             } catch (NormalizerException ex) {
                 Logger.getLogger(ZeriNormalizer.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,7 +134,41 @@ public class ZeriNormalizer implements Normalizer{
         }
         return doc;
     }
-    
+    private Document normalizeVoc(Document doc, String field, String field_etichetta,String subfield,String subfield_etichetta, String del) {
+         NodeList element = doc.getElementsByTagName(field);
+        for (int i=0; i<element.getLength();i++){
+            if(element.item(i).getAttributes().getNamedItem("etichetta").getNodeValue().equals(field_etichetta)){
+                NodeList childNodes = element.item(i).getChildNodes();
+                HashSet<Node> new_nodes = new HashSet<>();
+                HashSet<Node> old_nodes = new HashSet<>();
+                for (int j=0; j<childNodes.getLength();j++){
+                    if(childNodes.item(j).getNodeName().equals(subfield) && 
+                            childNodes.item(j).getAttributes().getNamedItem("etichetta").getNodeValue().equals(subfield_etichetta)){
+                        // only in the case where it is splitable
+                        System.out.println(String.join(" - ", childNodes.item(j).getTextContent().split(del)));
+                        if (childNodes.item(j).getTextContent().split(del).length>1){
+                            new_nodes.add(childNodes.item(j).cloneNode(true));
+                            old_nodes.add(childNodes.item(j));
+                        }
+                    }
+                }
+                // remove old nodes
+                for (Node node: old_nodes){
+                    element.item(i).removeChild(node);
+                }
+                // add new nodes 
+                for (Node node: new_nodes){
+                    String[] splits = node.getTextContent().split(del);
+                    for (String split: splits){
+                        Node child_node = node.cloneNode(true);
+                        child_node.setTextContent(split.trim());
+                        element.item(i).appendChild(child_node);
+                    }
+                }
+            }
+        }
+        return doc;
+    }
     private void normalizeZeriPhotographs(File folderWithInputFiles, File folderForNormFiles) throws ETLGenericException{
         for(File file : folderWithInputFiles.listFiles()){
             log.debug("Normalize file "+file.getAbsolutePath());
@@ -160,4 +199,5 @@ public class ZeriNormalizer implements Normalizer{
     public static ZeriNormalizer create(){
         return new ZeriNormalizer();
     }
+
 }
