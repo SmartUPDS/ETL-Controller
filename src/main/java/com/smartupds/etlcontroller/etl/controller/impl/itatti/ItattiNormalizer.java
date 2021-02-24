@@ -260,6 +260,7 @@ public class ItattiNormalizer implements Normalizer {
                 
                 // Case of document contains institution
                 mergeInstitutionElements(folderForNormFiles.getAbsolutePath()+"/"+file.getName(),new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
+                
             }catch(NormalizerException ex){
                 log.error("An error occured while normalizing file",ex);
                 throw new ETLGenericException("An error occured while normalizing file",ex);
@@ -286,7 +287,8 @@ public class ItattiNormalizer implements Normalizer {
                         List<org.dom4j.Element> childElements = element.elements();
                         for (org.dom4j.Element childElement : childElements){
                             childElement.detach();
-                            elementsMap.get(id).add(childElement);
+                            if(!elementsMap.get(id).asXML().contains(childElement.asXML()))
+                                elementsMap.get(id).add(childElement);
                         }
                     }
                 }
