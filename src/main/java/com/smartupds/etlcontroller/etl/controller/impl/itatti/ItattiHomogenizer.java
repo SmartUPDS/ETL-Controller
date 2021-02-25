@@ -33,6 +33,8 @@ public class ItattiHomogenizer implements Homogenizer{
         log.info("START: Create consolidated TRIG files for Sharedshelf resources");
         Timer.start(ItattiHomogenizer.class.getCanonicalName()+".consolidate.sharedshelf");
         Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF), new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF), Resources.SHAREDSHELF, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB, Resources.EXTENSION_TRIG);
+        Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_ULAN), new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF_ULAN), Resources.SHAREDSHELF, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB, Resources.EXTENSION_TRIG);
+        Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR), new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF_FC_FR), Resources.SHAREDSHELF, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB, Resources.EXTENSION_N3);
         Timer.stop(ItattiHomogenizer.class.getCanonicalName()+".consolidate.sharedshelf");
         log.info("FINISH: Create consolidated TRIG files for Sharedshelf resources in "+Timer.reportHumanFriendly(ItattiHomogenizer.class.getCanonicalName()+".consolidate.sharedshelf"));
     } 
