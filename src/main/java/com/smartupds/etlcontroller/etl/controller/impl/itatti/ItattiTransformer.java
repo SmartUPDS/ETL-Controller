@@ -88,6 +88,18 @@ public class ItattiTransformer implements Transformer {
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".fotoindex-fc-fr");
         log.info("FINISH: Transform FotoIndex using FCs FRs data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".fotoindex-fc-fr"));
         
+        Timer.start(ItattiTransformer.class.getCanonicalName()+".sharedshelf-ulan");
+        log.info("START: Transform SharedShelf ULAN data from Villa I Tatti");
+        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).listFiles()){
+            Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_ULAN),
+                                new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_SHAREDSHELF),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_ULAN), 
+                                X3MLEngineFactory.OutputFormat.TRIG);
+        }
+        Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf-ulan");
+        log.info("FINISH: Transform SharedShelf ULAN data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf-ulan"));
+        
         log.info("Villa I Tatti Transformations Time: "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()));
     }
     

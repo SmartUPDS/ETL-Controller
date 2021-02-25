@@ -41,6 +41,7 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_ULAN=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF+Resources._ULAN;
     public static final String FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR=FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.HERTZIANA;
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ACTORS=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.ACTORS;
@@ -92,6 +93,8 @@ public class Resources {
     public static final String FOLDER_OUTPUT_NORMALIZED=FOLDER_OUTPUT+"/"+"2_Normalized";
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI+"/"+Resources.SHAREDSHELF;
+    public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF_ULAN=FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI+"/"+Resources.SHAREDSHELF+Resources._ULAN;
+    public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF_FC_FR=FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI+"/"+Resources.SHAREDSHELF+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.ZERI;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.PHOTOGRAPHS;
@@ -145,6 +148,7 @@ public class Resources {
     /* Other names */
     public static final String _FC_FR="_FC_FR";
     public static final String FC_FR="FC_FR";
+    public static final String _ULAN="_ulan";
     
     /* Extensions */
     public static final String EXTENSION_TRIG="ttl";
@@ -156,6 +160,7 @@ public class Resources {
     public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF=MAPPINGS_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
     
     public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_ALL=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"mappings.x3ml";
+    public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_ULAN=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"mappings_ulan.x3ml";
     public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_FC_FR=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"mappings-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_VILLA_I_TATTI_SHAREDSHELF=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"generator-policy.xml";
     public static final String MAPPINGS_VILLA_I_TATTI_FOTOINDEX=MAPPINGS_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
@@ -233,7 +238,7 @@ public class Resources {
     
     /* Misc Resources */
     public static final int MAX_FILESIZE_INPUT_RESOURCES_IN_MB=1;
-    public static final int MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB=4;
+    public static final int MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB=6;
     public static final int TIME_OUT_REQUESTS=30000;
     
     /* Spring beans resources */
