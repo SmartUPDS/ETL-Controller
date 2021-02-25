@@ -45,7 +45,7 @@ public class MarburgNormalizer implements Normalizer{
                            Resources.MAX_FILESIZE_INPUT_RESOURCES_IN_MB);
         Timer.stop(MarburgNormalizer.class.getCanonicalName()+".split");
         log.info("FINISH: Split large files from Marburg in "+Timer.reportHumanFriendly(MarburgNormalizer.class.getCanonicalName()+".split"));
-        
+
         log.info("START: Perform Syntax Normalization for resources from Marburg");
         Timer.start(MarburgNormalizer.class.getCanonicalName()+".syntax-norm");
         List<String> elementsList=Arrays.asList("a30nr",
@@ -175,7 +175,7 @@ public class MarburgNormalizer implements Normalizer{
                 while (a520nr.find()){
                     a010gn += a520nr.group(1) + " & " ;
                 }
-                if(a010gn.contains("")){
+                if(a010gn.contains("&")){
                     a010gn = a010gn.substring(0,a010gn.lastIndexOf("&"));
                 }
                 String a520mStr = "";
