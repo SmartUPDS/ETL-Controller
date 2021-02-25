@@ -37,19 +37,19 @@ public class KhiNormalizer implements Normalizer{
 
     @Override
     public void normalizeResources() throws ETLGenericException {
-        Timer.start(KhiNormalizer.class.getCanonicalName()+".unzip");
-        log.info("START: Unzip resources from KHI");
-        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_KHI).listFiles()){
-            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
-                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_FETCHED_KHI);
-                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_FETCHED_KHI));
-                zipFile.delete();
-            }else{
-                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
-            }  
-        }
-        Timer.stop(KhiNormalizer.class.getCanonicalName()+".unzip");
-        log.info("FINISH: Unzip Resources from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class.getCanonicalName()+".unzip"));
+//        Timer.start(KhiNormalizer.class.getCanonicalName()+".unzip");
+//        log.info("START: Unzip resources from KHI");
+//        for(File zipFile : new File(Resources.FOLDER_INPUT_FETCHED_KHI).listFiles()){
+//            if(FilenameUtils.getExtension(zipFile.getName()).equalsIgnoreCase("zip")){
+//                log.info("Unzip the contents of the file with filename "+zipFile+" at "+Resources.FOLDER_INPUT_FETCHED_KHI);
+//                this.unzipFiles(zipFile, new File(Resources.FOLDER_INPUT_FETCHED_KHI));
+//                zipFile.delete();
+//            }else{
+//                log.warn("Unable to unzip the contents of the file "+zipFile.getAbsolutePath()+"\t Only Zip files are supported");
+//            }  
+//        }
+//        Timer.stop(KhiNormalizer.class.getCanonicalName()+".unzip");
+//        log.info("FINISH: Unzip Resources from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class.getCanonicalName()+".unzip"));
         
         Timer.start(KhiNormalizer.class.getCanonicalName()+".split");
         log.info("START: Split large files from KHI");

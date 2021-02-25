@@ -150,17 +150,29 @@ public class KhiTransformer implements Transformer {
         Timer.stop(KhiTransformer.class.getCanonicalName()+".photographs-fc-fr");
         log.info("FINISH: Transform photographs using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".photographs-fc-fr"));
         
-        Timer.start(KhiTransformer.class.getCanonicalName()+".works-fc-fr");
-        log.info("START: Transform Works using FCs FRs from KHI");
+        Timer.start(KhiTransformer.class.getCanonicalName()+".artworks-fc-fr");
+        log.info("START: Transform Artworks using FCs FRs from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
             Utils.transformFile(file,
-                                new File(Resources.MAPPINGS_KHI_WORKS_FC_FR),
+                                new File(Resources.MAPPINGS_KHI_ARTWORKS_FC_FR),
                                 new File(Resources.GENERATOR_POLICY_KHI),
-                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR), 
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_FC_FR), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop(KhiTransformer.class.getCanonicalName()+".works-fc-fr");
-        log.info("FINISH: Transform Works using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".works-fc-fr"));
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".artworks-fc-fr");
+        log.info("FINISH: Transform Artworks using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".artworks-fc-fr"));
+        
+        Timer.start(KhiTransformer.class.getCanonicalName()+".builtworks-fc-fr");
+        log.info("START: Transform Builtworks using FCs FRs from KHI");
+        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
+            Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_KHI_BUILTWORKS_FC_FR),
+                                new File(Resources.GENERATOR_POLICY_KHI),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
+        }
+        Timer.stop(KhiTransformer.class.getCanonicalName()+".builtworks-fc-fr");
+        log.info("FINISH: Transform Builtworks using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".builtworks-fc-fr"));
         
         log.info("KHI Transformations Time: "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()));
     }

@@ -90,7 +90,8 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL3=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+"_lvl3";
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+"_lvl4";
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ACTORS;
-    public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.WORKS+Resources._FC_FR;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS+Resources._FC_FR;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_NORMALIZED=FOLDER_OUTPUT+"/"+"2_Normalized";
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI+"/"+Resources.SHAREDSHELF;
@@ -124,6 +125,20 @@ public class Resources {
     public static final String FOLDER_OUTPUT_NORMALIZED_MARBURG_PHOTOGRAPHS_FC_FR=FOLDER_OUTPUT_NORMALIZED_MARBURG+"/"+Resources.PHOTOGRAPHS+"/"+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_NORMALIZED_MARBURG_WORKS_FC_FR=FOLDER_OUTPUT_NORMALIZED_MARBURG+"/"+Resources.WORKS+"/"+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.ZERI;
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.KHI;
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_ACTORS=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.ACTORS;
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_ARTWORKS=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.ARTWORKS;
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_ARTWORKS_LVL2=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.ARTWORKS+"_lvl2";
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_ARTWORKS_LVL3=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.ARTWORKS+"_lvl3";
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_ARTWORKS_LVL4=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.ARTWORKS+"_lvl4";
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_BUILTWORKS=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.BUILTWORKS;
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_BUILTWORKS_LVL2=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.BUILTWORKS+"_lvl2";
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_BUILTWORKS_LVL3=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.BUILTWORKS+"_lvl3";
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_BUILTWORKS_LVL4=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.BUILTWORKS+"_lvl4";
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_PHOTOGRAPHS=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.PHOTOGRAPHS;
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_ARTWORKS_FC_FR=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.ARTWORKS+"/"+Resources._FC_FR;
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_BUILTWORKS_FC_FR=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.BUILTWORKS+"/"+Resources._FC_FR;
+    public static final String FOLDER_OUTPUT_NORMALIZED_KHI_PHOTOGRAPHS_FC_FR=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.PHOTOGRAPHS+"/"+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.PHOTOGRAPHS;
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING=FOLDER_OUTPUT+"/"+"3_Instance_Matching";
@@ -250,7 +265,8 @@ public class Resources {
     public static final String MAPPINGS_KHI_BUILTWORKS_LVL4=MAPPINGS_KHI+"/"+"mappings-buildworks-lvl4.x3ml";
     public static final String MAPPINGS_KHI_PHOTOGRAPHS=MAPPINGS_KHI+"/"+"mappings-photos.x3ml";
     public static final String MAPPINGS_KHI_PHOTOGRAPHS_FC_FR=MAPPINGS_KHI+"/"+"mappings-photos-fc-fr.x3ml";
-    public static final String MAPPINGS_KHI_WORKS_FC_FR=MAPPINGS_KHI+"/"+"mappings-works-fc-fr.x3ml";
+    public static final String MAPPINGS_KHI_ARTWORKS_FC_FR=MAPPINGS_KHI+"/"+"mappings-artworks-fc-fr.x3ml";
+    public static final String MAPPINGS_KHI_BUILTWORKS_FC_FR=MAPPINGS_KHI+"/"+"mappings-buildworks-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_KHI=MAPPINGS_KHI+"/"+"generator-policy.xml";
     
     /* HERTZIANA resources */
