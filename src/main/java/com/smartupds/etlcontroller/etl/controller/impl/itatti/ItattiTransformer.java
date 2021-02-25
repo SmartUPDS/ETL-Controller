@@ -37,7 +37,7 @@ public class ItattiTransformer implements Transformer {
                                 new File(Resources.MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_FC_FR),
                                 new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_SHAREDSHELF),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR), 
-                                X3MLEngineFactory.OutputFormat.RDF_XML);
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf-fc-fr");
         log.info("FINISH: Transform SharedShelf data using FCs FRs from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf-fc-fr"));
@@ -83,7 +83,7 @@ public class ItattiTransformer implements Transformer {
                                 new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_FC_FR), 
                                 new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR), 
-                                X3MLEngineFactory.OutputFormat.RDF_XML);
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".fotoindex-fc-fr");
         log.info("FINISH: Transform FotoIndex using FCs FRs data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".fotoindex-fc-fr"));
