@@ -45,7 +45,7 @@ public class HertzianaHomogenizer implements Homogenizer{
         Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_FC_FR), new File(Resources.FOLDER_OUTPUT_NORMALIZED_HERTZIANA_BUILTWORKS_FC_FR), Resources.HERTZIANA, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB, Resources.EXTENSION_N3);
         Utils.consolidateN3Resources(new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_PHOTOGRAPHS_FC_FR), new File(Resources.FOLDER_OUTPUT_NORMALIZED_HERTZIANA_PHOTOGRAPHS_FC_FR), Resources.HERTZIANA, Resources.MAX_FILESIZE_OUTPUT_N3_RESOURCES_IN_MB, Resources.EXTENSION_N3);
         Timer.stop(HertzianaHomogenizer.class.getCanonicalName()+".consolidate");
-        log.info("FINISH: Create consolidated TRIG and N3 files for Hertzianna resources in "+Timer.reportHumanFriendly(HertzianaHomogenizer.class.getCanonicalName()+".consolidate.sharedshelf"));
+        log.info("FINISH: Create consolidated TRIG and N3 files for Hertzianna resources in "+Timer.reportHumanFriendly(HertzianaHomogenizer.class.getCanonicalName()+".consolidate"));
     } 
 
     public static HertzianaHomogenizer create(){
