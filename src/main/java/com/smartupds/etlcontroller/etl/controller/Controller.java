@@ -175,7 +175,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_LVL4).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS_FC_FR).mkdir();
-        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
