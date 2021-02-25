@@ -111,13 +111,21 @@ public class HertzianaIngester implements Ingester{
         Timer.stop(HertzianaIngester.class.getCanonicalName()+".photographs-fc-fr");
         log.info("FINISH: Ingest Photographs using FCs FRs from Hertziana in "+Timer.reportHumanFriendly(HertzianaIngester.class.getCanonicalName()+".photographs-fc-fr"));
 
-        log.info("START: Ingest Works using FCs FRs from Hertziana");
-        Timer.start(HertzianaIngester.class.getCanonicalName()+".works-fc-fr");
-        for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_WORKS_FC_FR).listFiles()){
+        log.info("START: Ingest Artworks using FCs FRs from Hertziana");
+        Timer.start(HertzianaIngester.class.getCanonicalName()+".artworks-fc-fr");
+        for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_FC_FR).listFiles()){
             Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_HERTZIANA_FC_FR, false);
         }
-        Timer.stop(HertzianaIngester.class.getCanonicalName()+".works-fc-fr");
-        log.info("FINISH: Ingest Works using FCs FRs from Hertziana in "+Timer.reportHumanFriendly(HertzianaIngester.class.getCanonicalName()+".works-fc-fr"));
+        Timer.stop(HertzianaIngester.class.getCanonicalName()+".artworks-fc-fr");
+        log.info("FINISH: Ingest Artworks using FCs FRs from Hertziana in "+Timer.reportHumanFriendly(HertzianaIngester.class.getCanonicalName()+".artworks-fc-fr"));
+        
+        log.info("START: Ingest Builtworks using FCs FRs from Hertziana");
+        Timer.start(HertzianaIngester.class.getCanonicalName()+".builtworks-fc-fr");
+        for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_FC_FR).listFiles()){
+            Utils.uploadFile(this.triplestoreConnection, file, Resources.GRAPHSPACE_HERTZIANA_FC_FR, false);
+        }
+        Timer.stop(HertzianaIngester.class.getCanonicalName()+".builtworks-fc-fr");
+        log.info("FINISH: Ingest Builtworks using FCs FRs from Hertziana in "+Timer.reportHumanFriendly(HertzianaIngester.class.getCanonicalName()+".builtworks-fc-fr"));
         
         log.info("Hertziana Ingest Time: "+Timer.reportHumanFriendly(HertzianaIngester.class.getCanonicalName()));
     }
