@@ -55,7 +55,8 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL2=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.BUILTWORKS+"_lvl2";
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL3=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.BUILTWORKS+"_lvl3";
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL4=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.BUILTWORKS+"_lvl4";
-    public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_WORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.WORKS+Resources._FC_FR;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.ARTWORKS+Resources._FC_FR;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.BUILTWORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.FRICK;
     public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL=FOLDER_OUTPUT_TRANSFORMED_FRICK+"/"+"All";
     public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR=FOLDER_OUTPUT_TRANSFORMED_FRICK+"/"+Resources.FC_FR;
@@ -183,7 +184,8 @@ public class Resources {
     public static final String MAPPINGS_HERTZIANA_BUILTWORKS_LVL4=MAPPINGS_HERTZIANA+"/"+"mappings-buildworks-lvl4.x3ml";
     public static final String MAPPINGS_HERTZIANA_PHOTOGRAPHS=MAPPINGS_HERTZIANA+"/"+"mappings-photos.x3ml";
     public static final String MAPPINGS_HERTZIANA_PHOTOGRAPHS_FC_FR=MAPPINGS_HERTZIANA+"/"+"mappings-photos-fc-fr.x3ml";
-    public static final String MAPPINGS_HERTZIANA_WORKS_FC_FR=MAPPINGS_HERTZIANA+"/"+"mappings-works-fc-fr.x3ml";
+    public static final String MAPPINGS_HERTZIANA_ARTWORKS_FC_FR=MAPPINGS_HERTZIANA+"/"+"mappings-artworks-fc-fr.x3ml";
+    public static final String MAPPINGS_HERTZIANA_BUILTWORKS_FC_FR=MAPPINGS_HERTZIANA+"/"+"mappings-buildworks-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_HERTZIANA=MAPPINGS_HERTZIANA+"/"+"generator-policy.xml";
     public static final String MAPPINGS_FRICK=FOLDER_MAPPINGS+"/"+Resources.FRICK;
     public static final String MAPPINGS_FRICK_ALL=MAPPINGS_FRICK+"/"+"mappings.x3ml";

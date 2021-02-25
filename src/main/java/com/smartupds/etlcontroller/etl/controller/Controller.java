@@ -41,8 +41,8 @@ public class Controller {
         //none (?)
         
         /* Normalize/Clean Input Resources */
-//        ItattiNormalizer.create().normalizeResources();
-        FrickNormalizer.create().normalizeResources();
+        ItattiNormalizer.create().normalizeResources();
+//        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
 //        MarburgNormalizer.create().normalizeResources();
@@ -51,9 +51,9 @@ public class Controller {
         /* Transform Resources */
 //        ItattiTransformer.create().transformResources();
 //        HertzianaTransformer.create().transformResources();
-        FrickTransformer.create().transformResources();
+//        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-        MarburgTransformer.create().transformResources();
+//        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
@@ -124,6 +124,7 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_ULAN).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX_FC_FR).mkdir();
@@ -139,7 +140,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_LVL4).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_PHOTOGRAPHS_FC_FR).mkdir();
-        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_WORKS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS).mkdir();
@@ -177,6 +179,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF_ULAN).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS).mkdir();

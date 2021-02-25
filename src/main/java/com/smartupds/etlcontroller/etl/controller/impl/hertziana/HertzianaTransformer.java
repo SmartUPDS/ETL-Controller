@@ -145,22 +145,34 @@ public class HertzianaTransformer implements Transformer {
                                 new File(Resources.MAPPINGS_HERTZIANA_PHOTOGRAPHS_FC_FR),
                                 new File(Resources.GENERATOR_POLICY_HERTZIANA),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_PHOTOGRAPHS_FC_FR), 
-                                X3MLEngineFactory.OutputFormat.RDF_XML);
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
         Timer.stop(HertzianaTransformer.class.getCanonicalName()+".photographs-fc-fr");
         log.info("FINISH: Transform Photographs using FCs FRs from Hertziana in "+Timer.reportHumanFriendly(HertzianaTransformer.class.getCanonicalName()+".photographs-fc-fr"));
 
-        Timer.start(HertzianaTransformer.class.getCanonicalName()+".works-fc-fr");
-        log.info("START: Transform Works using FCs FRs from Hertziana");
+        Timer.start(HertzianaTransformer.class.getCanonicalName()+".artworks-fc-fr");
+        log.info("START: Transform Artorks using FCs FRs from Hertziana");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
             Utils.transformFile(file,
-                                new File(Resources.MAPPINGS_HERTZIANA_WORKS_FC_FR),
+                                new File(Resources.MAPPINGS_HERTZIANA_ARTWORKS_FC_FR),
                                 new File(Resources.GENERATOR_POLICY_HERTZIANA),
-                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_WORKS_FC_FR), 
-                                X3MLEngineFactory.OutputFormat.RDF_XML);
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_ARTWORKS_FC_FR), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
-        Timer.stop(HertzianaTransformer.class.getCanonicalName()+".works-fc-fr");
-        log.info("FINISH: Transform Works using FCs FRs from Hertziana in "+Timer.reportHumanFriendly(HertzianaTransformer.class.getCanonicalName()+".works-fc-fr"));
+        Timer.stop(HertzianaTransformer.class.getCanonicalName()+".artworks-fc-fr");
+        log.info("FINISH: Transform Artworks using FCs FRs from Hertziana in "+Timer.reportHumanFriendly(HertzianaTransformer.class.getCanonicalName()+".artworks-fc-fr"));
+
+        Timer.start(HertzianaTransformer.class.getCanonicalName()+".buildworks-fc-fr");
+        log.info("START: Transform Buildworks using FCs FRs from Hertziana");
+        for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_HERTZIANA).listFiles()){
+            Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_HERTZIANA_BUILTWORKS_FC_FR),
+                                new File(Resources.GENERATOR_POLICY_HERTZIANA),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_FC_FR), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
+        }
+        Timer.stop(HertzianaTransformer.class.getCanonicalName()+".buildworks-fc-fr");
+        log.info("FINISH: Transform Buildworks using FCs FRs from Hertziana in "+Timer.reportHumanFriendly(HertzianaTransformer.class.getCanonicalName()+".buildworks-fc-fr"));
         
         log.info("Hertziana Transformations Time: "+Timer.reportHumanFriendly(HertzianaTransformer.class.getCanonicalName()));
     }
