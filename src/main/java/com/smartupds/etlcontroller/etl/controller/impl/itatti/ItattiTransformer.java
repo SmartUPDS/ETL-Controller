@@ -44,27 +44,35 @@ public class ItattiTransformer implements Transformer {
                 
         Timer.start(ItattiTransformer.class.getCanonicalName()+".fotoindex");
         log.info("START: Transform FotoIndex data from Villa I Tatti");
-        Utils.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.ARTIST+".xml"),
-                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_ARTIST), 
-                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
-                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX), 
-                            X3MLEngineFactory.OutputFormat.TRIG);
-        Utils.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.COLLECTION+".xml"),
-                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_COLLECTION), 
-                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
-                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
-                            X3MLEngineFactory.OutputFormat.TRIG);
-        Utils.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.INSTITUTION+".xml"),
-                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_INSTITUTION), 
-                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
-                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
-                            X3MLEngineFactory.OutputFormat.TRIG);
-        Utils.transformFile(new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX+"/"+Resources.PHOTOGRAPH+".xml"),
-                            new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_PHOTO), 
-                            new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
-                            new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
-                            X3MLEngineFactory.OutputFormat.TRIG);
          for(File workFile : new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).listFiles()){
+            if(workFile.getName().toLowerCase().contains(Resources.ARTIST.toLowerCase())){
+                Utils.transformFile(workFile,
+                                    new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_ARTIST), 
+                                    new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
+                                    new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
+                                    X3MLEngineFactory.OutputFormat.TRIG);
+            }
+            if(workFile.getName().toLowerCase().contains(Resources.COLLECTION.toLowerCase())){
+                Utils.transformFile(workFile,
+                                    new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_COLLECTION), 
+                                    new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
+                                    new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
+                                    X3MLEngineFactory.OutputFormat.TRIG);
+            }
+            if(workFile.getName().toLowerCase().contains(Resources.INSTITUTION.toLowerCase())){
+                Utils.transformFile(workFile,
+                                    new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_INSTITUTION), 
+                                    new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
+                                    new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
+                                    X3MLEngineFactory.OutputFormat.TRIG);
+            }
+            if(workFile.getName().toLowerCase().contains(Resources.PHOTOGRAPH.toLowerCase())){
+                Utils.transformFile(workFile,
+                                    new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_PHOTO), 
+                                    new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
+                                    new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
+                                    X3MLEngineFactory.OutputFormat.TRIG);
+            }
             if(workFile.getName().toLowerCase().contains(Resources.WORK.toLowerCase())){
                 Utils.transformFile(workFile,
                                     new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_WORK), 
