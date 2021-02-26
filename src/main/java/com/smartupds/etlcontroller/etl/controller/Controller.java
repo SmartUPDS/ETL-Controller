@@ -165,6 +165,7 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF_ULAN).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_HERTZIANA).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_HERTZIANA_ACTORS).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_HERTZIANA_ARTWORKS).mkdir();
