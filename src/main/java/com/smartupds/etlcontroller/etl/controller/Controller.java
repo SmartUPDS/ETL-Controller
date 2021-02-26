@@ -1,32 +1,15 @@
 package com.smartupds.etlcontroller.etl.controller;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
-import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickHomogenizer;
-import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickIngester;
-import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickNormalizer;
-import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
-import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaIngester;
-import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaNormalizer;
-import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
-import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiIngester;
-import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiNormalizer;
-import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
-import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiHomogenizer;
-import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiIngester;
-import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiNormalizer;
-import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
-import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgIngester;
-import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgNormalizer;
-import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
-import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriHomogenizer;
-import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriIngester;
-import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriNormalizer;
-import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
+import com.smartupds.etlcontroller.etl.controller.impl.itatti.*;
+import com.smartupds.etlcontroller.etl.controller.impl.frick.*;
+import com.smartupds.etlcontroller.etl.controller.impl.hertziana.*;
+import com.smartupds.etlcontroller.etl.controller.impl.khi.*;
+import com.smartupds.etlcontroller.etl.controller.impl.marburg.*;
+import com.smartupds.etlcontroller.etl.controller.impl.zeri.*;
 import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /** The entry point of the ETL Controller. The class is responsible for 
  * executing the entire ETL workflow.
@@ -41,7 +24,7 @@ public class Controller {
         //none (?)
         
         /* Normalize/Clean Input Resources */
-        ItattiNormalizer.create().normalizeResources();
+//        ItattiNormalizer.create().normalizeResources();
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
@@ -53,7 +36,7 @@ public class Controller {
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-//        MarburgTransformer.create().transformResources();
+        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 

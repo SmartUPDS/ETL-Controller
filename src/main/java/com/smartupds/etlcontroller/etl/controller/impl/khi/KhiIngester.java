@@ -111,13 +111,21 @@ public class KhiIngester implements Ingester{
         Timer.stop(KhiIngester.class.getCanonicalName()+".photographs-fc-fr");
         log.info("FINISH: Ingest photographs using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".photographs-fc-fr"));
         
-        log.info("START: Ingest Works using FCs FRs from KHI");
-        Timer.start(KhiIngester.class.getCanonicalName()+".works-fc-fr");
-        for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_WORKS_FC_FR).listFiles()){
+        log.info("START: Ingest Artworks using FCs FRs from KHI");
+        Timer.start(KhiIngester.class.getCanonicalName()+".artworks-fc-fr");
+        for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_FC_FR).listFiles()){
             Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI_FC_FR, false);
         }
-        Timer.stop(KhiIngester.class.getCanonicalName()+".works-fc-fr");
-        log.info("FINISH: Ingest Works using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".works-fc-fr"));
+        Timer.stop(KhiIngester.class.getCanonicalName()+".artworks-fc-fr");
+        log.info("FINISH: Ingest Artworks using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".artworks-fc-fr"));
+        
+        log.info("START: Ingest Builtworks using FCs FRs from KHI");
+        Timer.start(KhiIngester.class.getCanonicalName()+".builtworks-fc-fr");
+        for(File file: new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR).listFiles()){
+            Utils.uploadFile(this.triplestoreConnection,file,Resources.GRAPHSPACE_KHI_FC_FR, false);
+        }
+        Timer.stop(KhiIngester.class.getCanonicalName()+".builtworks-fc-fr");
+        log.info("FINISH: Ingest Builtworks using FCs FRs from KHI in "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()+".builtworks-fc-fr"));
         
         log.info("KHI Ingest Time: "+Timer.reportHumanFriendly(KhiIngester.class.getCanonicalName()));
     }
