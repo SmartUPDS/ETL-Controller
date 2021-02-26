@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.xml.parsers.ParserConfigurationException;
@@ -62,10 +64,10 @@ public class KhiNormalizer implements Normalizer{
         log.info("FINISH: Split large files from KHI in "+Timer.reportHumanFriendly(KhiNormalizer.class.getCanonicalName()+".split"));
         
         Timer.start(KhiNormalizer.class.getCanonicalName()+".syntax-norm");
-        log.info("START: Perform Syntax Normalization for resources from KHI");
+        log.info("START: Perform Syntax Normalization for resources from KHI");   
         List<String> elementsList=Arrays.asList("a30gn",
                                                 "a3105",
-                                                "a5220","a5260","a5300","a5500",
+                                                "a5220","a5260","a5300",
                                                 "a8498",
                                                 "a40gn", "a50gn");
         try{
@@ -95,10 +97,15 @@ public class KhiNormalizer implements Normalizer{
             String filename=file.getName();
             log.debug("Normalize file "+file.getAbsolutePath());
             Document doc=ElementsSplit.splitElements(ElementsSplit.parseXmlDocument(file), elementsSeparatorsMap);
+           
+            // To split a5500 on & needs to  take the sub elements and then split its sub elements
+            Map<String,List<String>> list = getListOfSubElements(doc,"a5500",splitCharSequence);
+            doc = ElementsSplit.splitElements(doc, list);
+            
             doc=normalizeYear(doc, "a5064");
             doc=identifySource(doc, "a30gn");
             doc=identifySource(doc, "a40gn");   
-            doc=identifySource(doc, "a50gn");   
+            doc=identifySource(doc, "a50gn");
             ElementsSplit.exportXmlDocument(doc, new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
             FileUtils.deleteQuietly(file);  //Seems that it doesn't work
         }
@@ -212,6 +219,25 @@ public class KhiNormalizer implements Normalizer{
         }
     }
     
+    private Map<String,List<String>> getListOfSubElements(Document doc, String elementName, String splitCharSequence) {
+        Map<String,List<String>> list = new HashMap<>();
+        NodeList nodes = doc.getElementsByTagName(elementName);
+        for (int i=0;i<nodes.getLength();i++){
+            NodeList childNodes = ((Element) nodes.item(i)).getChildNodes();
+            for (int j=0;j<childNodes.getLength();j++){
+                String nodeName = childNodes.item(j).getNodeName();
+                if (!nodeName.equals("#text")){
+                    list.put(nodeName, Arrays.asList(splitCharSequence));
+                    
+                }
+            }
+        }
+        if(list.isEmpty()){
+            list.put(elementName, Arrays.asList(splitCharSequence));
+        }
+        return list;
+    }
+        
     public static KhiNormalizer create(){
         return new KhiNormalizer();
     }
