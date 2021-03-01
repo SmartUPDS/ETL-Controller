@@ -120,7 +120,7 @@ public class Utils {
                 fileBuilder=new StringBuilder();
             }
         }
-        File outputFile=new File(outputFolder.getAbsoluteFile()+"/"+outputResourceName+"-"+fileCounter+".n3");
+        File outputFile=new File(outputFolder.getAbsoluteFile()+"/"+outputResourceName+"-"+fileCounter+"."+extension);
         log.info("Export consolidated file "+outputFile.getAbsolutePath());
         BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile),"UTF8"));
         writer.append(fileBuilder.toString());
