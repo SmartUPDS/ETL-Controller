@@ -134,8 +134,10 @@ public class Utils {
      * @param mappingsFile the X3ML mapping definition file
      * @param generatorPolicyFile the generator policy file
      * @param outputFormat the format of the transformed resources
-     * @param outputFolder the folder where the transformed contents will be exported. */
-    public static void transformFile(File inputFile, File mappingsFile, File generatorPolicyFile, File outputFolder, X3MLEngineFactory.OutputFormat outputFormat) throws ETLGenericException{
+     * @param outputFolder the folder where the transformed contents will be exported.
+     * @return new filename */
+    public static String transformFile(File inputFile, File mappingsFile, File generatorPolicyFile, File outputFolder, X3MLEngineFactory.OutputFormat outputFormat) throws ETLGenericException{
+        String filename = "";
         String extension="";
         String mimetype="";
         switch(outputFormat){
@@ -167,10 +169,12 @@ public class Utils {
             Generator policy=X3MLGeneratorPolicy.load(new FileInputStream(generatorPolicyFile), X3MLGeneratorPolicy.createUUIDSource(-1));
             X3MLEngine.Output output = engine.execute(document(inputFile), policy);
             output.write(new PrintStream(outputFile),mimetype);
+            filename = outputFile.getAbsolutePath();
         }catch(FileNotFoundException ex){
             log.error("An error occured while transforming data resources",ex);
             throw new ETLGenericException("An error occured while transforming data resources",ex);
         }
+        return filename;
     }
     
     private static Element document(File file) {
