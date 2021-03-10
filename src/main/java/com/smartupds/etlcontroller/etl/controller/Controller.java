@@ -36,13 +36,15 @@ public class Controller {
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
-        MarburgTransformer.create().transformResources();
+//        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
 //        FrickHomogenizer.create().homogenizeResources();
 //        ZeriHomogenizer.create().homogenizeResources();
 //        KhiHomogenizer.create().homogenizeResources();
+//        HertzianaHomogenizer.create().homogenizeResources();
+        MarburgHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
 //        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
@@ -229,8 +231,8 @@ public class Controller {
     
     public static void main(String[] args) throws ETLGenericException{
         /* INITIALIZATION ONLY */
-//        Controller.createFoldersStructure();
+        Controller.createFoldersStructure();
         
-        Controller.executeWorkflow();
+//        Controller.executeWorkflow();
     }
 }
