@@ -319,4 +319,7 @@ public class Resources {
     public static final String GRAPHSPACE_VOCAB_GEONAMES="https://pharos.artresearch.net/resource/gnames";
     public static final String GRAPHSPACE_VOCAB_MIDAS="https://pharos.artresearch.net/resource/midasvocs";
     
+    //Resources
+    public static final String NO_TYPE = "https://pharos.artresearch.net/custom/noType";
+    
 }
