@@ -195,7 +195,7 @@ public class Resources {
     public static final String _ULAN="_ulan";
     
     /* Extensions */
-    public static final String EXTENSION_TRIG="ttl";
+    public static final String EXTENSION_TRIG="trig";
     public static final String EXTENSION_N3="n3";
     public static final String EXTENSION_RDF="rdf";
     

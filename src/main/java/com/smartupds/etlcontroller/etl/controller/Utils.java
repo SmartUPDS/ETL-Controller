@@ -156,7 +156,7 @@ public class Utils {
                 mimetype=Labels.OUTPUT_MIME_TYPE_TURTLE;
                 break;
             case TRIG:
-                extension=Labels.OUTPUT_EXTENSION_TURTLE;   //on purpose. TTL is the valid one
+                extension=Labels.OUTPUT_EXTENSION_TRIG;   //on purpose. TTL is the valid one
                 mimetype=Labels.OUTPUT_MIME_TYPE_TRIG;
                 break;
         }
