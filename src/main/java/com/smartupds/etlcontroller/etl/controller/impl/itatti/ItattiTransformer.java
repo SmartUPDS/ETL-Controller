@@ -1,10 +1,5 @@
 package com.smartupds.etlcontroller.etl.controller.impl.itatti;
 
-import com.hp.hpl.jena.query.Dataset;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDF;
 import com.smartupds.etlcontroller.etl.controller.Resources;
 import com.smartupds.etlcontroller.etl.controller.Utils;
 import com.smartupds.etlcontroller.etl.controller.api.Transformer;
@@ -12,14 +7,7 @@ import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import gr.forth.ics.isl.timer.Timer;
 import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lombok.extern.log4j.Log4j;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFDataMgr;
 
 /** Transformer class for resources from Villa I Tatti
  *
@@ -38,7 +26,7 @@ public class ItattiTransformer implements Transformer {
                                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_SHAREDSHELF),
                                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF), 
                                                     X3MLEngineFactory.OutputFormat.TRIG);
-            this.removeTypes(filename);
+            Utils.removeTypes(filename);
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf");
         log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf"));
@@ -126,20 +114,6 @@ public class ItattiTransformer implements Transformer {
     
     public static ItattiTransformer create(){
         return new ItattiTransformer();
-    }
-
-    private void removeTypes(String filename) {
-        try {
-            Dataset dataset = RDFDataMgr.loadDataset(filename);
-            dataset.listNames().forEachRemaining(graph -> {
-                Model model = dataset.getNamedModel(graph);
-                Resource rsc = model.createResource(Resources.NO_TYPE);
-                model.removeAll(null, RDF.type,(RDFNode) rsc);
-            });
-            RDFDataMgr.write(new FileOutputStream(filename), dataset, Lang.TRIG);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ItattiTransformer.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
 }
