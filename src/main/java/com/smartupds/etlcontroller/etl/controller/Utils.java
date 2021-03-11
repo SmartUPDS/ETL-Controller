@@ -1,8 +1,12 @@
 package com.smartupds.etlcontroller.etl.controller;
 
 import com.google.common.io.Files;
+import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.RDF;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.HertzianaTransformer;
@@ -33,6 +37,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -43,6 +49,8 @@ import org.apache.commons.io.FileUtils;
 import org.w3c.dom.Element;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFDataMgr;
 
 /** Various utility facilities
  * 
@@ -271,4 +279,19 @@ public class Utils {
         log.info("Overal Time for ZERI: "+Timer.reportHumanFriendly(ZeriTransformer.class.getPackage().getName()));
         log.info("Overal Time for KHI: "+Timer.reportHumanFriendly(KhiTransformer.class.getPackage().getName()));
     }
+
+    public static void removeTypes(String filename) {
+        try {
+            Dataset dataset = RDFDataMgr.loadDataset(filename);
+            dataset.listNames().forEachRemaining(graph -> {
+                Model model = dataset.getNamedModel(graph);
+                Resource rsc = model.createResource(Resources.NO_TYPE);
+                model.removeAll(null, RDF.type,(RDFNode) rsc);
+            });
+            RDFDataMgr.write(new FileOutputStream(filename), dataset, Lang.TRIG);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ItattiTransformer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
