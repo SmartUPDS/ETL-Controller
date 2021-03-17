@@ -237,26 +237,26 @@ public class ItattiNormalizer implements Normalizer {
             try{
                 log.info("analyze file "+file);
                 Document doc=ElementsSplit.parseXmlDocument(file);
-                
-                NodeList versoElements=doc.getElementsByTagName("Verso_Image_URI");
-                for(int i=0;i<versoElements.getLength();i++){
-                    Node versoElem=versoElements.item(i);
-                    String versoUriOriginal=versoElem.getTextContent();
-                    versoElem.setTextContent(this.normalizeImageUrl(versoUriOriginal));
-                    Element jsonElement=doc.createElement("Verso_Image_JSON");
-                    jsonElement.setTextContent(this.normalizeImageJson(versoUriOriginal));
-                    versoElem.getParentNode().appendChild(jsonElement);
-                }
-                NodeList rectoElements=doc.getElementsByTagName("Recto_Image_URI");
-                for(int i=0;i<rectoElements.getLength();i++){
-                    Node rectoElem=rectoElements.item(i);
-                    String rectoUriOriginal=rectoElem.getTextContent();
-                    rectoElem.setTextContent(this.normalizeImageUrl(rectoUriOriginal));
-                    Element jsonElement=doc.createElement("Recto_Image_JSON");
-                    jsonElement.setTextContent(this.normalizeImageJson(rectoUriOriginal));
-                    rectoElem.getParentNode().appendChild(jsonElement);
-                }
-                this.exportXmlDocument(doc, new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
+            
+//                NodeList versoElements=doc.getElementsByTagName("Verso_Image_URI");
+//                for(int i=0;i<versoElements.getLength();i++){
+//                    Node versoElem=versoElements.item(i);
+//                    String versoUriOriginal=versoElem.getTextContent();
+//                    versoElem.setTextContent(this.normalizeImageUrl(versoUriOriginal));
+//                    Element jsonElement=doc.createElement("Verso_Image_JSON");
+//                    jsonElement.setTextContent(this.normalizeImageJson(versoUriOriginal));
+//                    versoElem.getParentNode().appendChild(jsonElement);
+//                }
+//                NodeList rectoElements=doc.getElementsByTagName("Recto_Image_URI");
+//                for(int i=0;i<rectoElements.getLength();i++){
+//                    Node rectoElem=rectoElements.item(i);
+//                    String rectoUriOriginal=rectoElem.getTextContent();
+//                    rectoElem.setTextContent(this.normalizeImageUrl(rectoUriOriginal));
+//                    Element jsonElement=doc.createElement("Recto_Image_JSON");
+//                    jsonElement.setTextContent(this.normalizeImageJson(rectoUriOriginal));
+//                    rectoElem.getParentNode().appendChild(jsonElement);
+//                }
+                exportXmlDocument(doc, new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
                 
                 // Case of document contains institution
                 mergeInstitutionElements(folderForNormFiles.getAbsolutePath()+"/"+file.getName(),new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
@@ -278,7 +278,7 @@ public class ItattiNormalizer implements Normalizer {
             List<org.dom4j.Element> elements = rootElement.elements();
             boolean isInstitution = false;
             for (org.dom4j.Element element :elements){
-                if (element.getName().equals("Institution")){
+                if (element.getName().equals("FINAL_EXPORT_Institution")){
                     isInstitution = true;
                     String id = element.element("Institution_ID").getStringValue();
                     if (!elementsMap.containsKey(id))
