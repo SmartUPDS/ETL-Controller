@@ -187,7 +187,7 @@ public class ZeriNormalizer implements Normalizer{
         for(int i=0;i<element.getLength();i++){
             Node node = element.item(i);
             String nodeTextContent = node.getTextContent();
-            Matcher m = Pattern.compile("([0-9]*)\\/([0-9]*)\\.[a-zA-Z]*$").matcher(nodeTextContent);
+            Matcher m = Pattern.compile("([0-9a-zA-Z]*)\\/([0-9a-zA-Z]*)\\.[a-zA-Z]*$").matcher(nodeTextContent);
             String newAttributeValue = "";
             if(m.find())
                 newAttributeValue = m.group(1) +"!"+ m.group(2);
