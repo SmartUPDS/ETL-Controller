@@ -118,11 +118,14 @@ public class MarburgNormalizer implements Normalizer{
             doc=normalizeYear(doc, "a8494");
             doc=identifySource(doc, "a30nr");
             doc=addRootAttribute(doc,"root");
-            doc=normalizeType(doc,"a520s");
-            doc=normalizeType(doc,"a523s");
-            doc=normalizeType(doc,"a526s");
-            doc=normalizeType(doc,"a533s");
-            doc=normalizeType(doc,"a524s");
+            doc=normalizeId(doc,"a520s");
+            doc=normalizeId(doc,"a522s");
+            doc=normalizeId(doc,"a523s");
+            doc=normalizeId(doc,"a526s");
+            doc=normalizeId(doc,"a533s");
+            doc=normalizeId(doc,"a524s");
+            doc=normalizeId(doc,"a3000");
+            
             ElementsSplit.exportXmlDocument(doc, new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
             FileUtils.deleteQuietly(file);  //Seems that it doesn't work
         }
@@ -162,16 +165,17 @@ public class MarburgNormalizer implements Normalizer{
     }
     
     
-    private Document normalizeType(Document doc, String elementName) {
+    private Document normalizeId(Document doc, String elementName) {
         log.info("START: Normalize Type");
         NodeList nodes = doc.getElementsByTagName(elementName);
         for(int i=0;i<nodes.getLength();i++){
             Element elem=((Element)nodes.item(i));
             String txt =elem.getTextContent();
-            Matcher m = Pattern.compile("the\\s*([0-9]+)").matcher(txt);
+            Matcher m = Pattern.compile("([a-zA-Z]{3})\\s*([0-9]+)").matcher(txt);
             if (m.find()){
-                String id = m.group(1);
-                elem.setAttribute("edp:augmented", "the::"+id.trim());
+                String pre = m.group(1);
+                String id = m.group(2);
+                elem.setAttribute("edp:augmented", pre+"::"+id.trim());
                 elem.setTextContent(id);
             }
         }
