@@ -47,39 +47,44 @@ public class ItattiTransformer implements Transformer {
         log.info("START: Transform FotoIndex data from Villa I Tatti");
          for(File workFile : new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).listFiles()){
             if(workFile.getName().toLowerCase().contains(Resources.ARTIST.toLowerCase())){
-                Utils.transformFile(workFile,
+                String filename = Utils.transformFile(workFile,
                                     new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_ARTIST), 
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
+                Utils.removeTypes(filename);
             }
             if(workFile.getName().toLowerCase().contains(Resources.COLLECTION.toLowerCase())){
-                Utils.transformFile(workFile,
+                String filename = Utils.transformFile(workFile,
                                     new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_COLLECTION), 
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
+                Utils.removeTypes(filename);
             }
             if(workFile.getName().toLowerCase().contains(Resources.INSTITUTION.toLowerCase())){
-                Utils.transformFile(workFile,
+                String filename = Utils.transformFile(workFile,
                                     new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_INSTITUTION), 
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
+                Utils.removeTypes(filename);
             }
             if(workFile.getName().toLowerCase().contains(Resources.PHOTOGRAPH.toLowerCase())){
-                Utils.transformFile(workFile,
+                String filename = Utils.transformFile(workFile,
                                     new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_PHOTO), 
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
+                Utils.removeTypes(filename);
             }
             if(workFile.getName().toLowerCase().contains(Resources.WORK.toLowerCase())){
-                Utils.transformFile(workFile,
+                String filename = Utils.transformFile(workFile,
                                     new File(Resources.MAPPINGS_VILLA_I_TATTI_FOTOINDEX_WORK), 
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
+                Utils.removeTypes(filename);
             }
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".fotoindex");
@@ -100,11 +105,12 @@ public class ItattiTransformer implements Transformer {
         Timer.start(ItattiTransformer.class.getCanonicalName()+".sharedshelf-ulan");
         log.info("START: Transform SharedShelf ULAN data from Villa I Tatti");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).listFiles()){
-            Utils.transformFile(file,
+            String filename = Utils.transformFile(file,
                                 new File(Resources.MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_ULAN),
                                 new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_SHAREDSHELF),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_ULAN), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
+            Utils.removeTypes(filename);
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf-ulan");
         log.info("FINISH: Transform SharedShelf ULAN data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf-ulan"));
