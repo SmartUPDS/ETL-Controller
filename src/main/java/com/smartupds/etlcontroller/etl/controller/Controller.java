@@ -6,6 +6,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.frick.*;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.*;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.*;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.*;
+import com.smartupds.etlcontroller.etl.controller.impl.vocs.VocsNormalizer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.*;
 import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import java.io.File;
@@ -30,6 +31,7 @@ public class Controller {
 //        ZeriNormalizer.create().normalizeResources();
 //        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
+        VocsNormalizer.create().normalizeResources();
         
         /* Transform Resources */
 //        ItattiTransformer.create().transformResources();
@@ -44,7 +46,7 @@ public class Controller {
 //        ZeriHomogenizer.create().homogenizeResources();
 //        KhiHomogenizer.create().homogenizeResources();
 //        HertzianaHomogenizer.create().homogenizeResources();
-        MarburgHomogenizer.create().homogenizeResources();
+//        MarburgHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
 //        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
@@ -81,6 +83,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS_ZIPS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_MARBURG).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_KHI).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_MIDAS_VOCS).mkdirs();
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).mkdir();
@@ -92,6 +95,7 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS).mkdirs();
         
         log.debug("Create MAPPINGS folders");
         new File(Resources.FOLDER_MAPPINGS).mkdir();
@@ -103,6 +107,7 @@ public class Controller {
         new File(Resources.MAPPINGS_KHI).mkdir();
         new File(Resources.MAPPINGS_ZERI).mkdir();
         new File(Resources.MAPPINGS_MARBURG).mkdir();
+        new File(Resources.MAPPINGS_MIDAS_VOCS).mkdirs();
         
         log.debug("Create OUTPUT folders");
         new File(Resources.FOLDER_OUTPUT).mkdir();
@@ -162,6 +167,7 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_PHOTOGRAPHS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS).mkdirs();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
@@ -212,6 +218,7 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_NORMALIZED_MIDAS_VOCS).mkdirs();
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING).mkdir();
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_ARTISTS).mkdir();
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_INSTITUTIONS).mkdir();
@@ -219,20 +226,20 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_TYPES).mkdir();
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_PHOTOGRAPHERS).mkdir();
-        new File(Resources.FOLDER_OUTPUT_VOCABULARIES).mkdir();
-        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC).mkdir();
-        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_ULAN).mkdir();
-        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_WIKIDATA).mkdir();
-        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_AAT).mkdir();
-        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_GEONAMES).mkdir();
-        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_MIDAS).mkdir();
+//        new File(Resources.FOLDER_OUTPUT_VOCABULARIES).mkdir();
+//        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC).mkdir();
+//        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_ULAN).mkdir();
+//        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_WIKIDATA).mkdir();
+//        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_AAT).mkdir();
+//        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_GEONAMES).mkdir();
+//        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_MIDAS).mkdir();
         
     }
     
     public static void main(String[] args) throws ETLGenericException{
         /* INITIALIZATION ONLY */
-        Controller.createFoldersStructure();
+//        Controller.createFoldersStructure();
         
-//        Controller.executeWorkflow();
+        Controller.executeWorkflow();
     }
 }
