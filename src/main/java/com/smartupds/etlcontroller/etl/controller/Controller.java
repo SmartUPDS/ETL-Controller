@@ -6,7 +6,9 @@ import com.smartupds.etlcontroller.etl.controller.impl.frick.*;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.*;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.*;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.*;
+import com.smartupds.etlcontroller.etl.controller.impl.vocs.VocsHomogenizer;
 import com.smartupds.etlcontroller.etl.controller.impl.vocs.VocsNormalizer;
+import com.smartupds.etlcontroller.etl.controller.impl.vocs.VocsTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.*;
 import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import java.io.File;
@@ -31,7 +33,7 @@ public class Controller {
 //        ZeriNormalizer.create().normalizeResources();
 //        MarburgNormalizer.create().normalizeResources();
 //        KhiNormalizer.create().normalizeResources();
-        VocsNormalizer.create().normalizeResources();
+//        VocsNormalizer.create().normalizeResources();
         
         /* Transform Resources */
 //        ItattiTransformer.create().transformResources();
@@ -40,6 +42,7 @@ public class Controller {
 //        ZeriTransformer.create().transformResources();
 //        MarburgTransformer.create().transformResources();
 //        KhiTransformer.create().transformResources();
+//        VocsTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
 //        FrickHomogenizer.create().homogenizeResources();
@@ -47,6 +50,7 @@ public class Controller {
 //        KhiHomogenizer.create().homogenizeResources();
 //        HertzianaHomogenizer.create().homogenizeResources();
 //        MarburgHomogenizer.create().homogenizeResources();
+        VocsHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
 //        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
