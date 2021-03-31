@@ -25,6 +25,7 @@ public class Resources {
     public static final String FOLDER_INPUT_FETCHED_ZERI_PHOTOGRAPHS_ZIPS=FOLDER_INPUT_FETCHED_ZERI+"/"+Resources.PHOTOGRAPHS+"_ZIPS";
     public static final String FOLDER_INPUT_FETCHED_MARBURG=FOLDER_INPUT_FETCHED+"/"+Resources.MARBURG;
     public static final String FOLDER_INPUT_FETCHED_KHI=FOLDER_INPUT_FETCHED+"/"+Resources.KHI;
+    public static final String FOLDER_INPUT_FETCHED_MIDAS_VOCS=FOLDER_INPUT_FETCHED+"/"+Resources.MIDAS_VOCS;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI=FOLDER_INPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
@@ -34,6 +35,7 @@ public class Resources {
     public static final String FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS=FOLDER_INPUT_NORMALIZED_ZERI+"/"+Resources.PHOTOGRAPHS;
     public static final String FOLDER_INPUT_NORMALIZED_MARBURG=FOLDER_INPUT_NORMALIZED+"/"+Resources.MARBURG;
     public static final String FOLDER_INPUT_NORMALIZED_KHI=FOLDER_INPUT_NORMALIZED+"/"+Resources.KHI;
+    public static final String FOLDER_INPUT_NORMALIZED_MIDAS_VOCS=FOLDER_INPUT_NORMALIZED+"/"+Resources.MIDAS_VOCS;
     public static final String FOLDER_MAPPINGS=FOLDER_WORKSPACE+"/"+"2_Mappings";
     public static final String FOLDER_OUTPUT=FOLDER_WORKSPACE+"/"+"3_Output";
     public static final String FOLDER_OUTPUT_TRANSFORMED=FOLDER_OUTPUT+"/"+"1_Transformed";
@@ -92,6 +94,7 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ACTORS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+Resources._FC_FR;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.MIDAS_VOCS;
     public static final String FOLDER_OUTPUT_NORMALIZED=FOLDER_OUTPUT+"/"+"2_Normalized";
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI+"/"+Resources.SHAREDSHELF;
@@ -142,6 +145,12 @@ public class Resources {
     public static final String FOLDER_OUTPUT_NORMALIZED_KHI_PHOTOGRAPHS_FC_FR=FOLDER_OUTPUT_NORMALIZED_KHI+"/"+Resources.PHOTOGRAPHS+"/"+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_ARTWORKS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.ARTWORKS;
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.PHOTOGRAPHS;
+    public static final String FOLDER_OUTPUT_NORMALIZED_MIDAS_VOCS=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.MIDAS_VOCS;
+    
+    
+    
+    
+    
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING=FOLDER_OUTPUT+"/"+"3_Instance_Matching";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_ARTISTS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Artists";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_INSTITUTIONS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Institutions";
@@ -151,13 +160,13 @@ public class Resources {
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Works";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS_HASHED = FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS+"/"+"Hashed";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS_MATCHED = FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS+"/"+"Matched";
-    public static final String FOLDER_OUTPUT_VOCABULARIES=FOLDER_OUTPUT+"/"+"4_Vocabularies";
-    public static final String FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC=FOLDER_OUTPUT_VOCABULARIES+"/"+"NYPL-PIC";
-    public static final String FOLDER_OUTPUT_VOCABULARIES_ULAN=FOLDER_OUTPUT_VOCABULARIES+"/"+"ULAN";
-    public static final String FOLDER_OUTPUT_VOCABULARIES_WIKIDATA=FOLDER_OUTPUT_VOCABULARIES+"/"+"Wikidata";
-    public static final String FOLDER_OUTPUT_VOCABULARIES_AAT=FOLDER_OUTPUT_VOCABULARIES+"/"+"AAT";
-    public static final String FOLDER_OUTPUT_VOCABULARIES_GEONAMES=FOLDER_OUTPUT_VOCABULARIES+"/"+"Geonames";
-    public static final String FOLDER_OUTPUT_VOCABULARIES_MIDAS=FOLDER_OUTPUT_VOCABULARIES+"/"+"MIDAS";
+//    public static final String FOLDER_OUTPUT_VOCABULARIES=FOLDER_OUTPUT+"/"+"4_Vocabularies";
+//    public static final String FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC=FOLDER_OUTPUT_VOCABULARIES+"/"+"NYPL-PIC";
+//    public static final String FOLDER_OUTPUT_VOCABULARIES_ULAN=FOLDER_OUTPUT_VOCABULARIES+"/"+"ULAN";
+//    public static final String FOLDER_OUTPUT_VOCABULARIES_WIKIDATA=FOLDER_OUTPUT_VOCABULARIES+"/"+"Wikidata";
+//    public static final String FOLDER_OUTPUT_VOCABULARIES_AAT=FOLDER_OUTPUT_VOCABULARIES+"/"+"AAT";
+//    public static final String FOLDER_OUTPUT_VOCABULARIES_GEONAMES=FOLDER_OUTPUT_VOCABULARIES+"/"+"Geonames";
+//    public static final String FOLDER_OUTPUT_VOCABULARIES_MIDAS=FOLDER_OUTPUT_VOCABULARIES+"/"+"MIDAS";
     
     /* Sources names */
     public static final String HERTZIANA="Hertziana";
@@ -168,6 +177,7 @@ public class Resources {
     public static final String VILLA_I_TATTI="VillaITatti";
     public static final String FOTOINDEX="FotoIndex";
     public static final String SHAREDSHELF="SharedShelf";
+    public static final String MIDAS_VOCS="MIDAS"+"/Vocabularies";
     
     /* Entities names */
     public static final String ACTORS="actors";
@@ -202,7 +212,6 @@ public class Resources {
     /* Mapping resources */
     public static final String MAPPINGS_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+Resources.VILLA_I_TATTI;
     public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF=MAPPINGS_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
-    
     public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_ALL=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"mappings.x3ml";
     public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_ULAN=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"mappings_ulan.x3ml";
     public static final String MAPPINGS_VILLA_I_TATTI_SHAREDSHELF_FC_FR=MAPPINGS_VILLA_I_TATTI_SHAREDSHELF+"/"+"mappings-fc-fr.x3ml";
@@ -269,7 +278,8 @@ public class Resources {
     public static final String MAPPINGS_KHI_ARTWORKS_FC_FR=MAPPINGS_KHI+"/"+"mappings-artworks-fc-fr.x3ml";
     public static final String MAPPINGS_KHI_BUILTWORKS_FC_FR=MAPPINGS_KHI+"/"+"mappings-buildworks-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_KHI=MAPPINGS_KHI+"/"+"generator-policy.xml";
-    
+    public static final String MAPPINGS_MIDAS_VOCS=FOLDER_MAPPINGS+"/"+Resources.MIDAS_VOCS;
+    public static final String GENERATOR_POLICY_MIDAS_VOCS=MAPPINGS_MIDAS_VOCS+"/"+"generator-policy.xml";
     /* HERTZIANA resources */
     public static final String HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT="root";
     public static final String HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT="obj";
