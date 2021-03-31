@@ -160,6 +160,7 @@ public class Resources {
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Works";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS_HASHED = FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS+"/"+"Hashed";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS_MATCHED = FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS+"/"+"Matched";
+    
 //    public static final String FOLDER_OUTPUT_VOCABULARIES=FOLDER_OUTPUT+"/"+"4_Vocabularies";
 //    public static final String FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC=FOLDER_OUTPUT_VOCABULARIES+"/"+"NYPL-PIC";
 //    public static final String FOLDER_OUTPUT_VOCABULARIES_ULAN=FOLDER_OUTPUT_VOCABULARIES+"/"+"ULAN";
@@ -177,9 +178,10 @@ public class Resources {
     public static final String VILLA_I_TATTI="VillaITatti";
     public static final String FOTOINDEX="FotoIndex";
     public static final String SHAREDSHELF="SharedShelf";
-    public static final String MIDAS_VOCS="MIDAS"+"/Vocabularies";
+    public static final String MIDAS_VOCS="MIDAS" + "/" + Resources.VOCABULARIES;
     
     /* Entities names */
+    public static final String VOCABULARIES="Vocabularies";
     public static final String ACTORS="actors";
     public static final String ARTIST="Artist";
     public static final String ARTWORKS="artworks";
@@ -279,6 +281,7 @@ public class Resources {
     public static final String MAPPINGS_KHI_BUILTWORKS_FC_FR=MAPPINGS_KHI+"/"+"mappings-buildworks-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_KHI=MAPPINGS_KHI+"/"+"generator-policy.xml";
     public static final String MAPPINGS_MIDAS_VOCS=FOLDER_MAPPINGS+"/"+Resources.MIDAS_VOCS;
+    public static final String MAPPINGS_MIDAS_VOCS_ALL=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings.x3ml";
     public static final String GENERATOR_POLICY_MIDAS_VOCS=MAPPINGS_MIDAS_VOCS+"/"+"generator-policy.xml";
     /* HERTZIANA resources */
     public static final String HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT="root";
@@ -327,7 +330,7 @@ public class Resources {
     public static final String GRAPHSPACE_VOCAB_WIKIDATA="https://pharos.artresearch.net/resource/wikidata";
     public static final String GRAPHSPACE_VOCAB_AAT="https://pharos.artresearch.net/resource/aat";
     public static final String GRAPHSPACE_VOCAB_GEONAMES="https://pharos.artresearch.net/resource/gnames";
-    public static final String GRAPHSPACE_VOCAB_MIDAS="https://pharos.artresearch.net/resource/midasvocs";
+    public static final String GRAPHSPACE_MIDAS_VOCS="https://pharos.artresearch.net/resource/midas/vocabularies/enrichment/graph";
     
     //Resources
     public static final String NO_TYPE = "https://pharos.artresearch.net/custom/noType";
