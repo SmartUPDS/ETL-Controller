@@ -25,7 +25,7 @@ public class VocsTransformer implements Transformer {
     @Override
     public void transformResources() throws ETLGenericException {
         Timer.start(VocsTransformer.class.getCanonicalName()+".vocabularies");
-        log.info("START: Transform Artworks from MIDAS");
+        log.info("START: Transform Vocabularies from MIDAS");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS), null, true)){
             String filename = Utils.transformFile(file,
                                 new File(Resources.MAPPINGS_MIDAS_VOCS_ALL),
