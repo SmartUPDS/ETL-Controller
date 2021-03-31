@@ -21,11 +21,12 @@ public class FrickTransformer implements Transformer{
         Timer.start(FrickTransformer.class.getCanonicalName()+".all");
         log.info("START: Transform data from FRICK");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK).listFiles()){
-            Utils.transformFile(file,
+            String filename = Utils.transformFile(file,
                                 new File(Resources.MAPPINGS_FRICK_ALL),
                                 new File(Resources.GENERATOR_POLICY_FRICK),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
+            Utils.removeTypes(filename);
         }
         Timer.stop(FrickTransformer.class.getCanonicalName()+".all");
         log.info("FINISH: Transform data from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class.getCanonicalName()+".all"));
