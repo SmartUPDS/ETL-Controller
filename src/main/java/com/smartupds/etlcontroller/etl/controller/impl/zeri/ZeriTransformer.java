@@ -22,11 +22,12 @@ public class ZeriTransformer implements Transformer {
         Timer.start(ZeriTransformer.class.getCanonicalName()+".artworks");
         log.info("START: Transform Artworks from Zeri");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_ARTWORKS), null, true)){
-            Utils.transformFile(file,
+            String filename = Utils.transformFile(file,
                                 new File(Resources.MAPPINGS_ZERI_ARTWORKS),
                                 new File(Resources.GENERATOR_POLICY_ZERI),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
+            Utils.removeTypes(filename);
         }
         Timer.stop(ZeriTransformer.class.getCanonicalName()+".artworks");
         log.info("FINISH: Transform artworks from Zeri in "+Timer.reportHumanFriendly(ZeriTransformer.class.getCanonicalName()+".artworks"));
@@ -34,11 +35,12 @@ public class ZeriTransformer implements Transformer {
         log.info("START: Transform Photographs from Zeri");
         Timer.start(ZeriTransformer.class.getCanonicalName()+".photographs");
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_ZERI_PHOTOGRAPHS), null, true)){
-            Utils.transformFile(file,
+            String filename = Utils.transformFile(file,
                                 new File(Resources.MAPPINGS_ZERI_PHOTOGRAPHS),
                                 new File(Resources.GENERATOR_POLICY_ZERI),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
+            Utils.removeTypes(filename);
         }
         Timer.stop(ZeriTransformer.class.getCanonicalName()+".photographs");
         log.info("FINISH: Transform photographs from Zeri in "+Timer.reportHumanFriendly(ZeriTransformer.class.getCanonicalName()+".photographs"));
