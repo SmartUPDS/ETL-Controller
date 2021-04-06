@@ -42,7 +42,7 @@ public class ItattiTransformer implements Transformer {
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf-fc-fr");
         log.info("FINISH: Transform SharedShelf data using FCs FRs from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf-fc-fr"));
-                
+        
         Timer.start(ItattiTransformer.class.getCanonicalName()+".fotoindex");
         log.info("START: Transform FotoIndex data from Villa I Tatti");
          for(File workFile : new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).listFiles()){
