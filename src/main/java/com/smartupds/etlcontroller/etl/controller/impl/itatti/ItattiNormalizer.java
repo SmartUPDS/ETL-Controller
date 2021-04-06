@@ -15,7 +15,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -154,6 +153,7 @@ public class ItattiNormalizer implements Normalizer {
                 doc = this.shiftElementContent(doc, "Entry", "Language");
                 doc = this.deleteElement(doc,"Language");
                 doc = this.correctElementId(doc,Resources.ASSET);
+//                doc = this.replaceCharacter(doc,"","&quot;");
                 
                 this.exportXmlDocument(doc, new File(folderForNormFiles.getAbsolutePath()+"/"+file.getName()));
             }catch(NormalizerException ex){
@@ -162,14 +162,14 @@ public class ItattiNormalizer implements Normalizer {
             }   
         }
     }
-    
+
     private List<String> normalizeNotes(String originalText){
         String normText=originalText.replaceAll("&quot;", "QUOT_DELIMITER_UNNORMALIZED").replaceAll("\"","QUOT_DELIMITER_UNNORMALIZED");
         if(normText.contains(";")){
             String[] normTokens=normText.split(";");
             List<String> retList=new ArrayList<>();
             for(String normToken : normTokens){
-                retList.add(normToken.trim().replaceAll("QUOT_DELIMITER_UNNORMALIZED", "&quot;"));
+                retList.add(normToken.trim().replaceAll("QUOT_DELIMITER_UNNORMALIZED", "\""));
             }
             return retList;
         }else{
