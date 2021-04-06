@@ -212,7 +212,7 @@ public class Resources {
     public static final String BUILTWORKS="builtworks";
     public static final String COLLECTION="Collection";
     public static final String INSTITUTION="Institution";
-    public static final String INSTITUTIONS="Institutions";
+    public static final String INSTITUTIONS="institutions";
     public static final String PHOTOGRAPH="Photograph";
     public static final String PHOTOGRAPHS="photographs";
     public static final String L2V="l2v";
