@@ -26,6 +26,27 @@ public class Resources {
     public static final String FOLDER_INPUT_FETCHED_MARBURG=FOLDER_INPUT_FETCHED+"/"+Resources.MARBURG;
     public static final String FOLDER_INPUT_FETCHED_KHI=FOLDER_INPUT_FETCHED+"/"+Resources.KHI;
     public static final String FOLDER_INPUT_FETCHED_MIDAS_VOCS=FOLDER_INPUT_FETCHED+"/"+Resources.MIDAS_VOCS;
+    
+    public static final String FOLDER_INPUT_FETCHED_NYPL=FOLDER_INPUT_FETCHED+"/"+Resources.NYPL;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_ADDRESS=FOLDER_INPUT_FETCHED_NYPL+"/"+ Resources.ADDRESS;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_BIOGRAPHY=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.BIOGRAPHY;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_COLLECTION=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.COLLECTION.toLowerCase()+"s";
+    public static final String FOLDER_INPUT_FETCHED_NYPL_CONSTITUENTS=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.CONSTITUENTS;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_GENDER=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.GENDER;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_NATIONALITY=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.NATIONALITY;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_PROCESS=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.PROCESS;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_ROLE=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.ROLE;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_BIOGRAPHIES=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.BIOGRAPHY + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_COLLECTIONS=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.COLLECTION.toLowerCase()+"s" + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_COUNTRIES=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.COUNTRIES + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_COUNTRIES_WOF=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.COUNTRIES_WOF + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_FORMAT=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.FORMAT + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_FORMATS=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.FORMAT+ "s" + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_GENDERS=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.GENDER + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_NATIONALITIES=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.NATIONALITY + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_PROCESSES=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.PROCESS + "."+ Resources.EXTENSION_XML;
+    public static final String FOLDER_INPUT_FETCHED_NYPL_ROLES=FOLDER_INPUT_FETCHED_NYPL+"/"+Resources.ROLE + "."+ Resources.EXTENSION_XML;
+    
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI=FOLDER_INPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.SHAREDSHELF;
     public static final String FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX=FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI+"/"+Resources.FOTOINDEX;
@@ -61,6 +82,8 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_HERTZIANA_BUILTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_HERTZIANA+"/"+Resources.BUILTWORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.FRICK;
     public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL=FOLDER_OUTPUT_TRANSFORMED_FRICK+"/"+"All";
+    public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK_WORKS=FOLDER_OUTPUT_TRANSFORMED_FRICK+"/"+Resources.WORKS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK_INSTITUTIONS=FOLDER_OUTPUT_TRANSFORMED_FRICK+"/"+Resources.INSTITUTIONS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR=FOLDER_OUTPUT_TRANSFORMED_FRICK+"/"+Resources.FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.ZERI;
     public static final String FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS=FOLDER_OUTPUT_TRANSFORMED_ZERI+"/"+Resources.ARTWORKS;
@@ -179,6 +202,7 @@ public class Resources {
     public static final String FOTOINDEX="FotoIndex";
     public static final String SHAREDSHELF="SharedShelf";
     public static final String MIDAS_VOCS="MIDAS" + "/" + Resources.VOCABULARIES;
+    public static final String NYPL="NYPL";
     
     /* Entities names */
     public static final String VOCABULARIES="Vocabularies";
@@ -188,6 +212,7 @@ public class Resources {
     public static final String BUILTWORKS="builtworks";
     public static final String COLLECTION="Collection";
     public static final String INSTITUTION="Institution";
+    public static final String INSTITUTIONS="Institutions";
     public static final String PHOTOGRAPH="Photograph";
     public static final String PHOTOGRAPHS="photographs";
     public static final String L2V="l2v";
@@ -195,6 +220,16 @@ public class Resources {
     public static final String WORK="Work";
     public static final String WORKS="works";
     public static final String ASSET="Asset";
+    public static final String ADDRESS="addresses";
+    public static final String BIOGRAPHY="biographies";
+    public static final String CONSTITUENTS="constituents";
+    public static final String GENDER="genders";
+    public static final String NATIONALITY="nationalities";
+    public static final String PROCESS="processes";
+    public static final String ROLE="roles";
+    public static final String COUNTRIES="countries";
+    public static final String COUNTRIES_WOF="countries_wof";
+    public static final String FORMAT="format";
     
     /* Attribute names*/
     public static final String URI="uri";
@@ -210,6 +245,7 @@ public class Resources {
     public static final String EXTENSION_TRIG="trig";
     public static final String EXTENSION_N3="n3";
     public static final String EXTENSION_RDF="rdf";
+    public static final String EXTENSION_XML="xml";
     
     /* Mapping resources */
     public static final String MAPPINGS_VILLA_I_TATTI=FOLDER_MAPPINGS+"/"+Resources.VILLA_I_TATTI;
@@ -242,7 +278,8 @@ public class Resources {
     public static final String MAPPINGS_HERTZIANA_BUILTWORKS_FC_FR=MAPPINGS_HERTZIANA+"/"+"mappings-buildworks-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_HERTZIANA=MAPPINGS_HERTZIANA+"/"+"generator-policy.xml";
     public static final String MAPPINGS_FRICK=FOLDER_MAPPINGS+"/"+Resources.FRICK;
-    public static final String MAPPINGS_FRICK_ALL=MAPPINGS_FRICK+"/"+"mappings.x3ml";
+    public static final String MAPPINGS_FRICK_WORK=MAPPINGS_FRICK+"/"+"mappings-work.x3ml";
+    public static final String MAPPINGS_FRICK_INSTITUTION=MAPPINGS_FRICK+"/"+"mappings-institution.x3ml";
     public static final String MAPPINGS_FRICK_FC_FR=MAPPINGS_FRICK+"/"+"mappings-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_FRICK=MAPPINGS_FRICK+"/"+"generator-policy.xml";
     public static final String MAPPINGS_ZERI=FOLDER_MAPPINGS+"/"+Resources.ZERI;
@@ -283,6 +320,31 @@ public class Resources {
     public static final String MAPPINGS_MIDAS_VOCS=FOLDER_MAPPINGS+"/"+Resources.MIDAS_VOCS;
     public static final String MAPPINGS_MIDAS_VOCS_ALL=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings.x3ml";
     public static final String GENERATOR_POLICY_MIDAS_VOCS=MAPPINGS_MIDAS_VOCS+"/"+"generator-policy.xml";
+    
+    public static final String MAPPINGS_NYPL=FOLDER_MAPPINGS+"/"+Resources.NYPL;
+    public static final String GENERATOR_POLICY_NYPL=MAPPINGS_NYPL+"/"+"generator-policy.xml";
+    public static final String MAPPINGS_NYPL_ADDRESS=MAPPINGS_NYPL+"/"+"address_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_BIOGRAPHIES=MAPPINGS_NYPL+"/"+"biographies_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_BIOGRAPHY=MAPPINGS_NYPL+"/"+"biography_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_COLLECTION=MAPPINGS_NYPL+"/"+"collection_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_COLLECTIONS=MAPPINGS_NYPL+"/"+"collections_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_CONSTITUENTS=MAPPINGS_NYPL+"/"+"constituents_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_CONSTITUENTS_FC_FR=MAPPINGS_NYPL+"/"+"constituents_mappings-fc-fr.x3ml";
+    public static final String MAPPINGS_NYPL_COUNTRIES=MAPPINGS_NYPL+"/"+"countries_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_COUNTRIES_WOF=MAPPINGS_NYPL+"/"+"countries_wof_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_FORMAT=MAPPINGS_NYPL+"/"+"format_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_FORMATS=MAPPINGS_NYPL+"/"+"formats_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_GENDER=MAPPINGS_NYPL+"/"+"gender_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_GENDER_FC_FR=MAPPINGS_NYPL+"/"+"gender_mappings-fc-fr.x3ml";
+    public static final String MAPPINGS_NYPL_GENDERS=MAPPINGS_NYPL+"/"+"genders_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_NATIONALITIES=MAPPINGS_NYPL+"/"+"nationalities_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_NATIONALITY=MAPPINGS_NYPL+"/"+"nationality_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_NATIONALITY_FC_FR=MAPPINGS_NYPL+"/"+"nationality_mappings-fc-fr.x3ml";
+    public static final String MAPPINGS_NYPL_PROCESS=MAPPINGS_NYPL+"/"+"process_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_PROCESSES=MAPPINGS_NYPL+"/"+"processes_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_ROLE=MAPPINGS_NYPL+"/"+"role_mappings.x3ml";
+    public static final String MAPPINGS_NYPL_ROLES=MAPPINGS_NYPL+"/"+"roles_mappings.x3ml";
+    
     /* HERTZIANA resources */
     public static final String HERTZIANA_COMBINED_RESOURCES_ROOT_ELEMENT="root";
     public static final String HERTZIANA_COMBINED_RESOURCES_OBJ_ELEMENT="obj";
