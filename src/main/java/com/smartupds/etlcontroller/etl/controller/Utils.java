@@ -148,6 +148,7 @@ public class Utils {
         String filename = "";
         String extension="";
         String mimetype="";
+        
         switch(outputFormat){
             case RDF_XML:
                 extension=Labels.OUTPUT_EXTENSION_RDF;
