@@ -31,7 +31,7 @@ public class VocsTransformer implements Transformer {
                                 new File(Resources.MAPPINGS_MIDAS_VOCS_ALL),
                                 new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS), 
-                                X3MLEngineFactory.OutputFormat.TRIG);
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
             Utils.removeTypes(filename);
         }
         Timer.stop(VocsTransformer.class.getCanonicalName()+".vocabularies");
