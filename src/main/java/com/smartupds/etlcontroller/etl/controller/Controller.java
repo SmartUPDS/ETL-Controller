@@ -27,7 +27,7 @@ public class Controller {
         //none (?)
         
         /* Normalize/Clean Input Resources */
-//        ItattiNormalizer.create().normalizeResources();
+        ItattiNormalizer.create().normalizeResources();
 //        FrickNormalizer.create().normalizeResources();
 //        HertzianaNormalizer.create().normalizeResources();
 //        ZeriNormalizer.create().normalizeResources();
@@ -36,7 +36,7 @@ public class Controller {
 //        VocsNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-//        ItattiTransformer.create().transformResources();
+        ItattiTransformer.create().transformResources();
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
@@ -50,7 +50,7 @@ public class Controller {
 //        KhiHomogenizer.create().homogenizeResources();
 //        HertzianaHomogenizer.create().homogenizeResources();
 //        MarburgHomogenizer.create().homogenizeResources();
-        VocsHomogenizer.create().homogenizeResources();
+//        VocsHomogenizer.create().homogenizeResources();
         
         /* Ingest Resources */
 //        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
@@ -88,6 +88,17 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_MARBURG).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_KHI).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_MIDAS_VOCS).mkdirs();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_ADDRESS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_BIOGRAPHY).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_COLLECTION).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_CONSTITUENTS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_GENDER).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_NATIONALITY).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_PROCESS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_ROLE).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_NYPL_GENDER).mkdir();
+        
         new File(Resources.FOLDER_INPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_VILLA_I_TATTI_FOTOINDEX).mkdir();
@@ -112,6 +123,7 @@ public class Controller {
         new File(Resources.MAPPINGS_ZERI).mkdir();
         new File(Resources.MAPPINGS_MARBURG).mkdir();
         new File(Resources.MAPPINGS_MIDAS_VOCS).mkdirs();
+        new File(Resources.MAPPINGS_NYPL).mkdir();
         
         log.debug("Create OUTPUT folders");
         new File(Resources.FOLDER_OUTPUT).mkdir();
@@ -156,6 +168,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_WORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_ALL).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_INSTITUTIONS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_WORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ACTORS).mkdir();
