@@ -46,6 +46,7 @@ public class FrickNormalizer implements Normalizer{
                 doc=this.normalizePostfix(doc,Triple.of("marc:datafield","tag", "590"),Pair.of("ind1","9"), Triple.of("marc:subfield","code", "g"),Arrays.asList("_POST.tif",".tif"),Triple.of("marc:subfield","code", "d"));
                 doc=this.addCountInfo(doc,"marc:record",Triple.of("marc:datafield","tag", "590"));
                 doc=this.activeRemove(doc,Triple.of("marc:datafield","tag", "100"),Triple.of("marc:subfield","code", "d"));
+                doc=this.activeRemove(doc,Triple.of("marc:datafield","tag", "600"),Triple.of("marc:subfield","code", "d"));
                 doc=this.concatenateElements(doc,Triple.of("marc:datafield","tag", "655"),Triple.of("marc:subfield","code", "b"), Triple.of("marc:subfield","code", "a"));
                 doc=this.normalizeNarrative(doc,Triple.of("marc:datafield","tag", "561"),Triple.of("marc:subfield","code", "a"));
                 ItattiNormalizer.exportXmlDocument(doc, new File(Resources.FOLDER_INPUT_NORMALIZED_FRICK+"/"+file.getName()));
