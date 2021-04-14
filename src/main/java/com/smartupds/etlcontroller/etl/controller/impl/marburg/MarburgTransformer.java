@@ -9,6 +9,7 @@ import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.jena.riot.Lang;
 
 /** Transformer class for resources from Marburg 
  *
@@ -26,7 +27,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".artworks");
         log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".artworks"));
@@ -39,7 +40,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL2), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".artworks-lv2");
         log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".artworks-lv2"));
@@ -52,7 +53,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL3), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".artworks-lv3");
         log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".artworks-lv3"));
@@ -65,7 +66,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ARTWORKS_LVL4), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".artworks-lv4");
         log.info("FINISH: Transform Artworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".artworks-lv4"));
@@ -78,7 +79,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".builtworks");
         log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".builtworks"));
@@ -91,7 +92,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL2), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".builtworks-lv2");
         log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".builtworks-lv2"));
@@ -104,7 +105,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL3), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".builtworks-lv3");
         log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".builtworks-lv3"));
@@ -117,7 +118,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_BUILTWORKS_LVL4), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".builtworks-lv4");
         log.info("FINISH: Transform Builtworks from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".builtworks-lv4"));
@@ -130,7 +131,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_PHOTOGRAPHS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".photographs");
         log.info("FINISH: Transform Photographs from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".photographs"));
@@ -143,7 +144,7 @@ public class MarburgTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_MARBURG),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MARBURG_ACTORS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(MarburgTransformer.class.getCanonicalName()+".actors");
         log.info("FINISH: Transform Actors from Marburg in "+Timer.reportHumanFriendly(MarburgTransformer.class.getCanonicalName()+".actors"));
