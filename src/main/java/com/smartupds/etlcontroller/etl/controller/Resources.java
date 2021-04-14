@@ -26,6 +26,9 @@ public class Resources {
     public static final String FOLDER_INPUT_FETCHED_MARBURG=FOLDER_INPUT_FETCHED+"/"+Resources.MARBURG;
     public static final String FOLDER_INPUT_FETCHED_KHI=FOLDER_INPUT_FETCHED+"/"+Resources.KHI;
     public static final String FOLDER_INPUT_FETCHED_MIDAS_VOCS=FOLDER_INPUT_FETCHED+"/"+Resources.MIDAS_VOCS;
+    public static final String FOLDER_INPUT_FETCHED_MIDAS_VOCS_ARTISTS=FOLDER_INPUT_FETCHED_MIDAS_VOCS+"/"+Resources.ARTISTS;
+    public static final String FOLDER_INPUT_FETCHED_MIDAS_VOCS_PLACES=FOLDER_INPUT_FETCHED_MIDAS_VOCS+"/"+Resources.PLACES;
+    public static final String FOLDER_INPUT_FETCHED_MIDAS_VOCS_THESAURUS=FOLDER_INPUT_FETCHED_MIDAS_VOCS+"/"+Resources.THESAURUS;
     
     public static final String FOLDER_INPUT_FETCHED_NYPL=FOLDER_INPUT_FETCHED+"/"+Resources.NYPL;
     public static final String FOLDER_INPUT_FETCHED_NYPL_ADDRESS=FOLDER_INPUT_FETCHED_NYPL+"/"+ Resources.ADDRESS;
@@ -57,6 +60,9 @@ public class Resources {
     public static final String FOLDER_INPUT_NORMALIZED_MARBURG=FOLDER_INPUT_NORMALIZED+"/"+Resources.MARBURG;
     public static final String FOLDER_INPUT_NORMALIZED_KHI=FOLDER_INPUT_NORMALIZED+"/"+Resources.KHI;
     public static final String FOLDER_INPUT_NORMALIZED_MIDAS_VOCS=FOLDER_INPUT_NORMALIZED+"/"+Resources.MIDAS_VOCS;
+    public static final String FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_ARTISTS=FOLDER_INPUT_NORMALIZED_MIDAS_VOCS+"/"+Resources.ARTISTS;
+    public static final String FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_PLACES=FOLDER_INPUT_NORMALIZED_MIDAS_VOCS+"/"+Resources.PLACES;
+    public static final String FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_THESAURUS=FOLDER_INPUT_NORMALIZED_MIDAS_VOCS+"/"+Resources.THESAURUS;
     public static final String FOLDER_MAPPINGS=FOLDER_WORKSPACE+"/"+"2_Mappings";
     public static final String FOLDER_OUTPUT=FOLDER_WORKSPACE+"/"+"3_Output";
     public static final String FOLDER_OUTPUT_TRANSFORMED=FOLDER_OUTPUT+"/"+"1_Transformed";
@@ -118,6 +124,9 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.ARTWORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.MIDAS_VOCS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS+"/"+Resources.ARTISTS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS+"/"+Resources.PLACES;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_THESAURUS=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS+"/"+Resources.THESAURUS;
     public static final String FOLDER_OUTPUT_NORMALIZED=FOLDER_OUTPUT+"/"+"2_Normalized";
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF=FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI+"/"+Resources.SHAREDSHELF;
@@ -208,6 +217,9 @@ public class Resources {
     public static final String VOCABULARIES="Vocabularies";
     public static final String ACTORS="actors";
     public static final String ARTIST="Artist";
+    public static final String ARTISTS="Artists";
+    public static final String PLACES="Places";
+    public static final String THESAURUS="Thesaurus";
     public static final String ARTWORKS="artworks";
     public static final String BUILTWORKS="builtworks";
     public static final String COLLECTION="Collection";
@@ -318,7 +330,9 @@ public class Resources {
     public static final String MAPPINGS_KHI_BUILTWORKS_FC_FR=MAPPINGS_KHI+"/"+"mappings-buildworks-fc-fr.x3ml";
     public static final String GENERATOR_POLICY_KHI=MAPPINGS_KHI+"/"+"generator-policy.xml";
     public static final String MAPPINGS_MIDAS_VOCS=FOLDER_MAPPINGS+"/"+Resources.MIDAS_VOCS;
-    public static final String MAPPINGS_MIDAS_VOCS_ALL=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_THESAURUS=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-thesaurus.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_ARTISTS=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-artists.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_PLACES=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-places.x3ml";
     public static final String GENERATOR_POLICY_MIDAS_VOCS=MAPPINGS_MIDAS_VOCS+"/"+"generator-policy.xml";
     
     public static final String MAPPINGS_NYPL=FOLDER_MAPPINGS+"/"+Resources.NYPL;
