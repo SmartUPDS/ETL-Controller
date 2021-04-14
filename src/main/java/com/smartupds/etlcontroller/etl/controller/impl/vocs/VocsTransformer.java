@@ -14,6 +14,7 @@ import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.jena.riot.Lang;
 
 /** Transformer class for resources from MIDAS Vocabularies 
  *
@@ -26,13 +27,29 @@ public class VocsTransformer implements Transformer {
     public void transformResources() throws ETLGenericException {
         Timer.start(VocsTransformer.class.getCanonicalName()+".vocabularies");
         log.info("START: Transform Vocabularies from MIDAS");
-        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS), null, true)){
+        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_THESAURUS), null, true)){
             String filename = Utils.transformFile(file,
-                                new File(Resources.MAPPINGS_MIDAS_VOCS_ALL),
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_THESAURUS),
                                 new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
-                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS), 
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_THESAURUS), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.NTRIPLES);
+        } 
+        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_ARTISTS), null, true)){
+            Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_ARTISTS),
+                                new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
+            
+        }
+        for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_PLACES), null, true)){
+            Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_PLACES),
+                                new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
+            
         }
         Timer.stop(VocsTransformer.class.getCanonicalName()+".vocabularies");
         log.info("FINISH: Transform vocabularies from MIDAS in "+Timer.reportHumanFriendly(VocsTransformer.class.getCanonicalName()+".vocabularies"));
