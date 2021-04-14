@@ -9,6 +9,7 @@ import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
 import org.apache.commons.io.FileUtils;
+import org.apache.jena.riot.Lang;
 
 /** Transformer class for resources from Zeri 
  *
@@ -27,7 +28,7 @@ public class ZeriTransformer implements Transformer {
                                 new File(Resources.GENERATOR_POLICY_ZERI),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_ARTWORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(ZeriTransformer.class.getCanonicalName()+".artworks");
         log.info("FINISH: Transform artworks from Zeri in "+Timer.reportHumanFriendly(ZeriTransformer.class.getCanonicalName()+".artworks"));
@@ -40,7 +41,7 @@ public class ZeriTransformer implements Transformer {
                                 new File(Resources.GENERATOR_POLICY_ZERI),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_ZERI_PHOTOGRAPHS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(ZeriTransformer.class.getCanonicalName()+".photographs");
         log.info("FINISH: Transform photographs from Zeri in "+Timer.reportHumanFriendly(ZeriTransformer.class.getCanonicalName()+".photographs"));
