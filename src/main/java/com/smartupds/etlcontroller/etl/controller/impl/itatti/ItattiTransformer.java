@@ -8,6 +8,7 @@ import gr.forth.ics.isl.timer.Timer;
 import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
+import org.apache.jena.riot.Lang;
 
 /** Transformer class for resources from Villa I Tatti
  *
@@ -26,7 +27,7 @@ public class ItattiTransformer implements Transformer {
                                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_SHAREDSHELF),
                                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF), 
                                                     X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf");
         log.info("FINISH: Transform SharedShelf data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf"));
@@ -52,7 +53,7 @@ public class ItattiTransformer implements Transformer {
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
-                Utils.removeTypes(filename);
+                Utils.removeTypes(filename, Lang.TRIG);
             }
             if(workFile.getName().toLowerCase().contains(Resources.COLLECTION.toLowerCase())){
                 String filename = Utils.transformFile(workFile,
@@ -60,7 +61,7 @@ public class ItattiTransformer implements Transformer {
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
-                Utils.removeTypes(filename);
+                Utils.removeTypes(filename, Lang.TRIG);
             }
             if(workFile.getName().toLowerCase().contains(Resources.INSTITUTION.toLowerCase())){
                 String filename = Utils.transformFile(workFile,
@@ -68,7 +69,7 @@ public class ItattiTransformer implements Transformer {
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
-                Utils.removeTypes(filename);
+                Utils.removeTypes(filename, Lang.TRIG);
             }
             if(workFile.getName().toLowerCase().contains(Resources.PHOTOGRAPH.toLowerCase())){
                 String filename = Utils.transformFile(workFile,
@@ -76,7 +77,7 @@ public class ItattiTransformer implements Transformer {
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
-                Utils.removeTypes(filename);
+                Utils.removeTypes(filename, Lang.TRIG);
             }
             if(workFile.getName().toLowerCase().contains(Resources.WORK.toLowerCase())){
                 String filename = Utils.transformFile(workFile,
@@ -84,7 +85,7 @@ public class ItattiTransformer implements Transformer {
                                     new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_FOTOINDEX), 
                                     new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_FOTOINDEX),
                                     X3MLEngineFactory.OutputFormat.TRIG);
-                Utils.removeTypes(filename);
+                Utils.removeTypes(filename, Lang.TRIG);
             }
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".fotoindex");
@@ -110,7 +111,7 @@ public class ItattiTransformer implements Transformer {
                                 new File(Resources.GENERATOR_POLICY_VILLA_I_TATTI_SHAREDSHELF),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_VILLA_I_TATTI_SHAREDSHELF_ULAN), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename);
+            Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(ItattiTransformer.class.getCanonicalName()+".sharedshelf-ulan");
         log.info("FINISH: Transform SharedShelf ULAN data from Villa I Tatti in "+Timer.reportHumanFriendly(ItattiTransformer.class.getCanonicalName()+".sharedshelf-ulan"));
