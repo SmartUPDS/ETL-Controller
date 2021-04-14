@@ -281,7 +281,7 @@ public class Utils {
         log.info("Overal Time for KHI: "+Timer.reportHumanFriendly(KhiTransformer.class.getPackage().getName()));
     }
 
-    public static void removeTypes(String filename) {
+    public static void removeTypes(String filename, Lang language) {
         try {
             Dataset dataset = RDFDataMgr.loadDataset(filename);
             dataset.listNames().forEachRemaining(graph -> {
@@ -289,7 +289,10 @@ public class Utils {
                 Resource rsc = model.createResource(Resources.NO_TYPE);
                 model.removeAll(null, RDF.type,(RDFNode) rsc);
             });
-            RDFDataMgr.write(new FileOutputStream(filename), dataset, Lang.TRIG);
+            if (language.equals(Lang.TRIG))
+                RDFDataMgr.write(new FileOutputStream(filename), dataset, language);
+            else
+                RDFDataMgr.write(new FileOutputStream(filename), dataset.getDefaultModel(), language);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ItattiTransformer.class.getName()).log(Level.SEVERE, null, ex);
         }
