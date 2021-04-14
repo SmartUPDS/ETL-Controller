@@ -9,7 +9,7 @@ import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
  */
 public interface Ingester {
 
-    /** This method is responsbile for adding the RDF resources in a particular 
+    /** This method is responsible for adding the RDF resources in a particular 
      * knowledge base (e.g. a triplestore). The knowledge base-related information (e.g. host, port, graphspace, etc.)
      * will be provided from the classes implementing the interface
      * 
