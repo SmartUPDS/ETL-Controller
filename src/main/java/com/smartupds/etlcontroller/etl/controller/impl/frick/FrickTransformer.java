@@ -8,6 +8,7 @@ import gr.forth.ics.isl.timer.Timer;
 import gr.forth.ics.isl.x3ml.X3MLEngineFactory;
 import java.io.File;
 import lombok.extern.log4j.Log4j;
+import org.apache.jena.riot.Lang;
 
 /** Transformer class for resources from FRICK
  *
@@ -26,13 +27,13 @@ public class FrickTransformer implements Transformer{
                                 new File(Resources.GENERATOR_POLICY_FRICK),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_WORKS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename_work);
+            Utils.removeTypes(filename_work, Lang.TRIG);
             String filename_institution = Utils.transformFile(file,
                                 new File(Resources.MAPPINGS_FRICK_INSTITUTION),
                                 new File(Resources.GENERATOR_POLICY_FRICK),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_INSTITUTIONS), 
                                 X3MLEngineFactory.OutputFormat.TRIG);
-            Utils.removeTypes(filename_institution);
+            Utils.removeTypes(filename_institution, Lang.TRIG);
         }
         Timer.stop(FrickTransformer.class.getCanonicalName()+".all");
         log.info("FINISH: Transform data from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class.getCanonicalName()+".all"));
