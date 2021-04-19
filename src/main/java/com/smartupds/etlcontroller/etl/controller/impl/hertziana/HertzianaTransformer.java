@@ -151,7 +151,7 @@ public class HertzianaTransformer implements Transformer {
             Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(HertzianaTransformer.class.getCanonicalName()+".actors");
-        log.info("FINISH: Transform Builtworks from Hertziana in "+Timer.reportHumanFriendly(HertzianaTransformer.class.getCanonicalName()+".actors"));
+        log.info("FINISH: Transform Actors from Hertziana in "+Timer.reportHumanFriendly(HertzianaTransformer.class.getCanonicalName()+".actors"));
 
         Timer.start(HertzianaTransformer.class.getCanonicalName()+".photographs-fc-fr");
         log.info("START: Transform Photographs using FCs FRs from Hertziana");
