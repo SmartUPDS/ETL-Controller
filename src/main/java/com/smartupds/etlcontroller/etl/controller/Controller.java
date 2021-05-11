@@ -1,6 +1,7 @@
 package com.smartupds.etlcontroller.etl.controller;
 
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
+import com.smartupds.etlcontroller.etl.controller.impl.Indexing.WorkIndexGenerator;
 import com.smartupds.etlcontroller.etl.controller.impl.itatti.*;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.*;
 import com.smartupds.etlcontroller.etl.controller.impl.hertziana.*;
@@ -12,6 +13,7 @@ import com.smartupds.etlcontroller.etl.controller.impl.vocs.VocsTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.*;
 import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import java.io.File;
+import java.nio.file.Paths;
 import lombok.extern.log4j.Log4j;
 
 /** The entry point of the ETL Controller. The class is responsible for 
@@ -21,6 +23,13 @@ import lombok.extern.log4j.Log4j;
  */
 @Log4j
 public class Controller {
+    
+    public static void main(String[] args) throws ETLGenericException{
+        /* INITIALIZATION ONLY */
+        Controller.createFoldersStructure();
+        
+        Controller.executeWorkflow();
+    }
     
     public static void executeWorkflow() throws ETLGenericException{
         /* Harvest Resources */
@@ -36,7 +45,7 @@ public class Controller {
 //        VocsNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-        ItattiTransformer.create().transformResources();
+//        ItattiTransformer.create().transformResources();
 //        HertzianaTransformer.create().transformResources();
 //        FrickTransformer.create().transformResources();
 //        ZeriTransformer.create().transformResources();
@@ -45,6 +54,7 @@ public class Controller {
 //        VocsTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
+//        ItattiHomogenizer.create().homogenizeResources();
 //        FrickHomogenizer.create().homogenizeResources();
 //        ZeriHomogenizer.create().homogenizeResources();
 //        KhiHomogenizer.create().homogenizeResources();
@@ -64,12 +74,14 @@ public class Controller {
 //        MarburgIngester.create(triplestoreConnection).ingestResources();
 //        KhiIngester.create(triplestoreConnection).ingestResources();
         
+        /*Index Resources*/
+//        WorkIndexGenerator.create(new File(Resources.CONFIGURATION_FILE)).indexResources();
         /* Test Resources */
 //        none (?)
 
         Utils.reportTimeStatistics();
     }
-    
+        
     private static void createFoldersStructure(){
         log.info("Creating workspace folders structure");
         log.debug("Create INPUT folders");
@@ -88,6 +100,9 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_FETCHED_MARBURG).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_KHI).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_MIDAS_VOCS).mkdirs();
+        new File(Resources.FOLDER_INPUT_FETCHED_MIDAS_VOCS_ARTISTS).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_MIDAS_VOCS_PLACES).mkdir();
+        new File(Resources.FOLDER_INPUT_FETCHED_MIDAS_VOCS_THESAURUS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_NYPL).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_NYPL_ADDRESS).mkdir();
         new File(Resources.FOLDER_INPUT_FETCHED_NYPL_BIOGRAPHY).mkdir();
@@ -111,6 +126,9 @@ public class Controller {
         new File(Resources.FOLDER_INPUT_NORMALIZED_MARBURG).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).mkdir();
         new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS).mkdirs();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_ARTISTS).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_PLACES).mkdir();
+        new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_THESAURUS).mkdir();
         
         log.debug("Create MAPPINGS folders");
         new File(Resources.FOLDER_MAPPINGS).mkdir();
@@ -186,6 +204,15 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_ARTWORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR).mkdir();
         new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS).mkdirs();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_KHI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_HERTZIANA).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_MARBURG).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_KHI).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_HERTZIANA).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_MARBURG).mkdir();
+        new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_THESAURUS).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI).mkdir();
         new File(Resources.FOLDER_OUTPUT_NORMALIZED_VILLA_I_TATTI_SHAREDSHELF).mkdir();
@@ -244,6 +271,8 @@ public class Controller {
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_TYPES).mkdir();
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS).mkdir();
         new File(Resources.FOLDER_OUTPUT_INSTANCE_MATCHING_PHOTOGRAPHERS).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INDEXING).mkdir();
+        new File(Resources.FOLDER_OUTPUT_INDEXING_WORKS).mkdir();
 //        new File(Resources.FOLDER_OUTPUT_VOCABULARIES).mkdir();
 //        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC).mkdir();
 //        new File(Resources.FOLDER_OUTPUT_VOCABULARIES_ULAN).mkdir();
@@ -254,10 +283,4 @@ public class Controller {
         
     }
     
-    public static void main(String[] args) throws ETLGenericException{
-        /* INITIALIZATION ONLY */
-//        Controller.createFoldersStructure();
-        
-        Controller.executeWorkflow();
-    }
 }
