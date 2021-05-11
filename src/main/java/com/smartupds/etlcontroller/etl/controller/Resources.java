@@ -125,7 +125,13 @@ public class Resources {
     public static final String FOLDER_OUTPUT_TRANSFORMED_KHI_BUILTWORKS_FC_FR=FOLDER_OUTPUT_TRANSFORMED_KHI+"/"+Resources.BUILTWORKS+Resources._FC_FR;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS=FOLDER_OUTPUT_TRANSFORMED+"/"+Resources.MIDAS_VOCS;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS+"/"+Resources.ARTISTS;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_KHI=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS+"/"+Resources.KHI;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_MARBURG=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS+"/"+Resources.MARBURG;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_HERTZIANA=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS+"/"+Resources.HERTZIANA;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS+"/"+Resources.PLACES;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_KHI=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES+"/"+Resources.KHI;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_MARBURG=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES+"/"+Resources.MARBURG;
+    public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_HERTZIANA=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES+"/"+Resources.HERTZIANA;
     public static final String FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_THESAURUS=FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS+"/"+Resources.THESAURUS;
     public static final String FOLDER_OUTPUT_NORMALIZED=FOLDER_OUTPUT+"/"+"2_Normalized";
     public static final String FOLDER_OUTPUT_NORMALIZED_VILLA_I_ITATTI=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.VILLA_I_TATTI;
@@ -179,10 +185,6 @@ public class Resources {
     public static final String FOLDER_OUTPUT_NORMALIZED_ZERI_PHOTOGRAPHS=FOLDER_OUTPUT_NORMALIZED_ZERI+"/"+Resources.PHOTOGRAPHS;
     public static final String FOLDER_OUTPUT_NORMALIZED_MIDAS_VOCS=FOLDER_OUTPUT_NORMALIZED+"/"+Resources.MIDAS_VOCS;
     
-    
-    
-    
-    
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING=FOLDER_OUTPUT+"/"+"3_Instance_Matching";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_ARTISTS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Artists";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_INSTITUTIONS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Institutions";
@@ -192,6 +194,9 @@ public class Resources {
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS=FOLDER_OUTPUT_INSTANCE_MATCHING+"/"+"Works";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS_HASHED = FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS+"/"+"Hashed";
     public static final String FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS_MATCHED = FOLDER_OUTPUT_INSTANCE_MATCHING_WORKS+"/"+"Matched";
+    
+    public static final String FOLDER_OUTPUT_INDEXING=FOLDER_OUTPUT+"/"+"4_Indexing";
+    public static final String FOLDER_OUTPUT_INDEXING_WORKS=FOLDER_OUTPUT_INDEXING +"/"+Resources.WORKS;
     
 //    public static final String FOLDER_OUTPUT_VOCABULARIES=FOLDER_OUTPUT+"/"+"4_Vocabularies";
 //    public static final String FOLDER_OUTPUT_VOCABULARIES_NYPL_PIC=FOLDER_OUTPUT_VOCABULARIES+"/"+"NYPL-PIC";
@@ -331,8 +336,12 @@ public class Resources {
     public static final String GENERATOR_POLICY_KHI=MAPPINGS_KHI+"/"+"generator-policy.xml";
     public static final String MAPPINGS_MIDAS_VOCS=FOLDER_MAPPINGS+"/"+Resources.MIDAS_VOCS;
     public static final String MAPPINGS_MIDAS_VOCS_THESAURUS=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-thesaurus.x3ml";
-    public static final String MAPPINGS_MIDAS_VOCS_ARTISTS=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-artists.x3ml";
-    public static final String MAPPINGS_MIDAS_VOCS_PLACES=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-places.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_ARTISTS_KHI=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-artists-khi.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_ARTISTS_MARBURG=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-artists-marburg.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_ARTISTS_HERTZIANA=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-artists-hertziana.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_PLACES_KHI=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-places-khi.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_PLACES_MARBURG=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-places-marburg.x3ml";
+    public static final String MAPPINGS_MIDAS_VOCS_PLACES_HERTZIANA=MAPPINGS_MIDAS_VOCS+ "/"+ "mappings-places-hertziana.x3ml";
     public static final String GENERATOR_POLICY_MIDAS_VOCS=MAPPINGS_MIDAS_VOCS+"/"+"generator-policy.xml";
     
     public static final String MAPPINGS_NYPL=FOLDER_MAPPINGS+"/"+Resources.NYPL;
@@ -410,5 +419,9 @@ public class Resources {
     
     //Resources
     public static final String NO_TYPE = "https://pharos.artresearch.net/custom/noType";
+    public static final String SELECT = "SELECT";
+    public static final String SUBJECT = "subject";
+    public static final String TYPE_WORK = "https://pharos.artresearch.net/resource/fc/work";
+    public static final String CONFIGURATION_FILE = "./src/main/resources/authentication.xml";
     
 }
