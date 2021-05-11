@@ -14,7 +14,9 @@ import com.smartupds.etlcontroller.etl.controller.impl.itatti.ItattiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.khi.KhiTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.marburg.MarburgTransformer;
 import com.smartupds.etlcontroller.etl.controller.impl.zeri.ZeriTransformer;
+import com.smartupds.etlcontroller.etl.controller.model.QueryData;
 import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
+import com.smartupds.normalizer.exceptions.NormalizerException;
 import gr.forth.Labels;
 import gr.forth.ics.isl.timer.Timer;
 import gr.forth.ics.isl.x3ml.X3MLEngine;
@@ -51,6 +53,8 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.w3c.dom.Document;
+import split.ElementsSplit;
 
 /** Various utility facilities
  * 
@@ -284,18 +288,49 @@ public class Utils {
     public static void removeTypes(String filename, Lang language) {
         try {
             Dataset dataset = RDFDataMgr.loadDataset(filename);
-            dataset.listNames().forEachRemaining(graph -> {
-                Model model = dataset.getNamedModel(graph);
+            if (language.equals(Lang.TRIG)){
+                dataset.listNames().forEachRemaining(graph -> {
+                    System.out.println(graph + "-GRAPH");
+                    Model model = dataset.getNamedModel(graph);
+                    Resource rsc = model.createResource(Resources.NO_TYPE);
+                    model.removeAll(null, RDF.type,(RDFNode) rsc);
+                });
+                RDFDataMgr.write(new FileOutputStream(filename), dataset, language);
+            } else {
+                Model model = dataset.getDefaultModel();
                 Resource rsc = model.createResource(Resources.NO_TYPE);
                 model.removeAll(null, RDF.type,(RDFNode) rsc);
-            });
-            if (language.equals(Lang.TRIG))
-                RDFDataMgr.write(new FileOutputStream(filename), dataset, language);
-            else
                 RDFDataMgr.write(new FileOutputStream(filename), dataset.getDefaultModel(), language);
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ItattiTransformer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    /** Build SELECT query to retrieve resources of a specific type.
+     * 
+     * @param type type of resource 
+     * @return SPARQL query */
+    public static String buildSelectByType(String type){
+        return "SELECT ?"+Resources.SUBJECT+" WHERE { ?"+Resources.SUBJECT+" a <" + type +"> } LIMIT 1000";
+    }
+    
+    /** Retrieve resources of a specific type.
+     * 
+     * @param type type of resource 
+     * @param configurationfile
+     * @return SPARQL query
+     * @throws com.smartupds.normalizer.exceptions.NormalizerException */
+    public static String retrieveResourcesByType(String type,File configurationfile) throws NormalizerException{
+        String selectQuery = buildSelectByType(type);
+        Document doc=ElementsSplit.parseXmlDocument(configurationfile);
+        System.out.println(doc.getElementsByTagName("endpoint").item(0).getTextContent());
+        System.out.println(doc.getElementsByTagName("username").item(0).getTextContent());
+        System.out.println(doc.getElementsByTagName("password").item(0).getTextContent());
+        QueryData downloader = new QueryData(doc.getElementsByTagName("endpoint").item(0).getTextContent(), selectQuery,Resources.SELECT);
+        if (!doc.getElementsByTagName("username").item(0).getTextContent().isEmpty() && !doc.getElementsByTagName("password").item(0).getTextContent().isEmpty())
+            downloader.configure(doc.getElementsByTagName("username").item(0).getTextContent(), doc.getElementsByTagName("password").item(0).getTextContent());
+        downloader.download();
+        return selectQuery;
+    }
 }
