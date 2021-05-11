@@ -36,20 +36,44 @@ public class VocsTransformer implements Transformer {
             Utils.removeTypes(filename, Lang.NTRIPLES);
         } 
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_ARTISTS), null, true)){
-            Utils.transformFile(file,
-                                new File(Resources.MAPPINGS_MIDAS_VOCS_ARTISTS),
+            String filename1 = Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_ARTISTS_HERTZIANA),
                                 new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
-                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS), 
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_HERTZIANA), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
-            
+            Utils.removeTypes(filename1, Lang.NTRIPLES);
+            String filename2 = Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_ARTISTS_KHI),
+                                new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_KHI), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
+            Utils.removeTypes(filename2, Lang.NTRIPLES);
+            String filename3 = Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_ARTISTS_MARBURG),
+                                new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_ARTISTS_MARBURG), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
+            Utils.removeTypes(filename3, Lang.NTRIPLES);
         }
         for(File file: FileUtils.listFiles(new File(Resources.FOLDER_INPUT_NORMALIZED_MIDAS_VOCS_PLACES), null, true)){
-            Utils.transformFile(file,
-                                new File(Resources.MAPPINGS_MIDAS_VOCS_PLACES),
+            String filename1 = Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_PLACES_KHI),
                                 new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
-                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES), 
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_KHI), 
                                 X3MLEngineFactory.OutputFormat.NTRIPLES);
-            
+            Utils.removeTypes(filename1, Lang.NTRIPLES);
+            String filename2 = Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_PLACES_HERTZIANA),
+                                new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_HERTZIANA), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
+            Utils.removeTypes(filename2, Lang.NTRIPLES);
+            String filename3 = Utils.transformFile(file,
+                                new File(Resources.MAPPINGS_MIDAS_VOCS_PLACES_MARBURG),
+                                new File(Resources.GENERATOR_POLICY_MIDAS_VOCS),
+                                new File(Resources.FOLDER_OUTPUT_TRANSFORMED_MIDAS_VOCS_PLACES_MARBURG), 
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
+            Utils.removeTypes(filename3, Lang.NTRIPLES);
         }
         Timer.stop(VocsTransformer.class.getCanonicalName()+".vocabularies");
         log.info("FINISH: Transform vocabularies from MIDAS in "+Timer.reportHumanFriendly(VocsTransformer.class.getCanonicalName()+".vocabularies"));
