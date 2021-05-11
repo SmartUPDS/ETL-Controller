@@ -57,7 +57,7 @@ public class HertzianaNormalizer implements Normalizer{
         Timer.stop(HertzianaNormalizer.class.getCanonicalName()+".syntax-norm");
         log.info("FINISH: Perform Syntax Normalization for resources from Hertziana in "+Timer.reportHumanFriendly(HertzianaNormalizer.class.getCanonicalName()+".syntax-norm"));
         
-        log.info("FRICK Normalizations Time: "+Timer.reportHumanFriendly(HertzianaNormalizer.class.getCanonicalName()));
+        log.info("Hertziana Normalizations Time: "+Timer.reportHumanFriendly(HertzianaNormalizer.class.getCanonicalName()));
     }
     
     /** This methods splits the files found in the input folder, into files with 

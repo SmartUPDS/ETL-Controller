@@ -68,7 +68,7 @@ public class MarburgNormalizer implements Normalizer{
         Timer.stop(MarburgNormalizer.class.getCanonicalName()+".syntax-norm");
         log.info("FINISH: Perform Syntax Normalization for resources from Marburg in "+Timer.reportHumanFriendly(MarburgNormalizer.class.getCanonicalName()+".syntax-norm"));
         
-        log.info("KHI Normalizations Time: "+Timer.reportHumanFriendly(MarburgNormalizer.class.getCanonicalName()));
+        log.info("Marburg Normalizations Time: "+Timer.reportHumanFriendly(MarburgNormalizer.class.getCanonicalName()));
     }
     
     /** This methods splits the files found in the input folder, into files with 

@@ -31,7 +31,7 @@ public class KhiTransformer implements Transformer {
         }
         Timer.stop(KhiTransformer.class.getCanonicalName()+".artworks");
         log.info("FINISH: Transform artworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".artworks"));
-
+        
         Timer.start(KhiTransformer.class.getCanonicalName()+".artworks-lv2");
         log.info("START: Transform artworks LVL2 from KHI");
         for(File file: new File(Resources.FOLDER_INPUT_NORMALIZED_KHI).listFiles()){
@@ -147,7 +147,7 @@ public class KhiTransformer implements Transformer {
             Utils.removeTypes(filename, Lang.TRIG);
         }
         Timer.stop(KhiTransformer.class.getCanonicalName()+".actors");
-        log.info("FINISH: Transform Builtworks from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".actors"));
+        log.info("FINISH: Transform Actors from KHI in "+Timer.reportHumanFriendly(KhiTransformer.class.getCanonicalName()+".actors"));
         
         Timer.start(KhiTransformer.class.getCanonicalName()+".photographs-fc-fr");
         log.info("START: Transform photographs using FCs FRs from KHI");
