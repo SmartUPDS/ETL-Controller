@@ -112,7 +112,7 @@ public class VocsNormalizer implements Normalizer{
         for(int i=0;i<nodes.getLength();i++){
             Element elem=((Element)nodes.item(i));
             String txt =elem.getTextContent();
-            Matcher m = Pattern.compile("([a-zA-Z]{3})([^\\(]+)").matcher(txt);
+            Matcher m = Pattern.compile("([a-zA-Z]+)([^\\(]+)").matcher(txt);
             if (m.find()){
                 String source =  m.group(1);
                 String id = m.group(2);
@@ -135,7 +135,7 @@ public class VocsNormalizer implements Normalizer{
         for(int i=0;i<nodes.getLength();i++){
             Element elem=((Element)nodes.item(i));
             String txt =elem.getTextContent();
-            Matcher m = Pattern.compile("([a-zA-Z]{3})([^\\(]+)\\(([^\\)]+)\\)").matcher(txt);
+            Matcher m = Pattern.compile("([a-zA-Z]+)([^\\(]+)\\(([^\\)]+)\\)").matcher(txt);
             if (m.find()){
                 String source =  m.group(1);
                 String id = m.group(2);
