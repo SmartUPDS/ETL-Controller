@@ -28,30 +28,44 @@ public class Controller {
         /* INITIALIZATION ONLY */
         Controller.createFoldersStructure();
         
-        Controller.executeWorkflow();
+        Controller.executeWorkflow(args);
     }
     
-    public static void executeWorkflow() throws ETLGenericException{
+    public static void executeWorkflow(String[] args) throws ETLGenericException{
         /* Harvest Resources */
         //none (?)
         
         /* Normalize/Clean Input Resources */
-        ItattiNormalizer.create().normalizeResources();
-//        FrickNormalizer.create().normalizeResources();
-//        HertzianaNormalizer.create().normalizeResources();
-//        ZeriNormalizer.create().normalizeResources();
-//        MarburgNormalizer.create().normalizeResources();
-//        KhiNormalizer.create().normalizeResources();
-//        VocsNormalizer.create().normalizeResources();
+        if(args[0].equals("itattinorm"))
+            ItattiNormalizer.create().normalizeResources();
+        else if(args[0].equals("fricknorm"))
+            FrickNormalizer.create().normalizeResources();
+        else if(args[0].equals("hertznorm"))
+            HertzianaNormalizer.create().normalizeResources();
+        else if(args[0].equals("zerinorm"))
+            ZeriNormalizer.create().normalizeResources();
+        else if(args[0].equals("marburgnorm"))
+            MarburgNormalizer.create().normalizeResources();
+        else if(args[0].equals("khinorm"))
+            KhiNormalizer.create().normalizeResources();
+        else if(args[0].equals("vocsnorm"))
+            VocsNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-//        ItattiTransformer.create().transformResources();
-//        HertzianaTransformer.create().transformResources();
-//        FrickTransformer.create().transformResources();
-//        ZeriTransformer.create().transformResources();
-//        MarburgTransformer.create().transformResources();
-//        KhiTransformer.create().transformResources();
-//        VocsTransformer.create().transformResources();
+        if(args[0].equals("itattitrans"))
+            ItattiTransformer.create().transformResources();
+        else if(args[0].equals("hertzianatrans"))
+            HertzianaTransformer.create().transformResources();
+        else if(args[0].equals("fricktrans"))
+            FrickTransformer.create().transformResources();
+        else if(args[0].equals("zeritrans"))
+            ZeriTransformer.create().transformResources();
+        else if(args[0].equals("marburgtrans"))
+            MarburgTransformer.create().transformResources();
+        else if(args[0].equals("khitrans"))
+            KhiTransformer.create().transformResources();
+        else if(args[0].equals("vocstrans"))
+            VocsTransformer.create().transformResources();
 
         /* Homogenize Output Resources */ 
 //        ItattiHomogenizer.create().homogenizeResources();
