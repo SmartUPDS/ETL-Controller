@@ -15,6 +15,8 @@ import com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection;
 import java.io.File;
 import java.nio.file.Paths;
 import lombok.extern.log4j.Log4j;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /** The entry point of the ETL Controller. The class is responsible for 
  * executing the entire ETL workflow.
@@ -36,37 +38,38 @@ public class Controller {
         //none (?)
         
         /* Normalize/Clean Input Resources */
-        if(args[0].equals("itattinorm"))
-            ItattiNormalizer.create().normalizeResources();
-        else if(args[0].equals("fricknorm"))
-            FrickNormalizer.create().normalizeResources();
-        else if(args[0].equals("hertznorm"))
-            HertzianaNormalizer.create().normalizeResources();
-        else if(args[0].equals("zerinorm"))
-            ZeriNormalizer.create().normalizeResources();
-        else if(args[0].equals("marburgnorm"))
-            MarburgNormalizer.create().normalizeResources();
-        else if(args[0].equals("khinorm"))
-            KhiNormalizer.create().normalizeResources();
-        else if(args[0].equals("vocsnorm"))
-            VocsNormalizer.create().normalizeResources();
+//        if(args[0].equals("itattinorm"))
+//            ItattiNormalizer.create().normalizeResources();
+//        else if(args[0].equals("fricknorm"))
+//            FrickNormalizer.create().normalizeResources();
+//        else if(args[0].equals("hertznorm"))
+//            HertzianaNormalizer .create().normalizeResources();
+//        else if(args[0].equals("zerinorm"))
+//            ZeriNormalizer.create().normalizeResources();
+//        else if(args[0].equals("marburgnorm"))
+//            MarburgNormalizer.create().normalizeResources();
+//        else if(args[0].equals("khinorm"))
+//            KhiNormalizer.create().normalizeResources();
+//        else if(args[0].equals("vocsnorm"))
+//            VocsNormalizer.create().normalizeResources();
         
         /* Transform Resources */
-        if(args[0].equals("itattitrans"))
-            ItattiTransformer.create().transformResources();
-        else if(args[0].equals("hertzianatrans"))
-            HertzianaTransformer.create().transformResources();
-        else if(args[0].equals("fricktrans"))
+//        if(args[0].equals("itattitrans")) {
+//            ItattiTransformer.create().transformResources();
+//            ItattiTransformerFCFR.create().transformResources();
+//        } else if(args[0].equals("hertzianatrans"))
+//            HertzianaTransformer.create().transformResources();
+//        else if(args[0].equals("fricktrans"))
             FrickTransformer.create().transformResources();
-        else if(args[0].equals("zeritrans"))
-            ZeriTransformer.create().transformResources();
-        else if(args[0].equals("marburgtrans"))
-            MarburgTransformer.create().transformResources();
-        else if(args[0].equals("khitrans"))
-            KhiTransformer.create().transformResources();
-        else if(args[0].equals("vocstrans"))
-            VocsTransformer.create().transformResources();
-
+//        else if(args[0].equals("zeritrans"))
+//            ZeriTransformer.create().transformResources();
+//        else if(args[0].equals("marburgtrans"))
+//            MarburgTransformer.create().transformResources();
+//        else if(args[0].equals("khitrans"))
+//            KhiTransformer.create().transformResources();
+//        else if(args[0].equals("vocstrans"))
+//            VocsTransformer.create().transformResources();
+        
         /* Homogenize Output Resources */ 
 //        ItattiHomogenizer.create().homogenizeResources();
 //        FrickHomogenizer.create().homogenizeResources();
@@ -75,13 +78,15 @@ public class Controller {
 //        HertzianaHomogenizer.create().homogenizeResources();
 //        MarburgHomogenizer.create().homogenizeResources();
 //        VocsHomogenizer.create().homogenizeResources();
+
+//        ApplicationContext context = new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
+//        TripleStoreConnection triplestoreConnection = context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
+////
+//        /* Delete Resources */
+//        ItattiDeleter.create(triplestoreConnection).deleteResources();
         
         /* Ingest Resources */
-//        ApplicationContext context=new ClassPathXmlApplicationContext(Resources.SPRING_BEANS_FILENAME);
-//        TripleStoreConnection triplestoreConnection=context.getBean(Resources.TRIPLESTORE_BEAN_ID, TripleStoreConnection.class);
-//        
 //        ItattiIngester.create(triplestoreConnection).ingestResources();
-        
 //        HertzianaIngester.create(triplestoreConnection).ingestResources();
 //        FrickIngester.create(triplestoreConnection).ingestResources();
 //        ZeriIngester.create(triplestoreConnection).ingestResources();

@@ -6,6 +6,8 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.smartupds.etlcontroller.etl.controller.exception.ETLGenericException;
 import com.smartupds.etlcontroller.etl.controller.impl.frick.FrickTransformer;
@@ -39,6 +41,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
@@ -290,7 +294,7 @@ public class Utils {
             Dataset dataset = RDFDataMgr.loadDataset(filename);
             if (language.equals(Lang.TRIG)){
                 dataset.listNames().forEachRemaining(graph -> {
-                    System.out.println(graph + "-GRAPH");
+//                    System.out.println(graph + "-GRAPH");
                     Model model = dataset.getNamedModel(graph);
                     Resource rsc = model.createResource(Resources.NO_TYPE);
                     model.removeAll(null, RDF.type,(RDFNode) rsc);
@@ -332,5 +336,80 @@ public class Utils {
             downloader.configure(doc.getElementsByTagName("username").item(0).getTextContent(), doc.getElementsByTagName("password").item(0).getTextContent());
         downloader.download();
         return selectQuery;
+    }
+    
+    
+    public static void deleteGraph(TripleStoreConnection triplestore, String graph) throws ETLGenericException{
+        try{
+            String deleteServiceURL=triplestore.getConnectionURL()+"?graph="+graph;
+            HttpsURLConnection con = (HttpsURLConnection) new URL(deleteServiceURL).openConnection();
+            con.setRequestMethod("DELETE");
+            String userCredentials = triplestore.getUsername()+":"+triplestore.getPassword();
+            String basicAuth = "Basic " + new String(new Base64().encode(userCredentials.getBytes()));
+            con.setRequestProperty ("Authorization", basicAuth);
+            log.debug("Graph DELETE URL: "+deleteServiceURL);         
+            int responseCode = con.getResponseCode();
+            if (responseCode != HttpStatus.SC_OK && responseCode != HttpStatus.SC_CREATED) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                log.error("An error occured while uploading contents. Response Status Code: "+responseCode+"\tRespose Body: "+response.toString());
+                throw new ETLGenericException("An error occured while uploading contents. Response Status Code: "+responseCode+"\tRespose Body: "+response.toString());
+            }
+            log.info("Graph "+graph+" was successfully deleted");
+        }catch(IllegalArgumentException | IOException ex){
+            log.error("An error occured while uploading data",ex);
+            throw new ETLGenericException("An error occured while uploading data",ex);
+        }
+    }
+    
+    /** Retrieve resources of a specific type.
+     * 
+     * @param folder
+     * @param type type of resource
+     * @return SPARQL query */
+    public static HashSet<String> getGraphs(String folder, String type) {
+        HashSet<String> graphs = new HashSet<>();
+        for(File file: new File(folder).listFiles()){
+            System.out.println(file.toString());
+            Dataset dataset = RDFDataMgr.loadDataset(file.toString());
+            dataset.listNames().forEachRemaining(graph -> {
+                    Model model = dataset.getNamedModel(graph);
+                    Resource rsc = model.createResource(Resources.MAN_MADE_OBJECT);
+                    boolean ismanmadeobject = model.listStatements(null, RDF.type, rsc).hasNext();
+                    if(ismanmadeobject)
+                        graphs.add(graph);
+                });
+        }
+        return graphs;
+    }
+    
+    
+    
+
+    public static void test(String file, String newfile) {
+        try {
+            System.out.println(file);
+            Dataset dataset = RDFDataMgr.loadDataset(file);
+            Model model = dataset.getDefaultModel();
+            Resource rsc_w = model.createResource(Resources.CUSTOM_FC_WORK);
+            Resource rsc_p = model.createResource(Resources.CUSTOM_FC_PHOTO);
+            StmtIterator it = model.listStatements(null, RDF.type, (RDFNode) null);
+            Model newmodel = ModelFactory.createDefaultModel();
+            while(it.hasNext()){
+                Statement stmt = it.next();
+                if(!stmt.getResource().equals(rsc_w) && !stmt.getResource().equals(rsc_p))
+                    newmodel.add(stmt);
+            }
+            
+            RDFDataMgr.write(new FileOutputStream(newfile), newmodel, Lang.NT);
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

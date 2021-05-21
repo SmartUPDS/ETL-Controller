@@ -5,9 +5,9 @@
            xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
         <bean id="triplestoreConnection" class="com.smartupds.etlcontroller.etl.controller.model.TripleStoreConnection">
-            <constructor-arg index="0" value="url"/>
-            <constructor-arg index="1" value="user"/>
-            <constructor-arg index="2" value="pass"/>
+            <constructor-arg index="0" value="https://artresearch.net/rdf-graph-store"/>
+            <constructor-arg index="1" value="admin"/>
+            <constructor-arg index="2" value="pharosadmin"/>
         </bean>
         
     </beans>

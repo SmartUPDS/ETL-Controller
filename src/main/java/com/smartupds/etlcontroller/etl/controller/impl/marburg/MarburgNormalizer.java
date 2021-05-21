@@ -48,11 +48,6 @@ public class MarburgNormalizer implements Normalizer{
 
         log.info("START: Perform Syntax Normalization for resources from Marburg");
         Timer.start(MarburgNormalizer.class.getCanonicalName()+".syntax-norm");
-//        List<String> elementsList=Arrays.asList("a30nr",
-//                                                "a3105",
-//                                                "a3200",
-//                                                "a5220","a5260","a5300","a5500",
-//                                                "a8498");
         List<String> elementsList=Arrays.asList("a30nr",
                                                 "a3105",
                                                 "a3200",
@@ -125,6 +120,10 @@ public class MarburgNormalizer implements Normalizer{
             doc=normalizeId(doc,"a533s");
             doc=normalizeId(doc,"a524s");
             doc=normalizeId(doc,"a3000");
+            doc=normalizeId(doc,"a28na");
+            doc=normalizeId(doc,"a26na");
+            doc=normalizeId(doc,"a54na");
+            doc=normalizeId(doc,"a51na");
             
             ElementsSplit.exportXmlDocument(doc, new File(folderName+"/"+filename.replace(".xml","")+"_cleaned"+".xml")); 
             FileUtils.deleteQuietly(file);  //Seems that it doesn't work

@@ -45,7 +45,7 @@ public class FrickTransformer implements Transformer{
                                 new File(Resources.MAPPINGS_FRICK_FC_FR),
                                 new File(Resources.GENERATOR_POLICY_FRICK),
                                 new File(Resources.FOLDER_OUTPUT_TRANSFORMED_FRICK_FC_FR),
-                                X3MLEngineFactory.OutputFormat.RDF_XML);
+                                X3MLEngineFactory.OutputFormat.NTRIPLES);
         }
         Timer.stop(FrickTransformer.class.getCanonicalName()+".all-fc-fr");
         log.info("FINISH: Transform data using FCs FRs from FRICK in "+Timer.reportHumanFriendly(FrickTransformer.class.getCanonicalName()+".all-fc-fr"));

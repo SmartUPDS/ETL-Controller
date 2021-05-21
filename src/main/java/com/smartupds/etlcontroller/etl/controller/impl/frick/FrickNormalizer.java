@@ -256,7 +256,7 @@ public class FrickNormalizer implements Normalizer{
                             List<String> personAndPlace=this.normalizePersonAndPlace(childElement.getTextContent());
                             if(!personAndPlace.isEmpty()){
                                 childElement.setAttribute("person", personAndPlace.get(0));
-                                childElement.setAttribute("place", personAndPlace.get(1));
+                                childElement.setAttribute("place", personAndPlace.get(1).replaceAll("photograph[er]*|\\(FARL\\) negative", "").trim());
                             }
                         }
                     }

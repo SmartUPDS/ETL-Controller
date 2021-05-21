@@ -419,6 +419,9 @@ public class Resources {
     
     //Resources
     public static final String NO_TYPE = "https://pharos.artresearch.net/custom/noType";
+    public static final String MAN_MADE_OBJECT = "http://www.cidoc-crm.org/cidoc-crm/E22_Man-Made_Object";
+    public static final String CUSTOM_FC_WORK = "https://pharos.artresearch.net/resource/custom/fc/work";
+    public static final String CUSTOM_FC_PHOTO = "https://pharos.artresearch.net/resource/custom/fc/photo";
     public static final String SELECT = "SELECT";
     public static final String SUBJECT = "subject";
     public static final String TYPE_WORK = "https://pharos.artresearch.net/resource/fc/work";
